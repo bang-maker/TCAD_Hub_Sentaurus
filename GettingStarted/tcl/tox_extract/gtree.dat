@@ -1,0 +1,9 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vJ-2014.09-DEV, Tue Mar 10 18:07:05 2015
+
+# --- simulation flow
+sprocess sprocess "-n" {}
+# --- variables
+# --- scenarios and parameter specs
+# --- simulation tree
+0 1 0 {} {default} 0

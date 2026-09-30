@@ -1,0 +1,24 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vQ-2019.12-SP1
+
+# --- simulation flow
+square sde "" {}
+Doping snmesh "" {}
+Doping DopRefType "MaxTransDiff" {None MaxTransDiff MaxGradient MaxInterval}
+Doping Value "1" {1 10}
+# --- variables
+# --- scenarios and parameter specs
+scenario default DopRefType ""
+scenario default Value ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {None} {default} 0
+3 7 3 {1} {default} 0
+2 4 2 {MaxTransDiff} {default} 0
+3 8 4 {1} {default} 0
+2 5 2 {MaxGradient} {default} 0
+3 9 5 {1} {default} 0
+3 10 5 {10} {default} 0
+2 6 2 {MaxInterval} {default} 0
+3 11 6 {1} {default} 0

@@ -1,0 +1,221 @@
+Material = "Silicon" {
+
+    #if "@cDir@" == "100"
+    Insert = "Siliconc100.par"
+    #elif "@cDir@" == "110"
+    Insert = "Siliconc110.par"
+    #else
+    Insert = "Silicon.par"
+    #endif
+    
+    LatticeParameters
+        {
+    #if "@cDir@" == "100" && "@xDir@" == "100" && "@yDir@" == "100"
+            X       = (1, 0, 0) #[1]
+            Y       = (0, 1, 0) #[1]
+    #elif "@cDir@" == "100" && "@xDir@" == "110" && "@yDir@" == "110"
+            X       = (1, 1, 0) #[1]
+            Y       = (1, -1, 0) #[1]
+    #elif "@cDir@" == "110" && "@xDir@" == "100" && "@yDir@" == "110"
+            X       = (0, 0, 1) #[1]
+            Y       = (1, -1, 0) #[1]
+    #elif "@cDir@" == "110" && "@xDir@" == "110" && "@yDir@" == "100"
+            X       = (1, 1, 0) #[1]
+            Y       = (0, 0, 1) #[1]
+    #else
+    puts "Orientation is beyond the scope.. Check it out..."
+    exit
+    #endif
+        }
+      
+    
+    QuantumPotentialParameters "100"{
+        alpha[1] = 1.0 1.0
+        alpha[2] = 1.0 1.0
+        alpha[3] = 0.1 0.1
+        *gamma = @gam100@ @gam100@
+    }
+    
+    QuantumPotentialParameters "110"{
+        alpha[1] = 1.0 1.0
+        alpha[2] = 1.0 1.0
+        alpha[3] = 0.1 0.1
+        *gamma = @gam110@ @gam110@
+    }
+    
+    QuantumPotentialParameters "111"{
+        alpha[1] = 1.0 1.0
+        alpha[2] = 1.0 1.0
+        alpha[3] = 0.1 0.1
+        *gamma = 6.65 4.3
+    }
+    
+    BalMob:
+    {
+      * mu_bal = k * Lch, with Lch [nm] from in input file
+      * KVM, no explicit Lch dependence with additional parameters:
+      *      Tfactor  - thermionic emission related factor in kinetic velocity
+      *      Bfactor  - distribution factor related to free carrier acceleration
+      *      V0factor - initial kinetic velocity factor
+    	k	= @K@ ,	@K@	# [cm^2/(V s nm)]
+      Tfactor	= 2.0 ,	2.0	# [1]
+    	Bfactor	= 0.3 ,	0.3	# [1]
+    	V0factor	= 1 ,	1	# [1]
+    }
+    
+    HighFieldDependence {
+    	vsat0=@vsat@, @vsat@
+    	beta0	= @beta0@ ,	@beta0@	# [1]
+    }
+
+    EnormalDependence {
+      * mu_Enorm^(-1) = mu_ac^(-1) + mu_sr^(-1)  with:
+      * mu_ac = B / Enorm + C (T/T0)^(-k) ((N+N2)/N0)^lambda / Enorm^(1/3)
+      * mu_sr^-1 = Enorm^(A+alpha*n/(N+N1)^nu) / delta + Enorm^3 / eta
+      * EnormalDependence is added with factor exp(-l/l_crit), where l is
+      * the distance to the nearest point of semiconductor/insulator interface.
+      * Factor is equal to 1 if l_crit > 100.
+      * B, C= 1e15 effectively deactivate ac part of the mobility for improved sensitivity in calibration
+        B   = 1e15 ,    1e15        # [cm/s]
+        C   = 1e15 ,    1e15    # [cm^(5/3)/(V^(2/3)s)]
+        eta = 1e50 ,    1e50    # [V^2/cm*s]
+        alpha   = 0    ,        0
+        A       = 2    ,        2 
+        delta   = @Enormal_delta@ , @Enormal_delta@
+   }
+
+}
+
+
+Region = "Channel" {
+
+    #if "@cDir@" == "100"
+    	Insert = "Siliconc100.par"
+    #elif "@cDir@" == "110"
+    	Insert = "Siliconc110.par"
+    #else
+    	Insert = "Silicon.par"
+    #endif
+    
+    
+    BalMob:
+    {
+      * mu_bal = k * Lch, with Lch [nm] from in input file
+      * KVM, no explicit Lch dependence with additional parameters:
+      *      Tfactor  - thermionic emission related factor in kinetic velocity
+      *      Bfactor  - distribution factor related to free carrier acceleration
+      *      V0factor - initial kinetic velocity factor
+    	k	= @K@ ,	@K@	# [cm^2/(V s nm)]
+      Tfactor	= 2.0 ,	2.0	# [1]
+    	Bfactor	= 0.3 ,	0.3	# [1]
+    	V0factor	= 1 ,	1	# [1]
+    }
+    
+    HighFieldDependence {
+    	vsat0=@vsat@, @vsat@
+    	beta0	= @beta0@ ,	@beta0@	# [1]
+    }
+
+    EnormalDependence {
+      * mu_Enorm^(-1) = mu_ac^(-1) + mu_sr^(-1)  with:
+      * mu_ac = B / Enorm + C (T/T0)^(-k) ((N+N2)/N0)^lambda / Enorm^(1/3)
+      * mu_sr^-1 = Enorm^(A+alpha*n/(N+N1)^nu) / delta + Enorm^3 / eta
+      * EnormalDependence is added with factor exp(-l/l_crit), where l is
+      * the distance to the nearest point of semiconductor/insulator interface.
+      * Factor is equal to 1 if l_crit > 100.
+        B   = 1e15 ,    1e15        # [cm/s]
+        C   = 1e15 ,    1e15    # [cm^(5/3)/(V^(2/3)s)]
+        eta = 1e50 ,    1e50    # [V^2/cm*s]
+        alpha   = 0    ,        0
+        A       = 2    ,        2 
+        delta   = @Enormal_delta@ , @Enormal_delta@
+   }
+    
+    LatticeParameters
+            {
+    #if "@cDir@" == "100" && "@xDir@" == "100" && "@yDir@" == "100"
+            X       = (1, 0, 0) #[1]
+            Y       = (0, 1, 0) #[1]
+    #elif "@cDir@" == "100" && "@xDir@" == "110" && "@yDir@" == "110"
+            X       = (1, 1, 0) #[1]
+            Y       = (1, -1, 0) #[1]
+    #elif "@cDir@" == "110" && "@xDir@" == "100" && "@yDir@" == "110"
+            X       = (0, 0, 1) #[1]
+            Y       = (1, -1, 0) #[1]
+    #elif "@cDir@" == "110" && "@xDir@" == "110" && "@yDir@" == "100"
+            X       = (1, 1, 0) #[1]
+            Y       = (0, 0, 1) #[1]
+    #else
+    puts "Orientation is beyond the scope.. Check it out..."
+    exit
+    #endif
+    }
+    
+    DopingDependence:
+    {
+      * For doping dependent mobility model three formulas
+      * can be used. Formula1 is based on Masetti et al. approximation.
+      * Formula2 uses approximation, suggested by Arora.
+    	formula	= 2 ,	2	
+    	Ar_mud=1, 1
+    	Ar_mumin=@LFMob@, @LFMob@
+    }
+    
+            
+    QuantumPotentialParameters "100"{
+        alpha[1] = @alpha1@ @alpha1@
+        alpha[2] = 1.0 1.0
+        alpha[3] = 0.1 0.1
+        gamma = @gam100@ @gam100@
+    }
+    
+    QuantumPotentialParameters "110"{
+        alpha[1] = @alpha1@ @alpha1@
+        alpha[2] = 1.0 1.0
+        alpha[3] = 0.1 0.1
+        gamma = @gam110@ @gam110@
+    }
+    
+    QuantumPotentialParameters "111"{
+        alpha[1] = @alpha1@ @alpha1@
+        alpha[2] = 1.0 1.0
+        alpha[3] = 0.1 0.1
+        gamma = 6.65 4.3
+    }
+}
+
+Material = "Oxide" {
+Insert = "Oxide.par"
+eDOSMass
+{
+  * For effective mass specification Formula1 (me approximation):
+  * or Formula2 (Nc300) can be used :
+    Formula = 1 # [1]
+  * Formula1:
+  * me/m0 = [ (6 * mt)^2 *  ml ]^(1/3) + mm
+  * mt = a[Eg(0)/Eg(T)] 
+  * Nc(T) = 2(2pi*kB/h_Planck^2*me*T)^3/2 = 2.5094e19 ((me/m0)*(T/300))^3/2 
+    a   = 0.0000e+00    # [1]
+    ml  = 0.0000e+00    # [1]
+    mm  = @ox_mass@ # [1]
+}
+hDOSMass
+{
+  * For effective mass specification Formula1 (mh approximation):
+  * or Formula2 (Nv300) can be used :
+    Formula = 1 # [1]
+  * Formula1:
+  * mh =  m0*{[(a+bT+cT^2+dT^3+eT^4)/(1+fT+gT^2+hT^3+iT^4)]^(2/3) + mm}
+  * Nv(T) = 2(2pi*kB/h_Planck^2*mh*T)^3/2 = 2.5094e19 ((mh/m0)*(T/300))^3/2 
+    a   = 0 # [1]
+    b   = 0 # [K^-1]
+    c   = 0 # [K^-2]
+    d   = 0 # [K^-3]
+    e   = 0 # [K^-4]
+    f   = 0 # [K^-1]
+    g   = 0 # [K^-2]
+    h   = 0 # [K^-3]
+    i   = 0 # [K^-4]
+    mm  = @ox_mass@ # [1]
+}
+}

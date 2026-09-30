@@ -1,0 +1,125 @@
+
+LatticeParameters { 
+  * X and Y vectors define the simulation coordinate system relative to the
+  * crystal orientation system.
+  X = (0  0 -1)
+  Y = (1  0  0)
+}
+
+Thermionic { Formula= 1 }
+
+BarrierTunneling "sourceNLM" {
+  mt = 0.001, 0.1 
+  g  = 1    , 1.0 
+}
+
+BarrierTunneling "drainNLM"{
+  mt = 0.001, 0.1 
+  g  = 1    , 1.0 
+}
+
+BarrierTunneling "gateNLM" {
+  mt = 0.2  , 1.10
+  g  = 1    , 0.05
+}
+
+Material= "AlGaN" {
+  Ionization {
+    Species ("MagnesiumActiveConcentration") {
+      E_0           =       0.15
+      alpha         =       0
+      g             =       4.0
+      Xsec          =       1.0000e-12
+    }
+    Species ("pSiliconActiveConcentration") {
+      E_0           =       0.1
+      alpha         =       0
+      g             =       4.0
+      Xsec          =       1.0000e-12
+    }
+    Species ("nSiliconActiveConcentration") {
+      E_0           =       0.05
+      alpha         =       0
+      g             =       2.0
+      Xsec          =       1.0000e-12
+    }
+  }
+}
+
+Material= "GaN" {
+  Ionization {
+    Species ("MagnesiumActiveConcentration") {
+      E_0           =       0.15
+      alpha         =       0
+      g             =       4.0
+      Xsec          =       1.0000e-12
+    }
+    Species ("pSiliconActiveConcentration") {
+      E_0           =       0.1
+      alpha         =       0
+      g             =       4.0
+      Xsec          =       1.0000e-12
+    }
+    Species ("nSiliconActiveConcentration") {
+      E_0           =       0.05
+      alpha         =       0
+      g             =       2.0
+      Xsec          =       1.0000e-12
+    }
+  }
+  
+  RadiativeRecombination {
+    C = 2.5e-10
+  }
+}
+
+Material= "AlN" {
+  Ionization {
+    Species ("MagnesiumConcentration") {
+      E_0           =       0.15
+      alpha         =       0
+      g             =       4.0
+      Xsec          =       1.0000e-12
+    }
+    Species ("pSiliconActiveConcentration") {
+      E_0           =       0.1
+      alpha         =       0
+      g             =       4.0
+      Xsec          =       1.0000e-12
+    }
+    Species ("nSiliconActiveConcentration") {
+      E_0           =       0.05
+      alpha         =       0
+      g             =       2.0
+      Xsec          =       1.0000e-12
+    }
+  }
+  
+  RadiativeRecombination {
+    C = 2.5e-10
+  }
+}
+
+Region= "nucleation" { Piezoelectric_polarization { relax = 1 } }
+Region= "relax1"     { Piezoelectric_polarization { relax = 1 } }
+Region= "relax2"     { Piezoelectric_polarization { relax = 1 } }
+Region= "buffer"     { Piezoelectric_polarization { relax = 1 } }
+
+Material= "SiliconCarbide" {
+  Ionization {
+    Species ("AluminumConcentration") {
+      E_0     = 0.191         # [eV]         
+      alpha   = 3.1000e-08    # [eV cm]
+      g       = 4             # [1]
+      Xsec        = 1.0000e-12    # [cm^2/sec]
+    }
+    Species ("NitrogenConcentration") {   
+      E_0         = 0.065       # [eV]
+      alpha = 3.1000e-08  # [eV cm]
+      g           = 2         # [1]
+      Xsec        = 1.0000e-12  # [cm^2/sec]
+    }
+    NdCrit    = 1.0000e+22  # [cm-3]
+    NaCrit    = 1.0000e+22  # [cm-3]
+  }
+}

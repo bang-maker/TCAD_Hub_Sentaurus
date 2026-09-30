@@ -1,0 +1,18 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-L1, Wed May 24 09:06:01 2017
+
+# --- simulation flow
+sde sde "" {}
+sdevice sdevice "" {}
+sdevice pol "0" {TE TM}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default pol ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {TE} {default} 0
+3 5 3 {} {default} 0
+2 4 2 {TM} {default} 0
+3 6 4 {} {default} 0

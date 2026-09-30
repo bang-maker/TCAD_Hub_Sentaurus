@@ -1,0 +1,412 @@
+Material = "GST" {
+  Epsilon {
+    epsilon = 12.
+  }
+
+  LatticeHeatCapacity {
+    cv = 1.3  # [J/(Kcm^3)]
+    cv_b = 0.
+    cv_c = 0.
+    cv_d = 0.
+  }
+  
+  Kappa {
+    formula=1
+    kappa = 0.005 # [W/(K cm)]
+    kappa_b = 0.
+    kappa_c = 0.
+  }
+  
+  Bandgap { 
+    Chi0  = 4.25  # [eV]
+    Eg0 = 0.5 # [eV]
+    alpha = 0 # [eV K^-1]
+  }
+  
+  eDOSMass {
+    Formula=2
+    Nc300=2.5e19
+  }
+  
+  hDOSMass {
+    Formula=2
+    Nv300=2.5e19
+  }
+  
+  ConstantMobility { 
+    mumax = 0.1 , 15. # [cm^2/(Vs)]
+    exponent = 0. , 0.
+  }
+  
+  DopingDependence {
+    * needed to appeace CHECKMODELS
+  }
+  
+  Lackner {   
+    a   =   2e7 , 2.e7  # [1/cm]
+    b   = 3.3e3 , 3.3e3 # [V/cm]
+    hbarOmega =  0.06 , 0.06  # [eV]
+  }
+  
+  QuantumPotentialParameters {
+    * gamma:  weighting factor for quantum potential
+    * theta:  weight for quadratic term
+    * xi:     weight for quasi Fermi potential
+    * eta:    weight for electrostatic potential
+    gamma   = 0. ,  0.      # [1]
+    theta   = 0. ,  0.      # [1]
+    xi      = 1 ,   1       # [1]
+    eta     = 1 ,   1       # [1]
+  }
+  
+  pmi_msc_mobility { 
+    * PMI parameter are not mole-interpolated
+    plot = 0
+    
+    Tref = 300.
+    Tg = 653.
+    
+    e_mu_ref = 0.1 # electron: default value at Tref for all states
+    e_mu_g = 0.1   # electron: default value at Tg for all states
+    e_c_mu_ref = 0.1 # electron: state 'c': value at Tref
+    e_c100_mu_ref = 0.1 # electron: state 'c100': value at Tref
+    
+    h_mu_ref = 0.15 # hole: default value at Tref for all states
+    h_mu_g = 15.   # hole: default value at Tg for all states
+    h_c_mu_ref = 15.    # hole: state 'c': value at Tref
+    h_c100_mu_ref = 15.    # hole: state 'c100': value at Tref
+  }
+  
+  pmi_msc_abes {
+    plot = 0
+    use_mi_pars = 1 * use model index pars 'mi<int>_'
+    lambda = 1.e-100
+    
+    * electrons
+    mi0_lambda = 2.e-100
+    
+    * holes
+    mi1_lambda_nb_Tpairs = 2
+    mi1_lambda_Tp0_X = 273.
+    mi1_lambda_Tp0_Y = 0.2
+    mi1_lambda_Tp1_X = 653.
+    mi1_lambda_Tp1_Y = 0.
+    
+    mi1_c_lambda_nb_Tpairs = 0
+    mi1_c100_lambda_nb_Tpairs = 0
+  }
+  
+  pmi_msc_heatcapacity {
+    plot = 0
+    cv = 1.2
+    c_cv = 1.21 
+  }
+  
+  pmi_msc_thermalconductivity {
+    plot = 0
+    kappa = 0.      * not used, producing error
+    kappa_nb_Tpairs = 3
+    kappa_Tp0_X = 273.
+    kappa_Tp0_Y = 5.e-3
+    kappa_Tp1_X = 653.
+    kappa_Tp1_Y = 3.e-3
+    kappa_Tp2_X = 889.
+    kappa_Tp2_Y = 3.8e-3
+    
+    c_kappa_nb_Tpairs = 3
+    c_kappa_Tp0_X = 273.
+    c_kappa_Tp0_Y = 5.e-3
+    c_kappa_Tp1_X = 653.
+    c_kappa_Tp1_Y = 6.e-3
+    c_kappa_Tp2_X = 889.
+    c_kappa_Tp2_Y = 6.5e-3
+  }
+  
+  pmi_ce_msc {
+    plot = 0
+    cplot = 1
+    nb_states = 6
+    sindex0 = 0
+    sindex1 = 1
+    sindex2 = 2
+    sindex3 = 100
+    sindex4 = 1100
+    sindex5 = 2100
+    
+    nb_transitions = 14
+    tindex0 = 0
+    tindex1 = 1
+    tindex2 = 2
+    tindex3 = 3
+    tindex4 = 100
+    tindex5 = 1100
+    tindex6 = 2100
+    tindex7 = 50100
+    tindex8 = 51100
+    tindex9 = 52100
+    tindex10 = 30
+    tindex11 = 31
+    tindex12 = 32
+    tindex13 = 33
+    
+    *** material parameters
+    
+    E_g = 0.5 *** eV
+    N_C = 2.5e19  *** cm^{-3}
+    N_V = 2.5e19  *** cm^{-3}
+    
+    Tm = 889.
+    Tg = 653.
+    DeltaH1 = 418.9  # enthalpy of fusion at melting temperature [J/cm^3]
+    DeltaH2 = 218.5  #
+    GammaSL = 4.e-6  # interfacial free energy density per area [J/cm^2]
+    MM_volume = 2.9e-22 # monomer volume [cm^3]
+    Reference_E_T = 2 # reference for E_T (VB=2)
+    
+    *** states 
+    * crystalline, all traps not occupied
+    s0_E = 0
+    s0_g = 1.
+    s0_charge = 0
+    
+    s100_E = 0
+    s100_g = 1.
+    s100_charge = -1
+    
+    * amorphous, all traps not occupied
+    s1_E = 1.
+    s1_g = 5.e2
+    s1_charge = 0
+    s1_E_nb_Tpairs = 2
+    s1_E_Tp0_X = 850.
+    s1_E_Tp0_Y = 1.
+    s1_E_Tp1_X = 900.
+    s1_E_Tp1_Y = 0.
+    
+    
+    s1100_E = 1.
+    s1100_g = 5.e2
+    s1100_charge = -1
+    s1100_E_nb_Tpairs = 2
+    s1100_E_Tp0_X = 850.
+    s1100_E_Tp0_Y = 1.
+    s1100_E_Tp1_X = 900.
+    s1100_E_Tp1_Y = 0.
+    
+    
+    * melt, all traps not occupied
+    s2_E = 2.5
+    s2_g = 1.e8
+    s2_charge = 0
+    s2_E_nb_Tpairs = 2
+    s2_E_Tp0_X = 850.
+    s2_E_Tp0_Y = 2.5
+    s2_E_Tp1_X = 900.
+    s2_E_Tp1_Y = 0.5
+    
+    s2100_E = 2.5
+    s2100_g = 1.e8
+    s2100_charge = -1
+    s2100_E_nb_Tpairs = 2
+    s2100_E_Tp0_X = 850.
+    s2100_E_Tp0_Y = 2.5
+    s2100_E_Tp1_X = 900.
+    s2100_E_Tp1_Y = 0.5
+    
+    *** transitions 
+    
+    * phase transitions of unoccupied states
+    
+    t0_formula = 1  # nucleation Peng
+    t0_s0 = 0   # crystalline state index [1]
+    t0_s1 = 1   # amorphous state index [1]
+    t0_r0 = 4.e27 # maximal transition rate [1/s]
+    t0_Eact = 2.19  # activation energy [eV]
+    
+    t1_formula = 2  # growth Peng
+    t1_s0 = 0   # crystalline state index [1]
+    t1_s1 = 1   # amorphous state index [1]
+    t1_r0 = 1.e16 # maximal transition rate [1/s]
+    t1_Eact = 1.4 # activation energy [eV]
+    
+    t2_formula = 0  * Arrhenius law
+    t2_s0 = 0
+    t2_s1 = 2
+    t2_r0 = 1.e23
+    t2_Eact = 2.5
+    
+    t3_formula = 0      * Arrhenius law
+    t3_s0 = 1
+    t3_s1 = 2
+    t3_r0 = 1.e+13
+    t3_Eact = 0
+    
+    * trap transitions in different phases with CB
+    
+    t100_formula = 8  * MSC traps with DB
+    t100_s0 = 100 * involved 'to' state
+    t100_s1 = 0 * involved 'from' state
+    t100_sigma  = 1.e-15  * cross section [cm^{-2}]
+    t100_vth  = 1.e7    * thermal velocity [cm*s^{-1}]
+    t100_CB_nb_particles = 1
+    
+    t1100_formula = 8    * std traps with DB
+    t1100_s0     = 1100   * involved 'to' state
+    t1100_s1     = 1     * involved 'from' state
+    t1100_sigma  = 1.e-15        * cross section [cm^{-2}]
+    t1100_vth    = 1.e7          * thermal velocity [cm*s^{-1}]
+    t1100_CB_nb_particles = 1
+    
+    t2100_formula = 8    * std traps with DB
+    t2100_s0     = 2100   * involved 'to' state
+    t2100_s1     = 2     * involved 'from' state
+    t2100_sigma  = 1.e-15        * cross section [cm^{-2}]
+    t2100_vth    = 1.e7          * thermal velocity [cm*s^{-1}]
+    t2100_CB_nb_particles = 1
+    
+    * transitions with VB
+    
+    t50100_formula = 8  * std traps with DB
+    t50100_s0 = 0 * involved 'to' state
+    t50100_s1 = 100 * involved 'from' state
+    t50100_sigma  = 1.e-15  * cross section [cm^{-2}]
+    t50100_vth  = 1.e7    * thermal velocity [cm*s^{-1}]
+    t50100_VB_nb_particles = 1
+    
+    t51100_formula = 8    * std traps with DB
+    t51100_s0     = 1   * involved 'to' state
+    t51100_s1     = 1100     * involved 'from' state
+    t51100_sigma  = 1.e-15        * cross section [cm^{-2}]
+    t51100_vth    = 1.e7          * thermal velocity [cm*s^{-1}]
+    t51100_VB_nb_particles = 1
+    
+    t52100_formula = 8    * std traps with DB
+    t52100_s0     = 2   * involved 'to' state
+    t52100_s1     = 2100     * involved 'from' state
+    t52100_sigma  = 1.e-15        * cross section [cm^{-2}]
+    t52100_vth    = 1.e7          * thermal velocity [cm*s^{-1}]
+    t52100_VB_nb_particles = 1
+    
+    * phase transitions for occupied states
+    
+    t30_formula = 1 # nucleation Peng
+    t30_s0 = 100    # crystalline state index [1]
+    t30_s1 = 1100   # amorphous state index [1]
+    t30_r0 = 4.e27  # maximal transition rate [1/s]
+    t30_Eact = 2.19 # activation energy [eV]
+    
+    t31_formula = 2 # growth Peng
+    t31_s0 = 100    # crystalline state index [1]
+    t31_s1 = 1100 # amorphous state index [1]
+    t31_r0 = 1.e16  # maximal transition rate [1/s]
+    t31_Eact = 1.4  # activation energy [eV]
+    
+    t32_formula = 0 * Arrhenius law
+    t32_s0 = 100
+    t32_s1 = 2100
+    t32_r0 = 1.e23
+    t32_Eact = 2.5
+    
+    t33_formula = 0      * Arrhenius law
+    t33_s0 = 100
+    t33_s1 = 2100
+    t33_r0 = 1.e+13
+    t33_Eact = 0
+    
+  }
+}
+
+Material = "Tungsten" {
+  Kappa {
+    kappa = 1.75  # [W/(K cm)]
+    
+    kappa_b  = 0.0000e+00   # [W/(K^2 cm)]
+    kappa_c  = 0.0000e+00   # [W/(K^3 cm)]
+  }
+  
+  LatticeHeatCapacity {
+    cv = 2.58  # [J/(Kcm^3)]
+  }
+  
+  MetalResistivity {
+    * Resist(T) = Resist0 * ( 1 + TempCoef * ( T - 273 ) )
+    Resist0 = 1.e-6    # [ohm*cm]
+    TempCoef        = 4.5000e-03    # [1/K]
+  }
+}
+
+Material = "TiN" {
+  Bandgap {
+    WorkFunction = 4.25 # [eV]
+  }
+  
+  Kappa {
+    kappa = 0.13  # [W/(K cm)]
+    kappa_b  = 0.0000e+00   # [W/(K^2 cm)]
+    kappa_c  = 0.0000e+00   # [W/(K^3 cm)]
+  }
+  
+  LatticeHeatCapacity {
+    cv = 3.235  # [J/(Kcm^3)]
+  }
+  
+  MetalResistivity { 
+    * Resist(T) = Resist0 * ( 1 + TempCoef * ( T - 273 ) )
+    Resist0 = 1.e-4    # [ohm*cm]
+    TempCoef        = 0.    # [1/K]
+  }
+}
+
+Region = "sinker" {
+  * material is TiN
+  Kappa {
+    kappa = 0.13  # [W/(K cm)]
+    
+    kappa_b  = 0.0000e+00   # [W/(K^2 cm)]
+    kappa_c  = 0.0000e+00   # [W/(K^3 cm)]
+  }
+  
+  LatticeHeatCapacity {
+    cv = 3.235  # [J/(Kcm^3)]
+  }
+  
+  MetalResistivity {
+    * Resist(T) = Resist0 * ( 1 + TempCoef * ( T - 273 ) )
+    Resist0 = 1.e-4    # [ohm*cm]
+    TempCoef        = 0.    # [1/K]
+  }
+}
+
+Region = "heater" {
+  Kappa {
+    kappa = 0.01
+    
+    kappa_b  = 0.0000e+00   # [W/(K^2 cm)]
+    kappa_c  = 0.0000e+00   # [W/(K^3 cm)]
+  }
+  
+  LatticeHeatCapacity {
+    cv = 3.235e-1  # [J/(Kcm^3)]
+  }
+  
+  MetalResistivity {
+    * Resist(T) = Resist0 * ( 1 + TempCoef * ( T - 273 ) )
+    Resist0 = 1.e-4    # [ohm*cm]
+    TempCoef        = 0.    # [1/K]
+  }
+}
+
+Material = "Oxide" {
+  Kappa {
+    kappa = 0.005 # hydrodynamic
+    
+    kappa_b  = 0.0000e+00   # [W/(K^2 cm)]
+    kappa_c  = 0.0000e+00   # [W/(K^3 cm)]
+  }
+  
+  LatticeHeatCapacity {
+    cv = 1.67 ## dessis default
+  }
+  
+}
+

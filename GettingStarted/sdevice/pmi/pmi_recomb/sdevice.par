@@ -1,0 +1,13 @@
+Auger {
+  * R_Auger = ( C_n n + C_p p ) ( n p - ni_eff^2)
+  * with C_n,p = (A + B (T/T0) + C (T/T0)^2) (1 + H exp(-{n,p}/N0))
+  A       = 1e-25 ,  1e-25
+  B       = 0     ,  0
+  C       = 0     ,  0
+  H       = 0     ,  0
+  N0      = 1.0000e+18 ,  1.0000e+18      # [cm^(-3)]
+}
+
+pmi_recomb {
+  C = 1e-25
+}

@@ -1,0 +1,38 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vQ-2019.12-L1
+
+# --- simulation flow
+pFinFET sde "" {}
+DD sdevice "" {}
+DD Work "4.5" {4.50}
+DD V_SUPPLY "-1.25" {-1.3}
+DD_SV svisual "" {}
+SPMC sdevice "" {}
+SPMC surface "1:1:0" {0:1:1 0:0:1}
+SPMC channel "0:1:-1" {0:1:-1 1:0:0 2:1:-1 -1:1:0}
+SPMC_SV svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Work ""
+scenario default V_SUPPLY ""
+scenario default surface ""
+scenario default channel ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {4.50} {default} 0
+3 4 3 {-1.3} {default} 0
+4 5 4 {} {default} 0
+5 6 5 {} {default} 0
+6 7 6 {0:1:1} {default} 0
+7 9 7 {0:1:-1} {default} 0
+8 14 9 {} {default} 0
+7 10 7 {1:0:0} {default} 0
+8 15 10 {} {default} 0
+7 11 7 {2:1:-1} {default} 0
+8 16 11 {} {default} 0
+6 8 6 {0:0:1} {default} 0
+7 12 8 {1:0:0} {default} 0
+8 17 12 {} {default} 0
+7 13 8 {-1:1:0} {default} 0
+8 18 13 {} {default} 0

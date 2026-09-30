@@ -1,0 +1,21 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vV-2023.09-L1
+
+# --- simulation flow
+sde sde "" {}
+sde SiWidth "1.0" {1.0} R
+sdevice sdevice "" {}
+sdevice model "hurkx" {NonlocalPath -} R
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default SiWidth ""
+scenario default model ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {1.0} {default} 0
+2 3 2 {} {default} 0
+3 4 3 {NonlocalPath} {default} 0
+4 6 4 {} {default} 0
+3 5 3 {-} {default} 0
+4 7 5 {} {default} 0

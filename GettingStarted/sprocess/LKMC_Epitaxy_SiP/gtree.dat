@@ -1,0 +1,36 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vM-2016.12-SP2, Tue Jun 20 10:21:29 2017
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess Mat "0" {Silicon}
+sprocess torr "20" {20}
+sprocess temp "700" {700}
+sprocess Wafer "100" {100}
+sprocess H2 "5000" {1000}
+sprocess DCS "400" {50}
+sprocess PH3 "95" {30}
+sprocess time "1" {1}
+sprocess model "Coordination.Planes" {Coordinations.Reactions}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Mat ""
+scenario default torr ""
+scenario default temp ""
+scenario default Wafer ""
+scenario default H2 ""
+scenario default DCS ""
+scenario default PH3 ""
+scenario default time ""
+scenario default model ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {Silicon} {default} 0
+2 3 2 {20} {default} 0
+3 4 3 {700} {default} 0
+4 5 4 {100} {default} 0
+5 6 5 {1000} {default} 0
+6 7 6 {50} {default} 0
+7 8 7 {30} {default} 0
+8 9 8 {1} {default} 0
+9 10 9 {Coordinations.Reactions} {default} 0

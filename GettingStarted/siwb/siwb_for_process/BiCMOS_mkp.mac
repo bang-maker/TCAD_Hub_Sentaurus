@@ -1,0 +1,70 @@
+# Sentaurus markup information - Mon Mar 12 10:42:34 CET 2012
+# version - D-2010.06-14.303664 (Production)
+default winding 1
+layout open ./BICMOSinverter.gds Inverter
+cell transform 1.0 0.0 0 0.0 0.0
+layer add 1:0
+layer configure 1:0 -name NWELL -fill #00ff00 -pattern fill12-a -outline #00ff00 -lineStyle solid -lineWidth 1 
+layer add 2:0
+layer configure 2:0 -name NPDIFF -fill #0000ff -pattern fill12-b -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 3:0
+layer configure 3:0 -name PPDIFF -fill #f0f000 -pattern fill12-c -outline #f0f000 -lineStyle solid -lineWidth 1 
+layer add 4:0
+layer configure 4:0 -name NPLUG -fill #ff9900 -pattern fill12-d -outline #ff9900 -lineStyle solid -lineWidth 1 
+layer add 5:0
+layer configure 5:0 -name POLY -fill #00f0f0 -pattern fill12-e -outline #00f0f0 -lineStyle solid -lineWidth 1 
+layer add 6:0
+layer configure 6:0 -name PBASE -fill #ff6699 -pattern fill12-f -outline #ff6699 -lineStyle solid -lineWidth 1 
+layer add 7:0
+layer configure 7:0 -name EMIT -fill #f000f0 -pattern empty -outline #f000f0 -lineStyle solid -lineWidth 1 
+layer add 8:0
+layer configure 8:0 -name METAL -fill #999999 -pattern fill12 -outline #999999 -lineStyle solid -lineWidth 1 
+layer add 9:0
+layer configure 9:0 -name CONT -fill #ffffff -pattern fill12-a -outline #ffffff -lineStyle solid -lineWidth 1 
+layer add 20:0
+layer configure 20:0 -name ndrain -fill #9900ff -pattern fill12-d -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 21:0
+layer configure 21:0 -name ngate -fill #9900ff -pattern fill12-e -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 22:0
+layer configure 22:0 -name nsource -fill #9900ff -pattern fill12-f -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 23:0
+layer configure 23:0 -name pdrain -fill #9900ff -pattern empty -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 24:0
+layer configure 24:0 -name pgate -fill #9900ff -pattern fill12 -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 25:0
+layer configure 25:0 -name psource -fill #9900ff -pattern fill12-a -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 26:0
+layer configure 26:0 -name base -fill #9900ff -pattern fill12-b -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 27:0
+layer configure 27:0 -name emitter -fill #9900ff -pattern fill12-c -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 28:0
+layer configure 28:0 -name collect -fill #9900ff -pattern fill12-d -outline #9900ff -lineStyle solid -lineWidth 1 
+cell edit_state 1
+polygon -layer 20:0 {950.0 5150.0 950.0 5350.0 1150.0 5350.0 1150.0 5150.0 }
+polygon -layer 21:0 {950.0 4650.0 950.0 4850.0 1150.0 4850.0 1150.0 4650.0 }
+polygon -layer 22:0 {950.0 4150.0 950.0 4350.0 1150.0 4350.0 1150.0 4150.0 }
+polygon -layer 23:0 {2050.0 8050.0 2050.0 8250.0 2250.0 8250.0 2250.0 8050.0 }
+polygon -layer 24:0 {2050.0 8550.0 2050.0 8750.0 2250.0 8750.0 2250.0 8550.0 }
+polygon -layer 25:0 {2050.0 9050.0 2050.0 9250.0 2250.0 9250.0 2250.0 9050.0 }
+polygon -layer 26:0 {6550.0 8050.0 6550.0 8250.0 6750.0 8250.0 6750.0 8050.0 }
+polygon -layer 26:0 {8050.0 8050.0 8050.0 8250.0 8250.0 8250.0 8250.0 8050.0 }
+polygon -layer 27:0 {7250.0 8050.0 7250.0 8150.0 7550.0 8150.0 7550.0 8050.0 }
+polygon -layer 28:0 {8150.0 9250.0 8150.0 9450.0 8350.0 9450.0 8350.0 9250.0 }
+point add {8900.0 8100.0} Emit1D
+point add {8850.0 9350.0} SubCol1D
+point add {1050.0 4750.0} NGate1D
+point add {1050.0 5250.0} NSD1D
+point add {2150.0 8650.0} PGate1D
+point add {2150.0 9150.0} PSD1D
+stretch add {229.0 4744.0 1531.0 4744.0} nmosstretch
+stretch add {683.0 8629.0 2749.0 8629.0} pmosstretch
+gauge add {2300.0 2700.0 2300.0 2000.0} NBODY
+gauge add {1000.0 4100.0 1000.0 6200.0} NMOS
+gauge add {2100.0 7900.0 2100.0 10000.0} PMOS
+gauge add {5800.0 8100.0 8400.0 8100.0} BJTBE
+gauge add {8200.0 8500.0 8200.0 10000.0} BJTC
+highlight add {7900.0 7550.0 9900.0 9900.0} BJT3D
+highlight add {800.0 6700.0 2200.0 10000.0} PMOS3D
+highlight add {550.0 3750.0 1100.0 5800.0} NMOS3D
+select clear
+catch {view default }

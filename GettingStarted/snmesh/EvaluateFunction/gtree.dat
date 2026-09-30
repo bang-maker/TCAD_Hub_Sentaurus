@@ -1,0 +1,17 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vM-2016.12-DEV, Mon Sep 26 15:30:34 2016
+
+# --- simulation flow
+layers sde "" {}
+linear snmesh "" {}
+layers1 sde "" {}
+cube sde "" {}
+GFEmesh snmesh "" {}
+# --- variables
+# --- scenarios and parameter specs
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {} {default} 0
+3 4 3 {} {default} 0
+4 5 4 {} {default} 0

@@ -1,0 +1,77 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vS-2021.06-L1
+
+# --- simulation flow
+sde sde "" {}
+sde Coords "AsIs" {AsIs}
+sde Type "nMOS" {nMOS pMOS}
+sde lgate "0.03" {0.045}
+sde stress "0.19e9" {0 1.9e9}
+IdVg sdevice "" {}
+IdVg surface "001" {001 011}
+IdVg channel "100" {100 110}
+IdVg Vg "1.5" {1.5}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Coords ""
+scenario default Type ""
+scenario default lgate ""
+scenario default stress ""
+scenario default surface ""
+scenario default channel ""
+scenario default Vg ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {AsIs} {default} 0
+2 3 2 {nMOS} {default} 0
+3 5 3 {0.045} {default} 0
+4 7 5 {0} {default} 0
+5 11 7 {} {default} 0
+6 15 11 {001} {default} 0
+7 23 15 {100} {default} 0
+8 39 23 {1.5} {default} 0
+7 24 15 {110} {default} 0
+8 40 24 {1.5} {default} 0
+6 16 11 {011} {default} 0
+7 25 16 {100} {default} 0
+8 41 25 {1.5} {default} 0
+7 26 16 {110} {default} 0
+8 42 26 {1.5} {default} 0
+4 8 5 {1.9e9} {default} 0
+5 12 8 {} {default} 0
+6 17 12 {001} {default} 0
+7 27 17 {100} {default} 0
+8 43 27 {1.5} {default} 0
+7 28 17 {110} {default} 0
+8 44 28 {1.5} {default} 0
+6 18 12 {011} {default} 0
+7 29 18 {100} {default} 0
+8 45 29 {1.5} {default} 0
+7 30 18 {110} {default} 0
+8 46 30 {1.5} {default} 0
+2 4 2 {pMOS} {default} 0
+3 6 4 {0.045} {default} 0
+4 9 6 {0} {default} 0
+5 13 9 {} {default} 0
+6 19 13 {001} {default} 0
+7 31 19 {100} {default} 0
+8 47 31 {1.5} {default} 0
+7 32 19 {110} {default} 0
+8 48 32 {1.5} {default} 0
+6 20 13 {011} {default} 0
+7 33 20 {100} {default} 0
+8 49 33 {1.5} {default} 0
+7 34 20 {110} {default} 0
+8 50 34 {1.5} {default} 0
+4 10 6 {1.9e9} {default} 0
+5 14 10 {} {default} 0
+6 21 14 {001} {default} 0
+7 35 21 {100} {default} 0
+8 51 35 {1.5} {default} 0
+7 36 21 {110} {default} 0
+8 52 36 {1.5} {default} 0
+6 22 14 {011} {default} 0
+7 37 22 {100} {default} 0
+8 53 37 {1.5} {default} 0
+7 38 22 {110} {default} 0
+8 54 38 {1.5} {default} 0

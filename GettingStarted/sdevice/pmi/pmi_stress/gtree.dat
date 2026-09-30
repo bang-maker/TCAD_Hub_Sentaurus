@@ -1,0 +1,16 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vR-2020.09-L1
+
+# --- simulation flow
+sdevice sdevice "" {}
+sdevice stress "builtin" {builtin pmi}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default stress ""
+# --- simulation tree
+0 2 0 {} {default} 0
+1 1 2 {builtin} {default} 0
+2 4 1 {} {default} 0
+1 3 2 {pmi} {default} 0
+2 5 3 {} {default} 0

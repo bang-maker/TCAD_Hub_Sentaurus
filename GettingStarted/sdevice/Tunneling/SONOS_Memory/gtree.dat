@@ -1,0 +1,123 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vV-2023.09-L1
+
+# --- simulation flow
+sde sde "" {}
+sde CTL "NitrideAsSemi" {NitrideAsSemiconductor} R
+sde struct "1CTL" {1CTL} R
+sde DeltaThick "2.5e-3" {2.5e-3} R
+ProgramErase sdevice "" {}
+ProgramErase cycles "5" {1} R
+ProgramErase Vgp "9" {12} R
+ProgramErase dtp "2.5" {5} R
+ProgramErase Vge "-8" {-9} R
+ProgramErase dte "7.5" {7.5} R
+ProgramErase CTL_Traps "0" {1} R
+ProgramErase CTL_TAT "1" {0 1} R
+ProgramErase NLT "1" {1 0} R
+ProgramErase case "1" {NLT_box NLT_box_tox NLT_tox} R
+ProgramErase par "-" {- TXsec TV Length_box Length_tox Emid_Acc_VB} R
+ProgramErase par_val "-" {- 8 11e-7 14e-7 1e-15 1e-10 1e-9 1 10e-7 8e-7 6e-7 5e-7 4e-7 3 4} R
+Plot_WriteCycle svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default CTL ""
+scenario default struct ""
+scenario default DeltaThick ""
+scenario default cycles ""
+scenario default Vgp ""
+scenario default dtp ""
+scenario default Vge ""
+scenario default dte ""
+scenario default CTL_Traps ""
+scenario default CTL_TAT ""
+scenario default NLT ""
+scenario default case ""
+scenario default par ""
+scenario default par_val ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {NitrideAsSemiconductor} {default} 0
+2 3 2 {1CTL} {default} 0
+3 4 3 {2.5e-3} {default} 0
+4 5 4 {} {default} 0
+5 6 5 {1} {default} 0
+6 7 6 {12} {default} 0
+7 8 7 {5} {default} 0
+8 9 8 {-9} {default} 0
+9 10 9 {7.5} {default} 0
+10 11 10 {1} {default} 0
+11 12 11 {0} {default} 0
+12 14 12 {1} {default} 0
+13 17 14 {NLT_box} {default} 0
+14 24 17 {-} {default} 0
+15 36 24 {-} {default} 0
+16 61 36 {} {default} 0
+13 18 14 {NLT_box_tox} {default} 0
+14 25 18 {-} {default} 0
+15 37 25 {-} {default} 0
+16 62 37 {} {default} 0
+11 13 11 {1} {default} 0
+12 15 13 {1} {default} 0
+13 19 15 {NLT_box} {default} 0
+14 26 19 {-} {default} 0
+15 38 26 {-} {default} 0
+16 63 38 {} {default} 0
+13 20 15 {NLT_box_tox} {default} 0
+14 27 20 {-} {default} 0
+15 39 27 {-} {default} 0
+16 64 39 {} {default} 0
+14 28 20 {TXsec} {default} 0
+15 40 28 {1e-15} {default} 0
+16 65 40 {} {default} 0
+15 41 28 {1e-10} {default} 0
+16 66 41 {} {default} 0
+14 29 20 {TV} {default} 0
+15 42 29 {1e-15} {default} 0
+16 67 42 {} {default} 0
+15 43 29 {1e-10} {default} 0
+16 68 43 {} {default} 0
+15 44 29 {1e-9} {default} 0
+16 69 44 {} {default} 0
+14 30 20 {Length_box} {default} 0
+15 45 30 {11e-7} {default} 0
+16 70 45 {} {default} 0
+15 46 30 {8e-7} {default} 0
+16 71 46 {} {default} 0
+15 47 30 {6e-7} {default} 0
+16 72 47 {} {default} 0
+15 48 30 {4e-7} {default} 0
+16 73 48 {} {default} 0
+14 31 20 {Length_tox} {default} 0
+15 49 31 {14e-7} {default} 0
+16 74 49 {} {default} 0
+15 50 31 {10e-7} {default} 0
+16 75 50 {} {default} 0
+15 51 31 {8e-7} {default} 0
+16 76 51 {} {default} 0
+15 52 31 {6e-7} {default} 0
+16 77 52 {} {default} 0
+15 53 31 {5e-7} {default} 0
+16 78 53 {} {default} 0
+14 32 20 {Emid_Acc_VB} {default} 0
+15 54 32 {8} {default} 0
+16 79 54 {} {default} 0
+15 55 32 {1} {default} 0
+16 80 55 {} {default} 0
+15 56 32 {3} {default} 0
+16 81 56 {} {default} 0
+15 57 32 {4} {default} 0
+16 82 57 {} {default} 0
+13 21 15 {NLT_tox} {default} 0
+14 33 21 {-} {default} 0
+15 58 33 {-} {default} 0
+16 83 58 {} {default} 0
+12 16 13 {0} {default} 0
+13 22 16 {NLT_box} {default} 0
+14 34 22 {-} {default} 0
+15 59 34 {-} {default} 0
+16 84 59 {} {default} 0
+13 23 16 {NLT_box_tox} {default} 0
+14 35 23 {-} {default} 0
+15 60 35 {-} {default} 0
+16 85 60 {} {default} 0

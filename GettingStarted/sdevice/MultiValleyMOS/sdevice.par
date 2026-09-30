@@ -1,0 +1,49 @@
+#if "@surface@"=="011"
+ #if "@channel@"=="100"
+*(011)/<100>
+LatticeParameters {
+  X = (1,  0,  0)
+  Y = (0, -1, -1)
+}
+ #elif "@channel@"=="110"
+*(1-10)/<110>
+LatticeParameters {
+  X = ( 1, 1, 0)
+  Y = (-1, 1, 0)
+*  X = (0,  1, -1)
+*  Y = (0, -1, -1)
+}
+ #endif
+#elif  "@surface@"=="001"
+ #if "@channel@"=="100"
+*(010)/<100>
+LatticeParameters {
+  X = (1, 0, 0)
+  Y = (0,-1, 0)
+}
+ #elif "@channel@"=="110"
+*(001)/<110>
+LatticeParameters {
+  X = (1, 1,  0)
+  Y = (0, 0, -1)
+}
+ #endif
+#endif
+
+
+Material = "Silicon" {
+#include "@pwd@/Si.par"
+}
+
+Material = "PolySi" {
+#include "@pwd@/Po.par"
+}
+
+Material = "Oxide" {
+#include "@pwd@/Ox.par"
+}
+
+Material = "HfO2" {
+#include "@pwd@/HfO2.par"
+}
+

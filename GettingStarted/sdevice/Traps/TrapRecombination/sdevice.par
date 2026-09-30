@@ -1,0 +1,157 @@
+Traps
+{ 
+  *     G is degeneracy factor 
+	G	= 1 ,	1	# [1]
+
+  *     XsecFormula=1: Xsec(F) = Xsec 
+  *     XsecFormula=2: Xsec(F) = Xsec*(1+a1*(F/F0)^p1+a2*(F/F0)^p2)^p0, F0 = 1 V/cm 
+  *     XsecFormula=3: Xsec(F) = Xsec*(1+Gt), Gt is Hurkx TATunneling factor 
+  *     XsecFormula=4: Xsec(F) = Xsec*(1+Gpf), Gpf is Poole-Frenkel factor 
+	XsecFormula	= 1 ,	1	# [1]
+	Xsec	= 1.0000e-15 ,	1.0000e-15	# [cm^2]
+	a1	= 0.0000e+00 ,	0.0000e+00	# [1]
+	p1	= 1 ,	1	# [1]
+	a2	= 0.0000e+00 ,	0.0000e+00	# [1]
+	p2	= 1 ,	1	# [1]
+	p0	= 1 ,	1	# [1]
+
+  *     VthFormula=1: Vth(T) = Vth*(T/300)^1/2 
+  *     VthFormula=2: Vth(T) = (3*k*T/m_300)^1/2, 
+  *                            m_300 is DOS mass calculated at T=300 
+	VthFormula	= 1 ,	1	# [1]
+#	Vth	= 2.042e7 ,	1.5626e+07	# [cm/s]
+	Vth	= 2e7 ,	2e+07	# [cm/s]
+	Jcoef	= 0.0000e+00 ,	0.0000e+00	# [1]
+
+  *     Tunneling to traps is determined by the interaction volume
+  *     TrapVolume, the Huang-Rhys factor, and the Phonon energy.
+	TrapVolume	= 0.0000e+00	# [um^3]
+	HuangRhys	= 0.0000e+00	# [1]
+	PhononEnergy	= 0.0000e+00	# [eV]
+
+}
+
+HurkxTrapAssistedTunneling
+{ * SRHlifetime = tau0/(1+Gt) 
+  * TrapXsection = Xsec0*(1+Gt) 
+  * Gt = pi^0.5*E*exp(E*E/3)*(2-erfc(0.5*(En/E-E))),      for E < En^0.5 
+  * Gt = (pi*E)^0.5*En^0.25*exp(-En+E*En^0.5+En^1.5/E/3)* 
+  *      erfc(E^0.5*En^0.25-En^0.75/E^0.5),               for E >= En^0.5 
+  * where 
+  *       E = F/Fref, 
+  *       F is the electric field, 
+  *       Fref = (8*mt*m0*(kB*T)^3)^0.5/q/h / ~4.3e5*mt^0.5*(T/300)^1.5 V/cm /, 
+  *       En is a function of trap level and carrier concentration (see manual),
+  *             the trap level will be used from SRH or Trap specifications. 
+	mt	= 0.5 ,	0.5	# [1]
+}
+
+PooleFrenkel
+{ * TrapXsection = Xsec0*(1+Gpf) 
+  * Gpf = (1+(a-1)*exp(a))/a^2-0.5 
+  * where 
+  *       a = (1/kT)*(q^3*F/pi/e0/epsPF)^0.5, 
+  *       F is the electric field. 
+	epsPF	= 11.7 ,	11.7	# [1]
+}
+
+
+**************************  Recombination Models: *****************************
+* Variable = electron value ,   hole value      # [units]                     *
+*******************************************************************************
+
+Scharfetter * relation and trap level for SRH recombination:
+{ * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+	taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	taumax	= 1.0000e-05 ,	3.0000e-06	# [s]
+	Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	gamma	= 1 ,	1	# [1]
+	Talpha	= -1.5000e+00 ,	-1.5000e+00	# [1]
+	Tcoeff	= 2.55 ,	2.55	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+
+SurfaceRecombination * surface SRH recombination:
+{ * s = S0 ( 1 + Sref ( N/Nref )^gamma ) recombination velocity
+	S0	= 1.0000e+03 ,	1.0000e+03	# [cm/s]
+	Sref	= 1.0000e+03	# [1]
+	Nref	= 1.0000e+16	# [cm^(-3)]
+	gamma	= 1	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+
+Auger * coefficients:
+{ * R_Auger = ( C_n n + C_p p ) ( n p - ni_eff^2)
+  * with C_n,p = (A + B (T/T0) + C (T/T0)^2) (1 + H exp(-{n,p}/N0))
+	A	= 6.7000e-32 ,	7.2000e-32	# [cm^6/s]
+	B	= 2.4500e-31 ,	4.5000e-33	# [cm^6/s]
+	C	= -2.2000e-32 ,	2.6300e-32	# [cm^6/s]
+	H	= 3.46667 ,	8.25688	# [1]
+	N0	= 1.0000e+18 ,	1.0000e+18	# [cm^(-3)]
+}
+
+TrapAssistedAuger * lifetimes:
+{ * 1/tau_TAA = c ( n + p ) 
+	c	= 1.0000e-12 ,	1.0000e-12	# [cm^3/s]
+}
+
+TrapAssistedTunneling * lifetimes:
+{ * See Sentaurus Device manual `Trap-Assisted Tunneling/SRH' 
+	S	= 3.5	# [1]
+	hbarOmega	= 0.068	# [eV]
+	MinField	= 1.0000e+03	# [V/cm]
+	m_theta	= 0.258 ,	0.24	# [1]
+	Z	= 0.0000e+00	# [1]
+}
+
+
+CDL * Coupled Defect-Level Recombination:
+{ * See Simul manual 'Coupled  Defect-Level Recombination 
+  * Here: Variable = value for trap1 , value for trap2  # [units] 
+	Etrap	= 0.0000e+00 ,	0.0000e+00	# [eV]
+	e_taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	e_taumax	= 1.0000e-05 ,	1.0000e-05	# [s]
+	e_Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	e_gamma	= 1 ,	1	# [1]
+	e_Talpha	= -1.5000e+00 ,	-1.5000e+00	# [1]
+	e_Tcoeff	= 2.55 ,	2.55	# [1]
+	h_taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	h_taumax	= 3.0000e-06 ,	3.0000e-06	# [s]
+	h_Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	h_gamma	= 1 ,	1	# [1]
+	h_Talpha	= -1.5000e+00 ,	-1.5000e+00	# [1]
+	h_Tcoeff	= 2.55 ,	2.55	# [1]
+	m_theta_e	= 0.258 ,	0.258	# [1]
+	m_theta_h	= 0.24 ,	0.24	# [1]
+	TrapTrapRate	= 1.0000e+15	# [cm^-3 s^-1]
+	S	= 2 ,	2	# [1]
+	hbarOmega	= 0.068 ,	0.068	# [eV]
+	MinField	= 10	# [V/cm]
+	Z	= 0.0000e+00 ,	0.0000e+00	# [1]
+}
+
+
+
+
+BarrierTunneling  
+{ * Non Local Barrier Tunneling 
+  * G(r) = g*A*T/kB*F(r)*Pt(r)*ln[(1+exp((E(r)-Es)/kB/T))/(1+exp((E(r)-Em)/kB/T))]
+  * where: 
+  *     Pt(r) is WKB approximation for the tunneling probability 
+  *     g = As/A, As is the Richardson constant for carriers in semiconductor
+  *     A is the Richardson constant for free electrons 
+  *     F(r) is the electric field 
+  *     E(r) is carrier energy 
+  *     Es is carrier quasi fermi energy in semiconductor
+  *     Em is carrier fermi energy in metal 
+	g	= 2.1 ,	0.66	# [1]
+	mt	= 0.0000e+00 ,	0.0000e+00	# [1]
+}
+
+
+
+
+
+

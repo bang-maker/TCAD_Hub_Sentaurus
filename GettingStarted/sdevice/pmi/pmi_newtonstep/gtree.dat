@@ -1,0 +1,13 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vR-2020.09-L1
+
+# --- simulation flow
+pin sdevice "" {}
+latchupMM sdevice "" {}
+latchup sdevice "" {}
+# --- variables
+# --- scenarios and parameter specs
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {} {default} 0

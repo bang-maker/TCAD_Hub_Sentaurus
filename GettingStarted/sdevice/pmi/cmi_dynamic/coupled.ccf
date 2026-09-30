@@ -1,0 +1,30 @@
+# Copyright (c) 1994-2020 Synopsys, Inc.
+# This file and the associated documentation are proprietary to
+# Synopsys, Inc.  This file may only be used in accordance with the
+# terms and conditions of a written license agreement with Synopsys,
+# Inc.  All other use, reproduction, or distribution of this file is
+# strictly prohibited.
+
+DEVICE coupled
+  ELECTRODES
+    u1           // input voltage, high
+    u2           // input voltage, low
+    u3           // output voltage, high
+    u4           // output voltage, low
+  INTERNALS
+    i1           // input current
+    i2           // output current
+  STATES
+    double m     // mutual inductance
+  PARAMETERS
+    double ind1  // primary inductance
+    double ind2  // secondary inductance
+    double k     // coupling factor
+END DEVICE
+
+PSET coupled_pset
+  DEVICE coupled
+  PARAMETERS
+    k       = 1
+END PSET
+

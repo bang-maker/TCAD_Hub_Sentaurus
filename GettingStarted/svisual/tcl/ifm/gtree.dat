@@ -1,0 +1,19 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vT-2022.03-L0
+
+# --- simulation flow
+svisual svisual "" {}
+svisual script_file "Gauss.tcl" {Gauss.tcl GetDataQuantiles.tcl GetGaussian.tcl GetHistogram.tcl GetMoments.tcl GetQQ.tcl ReadCSV.tcl WriteCSV.tcl}
+# --- variables
+# --- scenarios and parameter specs
+scenario default script_file ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {Gauss.tcl} {default} 0
+1 3 1 {GetDataQuantiles.tcl} {default} 0
+1 4 1 {GetGaussian.tcl} {default} 0
+1 5 1 {GetHistogram.tcl} {default} 0
+1 6 1 {GetMoments.tcl} {default} 0
+1 7 1 {GetQQ.tcl} {default} 0
+1 8 1 {ReadCSV.tcl} {default} 0
+1 9 1 {WriteCSV.tcl} {default} 0

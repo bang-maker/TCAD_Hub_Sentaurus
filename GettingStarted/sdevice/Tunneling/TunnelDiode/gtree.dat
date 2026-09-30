@@ -1,0 +1,104 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vV-2023.09-L1
+
+# --- simulation flow
+sde sde "" {}
+sde dp "0.028" {0.025} R
+sde dn "0.025" {0.025} R
+sde pdop "-3.6e19" {-4e19} R
+sde ndop "1e19" {1e19} R
+sdevice sdevice "" {}
+sdevice model "dynamic" {none static dynamic} R
+sdevice case "-" {- B2BFull eBarr_B2BFull hBarr_B2BFull direct} R
+sdevice par "-" {- Permeation Apath default set1 Bpath} R
+sdevice par_val "-" {- 0 4e14 1e16 1e18 1.05e7 1.3e7 1.5e7 1.7e7 1e-7 3e-7 10e-7 20e-7 37e-7 40e-7 50e-7 1.9e7 1e19} R
+iv svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default dp ""
+scenario default dn ""
+scenario default pdop ""
+scenario default ndop ""
+scenario default model ""
+scenario default case ""
+scenario default par ""
+scenario default par_val ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {0.025} {default} 0
+2 3 2 {0.025} {default} 0
+3 4 3 {-4e19} {default} 0
+4 5 4 {1e19} {default} 0
+5 6 5 {} {default} 0
+6 7 6 {none} {default} 0
+7 10 7 {-} {default} 0
+8 16 10 {-} {default} 0
+9 25 16 {-} {default} 0
+10 52 25 {} {default} 0
+6 8 6 {static} {default} 0
+7 11 8 {B2BFull} {default} 0
+8 17 11 {Permeation} {default} 0
+9 26 17 {0} {default} 0
+10 53 26 {} {default} 0
+9 27 17 {1e-7} {default} 0
+10 54 27 {} {default} 0
+9 28 17 {3e-7} {default} 0
+10 55 28 {} {default} 0
+9 29 17 {10e-7} {default} 0
+10 56 29 {} {default} 0
+9 30 17 {20e-7} {default} 0
+10 57 30 {} {default} 0
+9 31 17 {37e-7} {default} 0
+10 58 31 {} {default} 0
+9 32 17 {40e-7} {default} 0
+10 59 32 {} {default} 0
+9 33 17 {50e-7} {default} 0
+10 60 33 {} {default} 0
+7 12 8 {eBarr_B2BFull} {default} 0
+8 18 12 {Permeation} {default} 0
+9 34 18 {37e-7} {default} 0
+10 61 34 {} {default} 0
+9 35 18 {40e-7} {default} 0
+10 62 35 {} {default} 0
+9 36 18 {50e-7} {default} 0
+10 63 36 {} {default} 0
+7 13 8 {hBarr_B2BFull} {default} 0
+8 19 13 {Permeation} {default} 0
+9 37 19 {37e-7} {default} 0
+10 64 37 {} {default} 0
+9 38 19 {40e-7} {default} 0
+10 65 38 {} {default} 0
+9 39 19 {50e-7} {default} 0
+10 66 39 {} {default} 0
+6 9 6 {dynamic} {default} 0
+7 14 9 {-} {default} 0
+8 20 14 {-} {default} 0
+9 40 20 {-} {default} 0
+10 67 40 {} {default} 0
+8 21 14 {default} {default} 0
+9 41 21 {-} {default} 0
+10 68 41 {} {default} 0
+8 22 14 {set1} {default} 0
+9 42 22 {-} {default} 0
+10 69 42 {} {default} 0
+7 15 9 {direct} {default} 0
+8 23 15 {Apath} {default} 0
+9 43 23 {4e14} {default} 0
+10 70 43 {} {default} 0
+9 44 23 {1e16} {default} 0
+10 71 44 {} {default} 0
+9 45 23 {1e18} {default} 0
+10 72 45 {} {default} 0
+9 46 23 {1e19} {default} 0
+10 73 46 {} {default} 0
+8 24 15 {Bpath} {default} 0
+9 47 24 {1.05e7} {default} 0
+10 74 47 {} {default} 0
+9 48 24 {1.3e7} {default} 0
+10 75 48 {} {default} 0
+9 49 24 {1.5e7} {default} 0
+10 76 49 {} {default} 0
+9 50 24 {1.7e7} {default} 0
+10 77 50 {} {default} 0
+9 51 24 {1.9e7} {default} 0
+10 78 51 {} {default} 0

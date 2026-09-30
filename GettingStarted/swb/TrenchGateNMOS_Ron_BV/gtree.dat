@@ -1,0 +1,88 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vcurrent, saved by gsub0
+
+# --- simulation flow
+NMOS sprocess "" {}
+NMOS SBD "YES" {YES} V
+NMOS pmesh "1.0" {1.0} V
+NMOS t_die "60.0" {60.0} V
+NMOS nepi1D "5.0e14" {1.0e16} V
+NMOS nepi2D "5.0e14" {0.5e16} V
+NMOS pwellD "5.0e16" {1.0e13} R
+DevMesh sprocess "" {}
+DevMesh dmesh "1.0" {1.0} R
+IdVg sdevice "" {}
+IdVg phin "4.0" {4.25} V
+IdVg AF "1.0e6" {0.5e+06} V
+IdVg Tamb "300.0" {300.0} V
+IdVg ThermalR "1.0e-4" {0.05} V
+IdVg Vd "20.0" {10.0} R
+Plot_IdVg svisual "" {}
+Plot_IdVg ext "0" {1} R
+IdVd sdevice "" {}
+Plot_IdVd svisual "" {}
+BV sdevice "" {}
+Plot_BV svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default SBD ""
+scenario default pmesh ""
+scenario default t_die ""
+scenario default nepi1D ""
+scenario default nepi2D ""
+scenario default pwellD ""
+scenario default dmesh ""
+scenario default phin ""
+scenario default AF ""
+scenario default Tamb ""
+scenario default ThermalR ""
+scenario default Vd ""
+scenario default ext ""
+scenario stage_1 SBD ""
+scenario stage_1 pmesh ""
+scenario stage_1 t_die ""
+scenario stage_1 nepi1D ""
+scenario stage_1 nepi2D ""
+scenario stage_1 pwellD ""
+scenario stage_1 dmesh ""
+scenario stage_1 phin ""
+scenario stage_1 AF ""
+scenario stage_1 Tamb ""
+scenario stage_1 ThermalR ""
+scenario stage_1 Vd ""
+scenario stage_1 ext ""
+scenario stage_2 SBD ""
+scenario stage_2 pmesh ""
+scenario stage_2 t_die ""
+scenario stage_2 nepi1D ""
+scenario stage_2 nepi2D ""
+scenario stage_2 pwellD ""
+scenario stage_2 dmesh ""
+scenario stage_2 phin ""
+scenario stage_2 AF ""
+scenario stage_2 Tamb ""
+scenario stage_2 ThermalR ""
+scenario stage_2 Vd ""
+scenario stage_2 ext ""
+# --- simulation tree
+0 1 0 {} {stage_1 default} 0
+1 2 1 {YES} {stage_1 default} 0
+2 3 2 {1.0} {stage_1 default} 0
+3 4 3 {60.0} {stage_1 default} 0
+4 5 4 {1.0e16} {stage_1 default} 0
+5 6 5 {0.5e16} {stage_1 default} 0
+6 7 6 {1.0e13} {stage_1 default} 0
+7 8 7 {} {stage_1 default} 0
+8 9 8 {1.0} {stage_1 default} 0
+9 10 9 {} {stage_1 default} 0
+10 11 10 {4.25} {stage_1 default} 0
+11 12 11 {0.5e+06} {stage_1 default} 0
+12 13 12 {300.0} {stage_1 default} 0
+13 14 13 {0.05} {stage_1 default} 0
+14 15 14 {10.0} {stage_1 default} 0
+15 16 15 {} {stage_1 default} 0
+16 17 16 {1} {stage_1 default} 0
+17 18 17 {} {stage_1 default} 0
+18 19 18 {} {stage_1 default} 0
+19 20 19 {} {stage_1 default} 0
+20 21 20 {} {stage_1 default} 0

@@ -1,0 +1,21 @@
+Kappa {
+  formula = 1
+  kappa = 0
+  kappa_b = 0
+  kappa_c = 0
+}
+
+LatticeHeatCapacity {
+  *  lumped electron-hole-lattice heat capacity
+  cv = 1.63  # [J/(K cm^3)]
+}
+
+pmi_heatcapacity {
+  cv = 1.63  # [J/(K cm^3)]
+}
+
+pmi_rational {
+  a = 1.9652    # [J/(K cm^3)]
+  b = 2.741e-4  # [J/(K^2 cm^3)]
+  c = -3.611e4  # [J K / cm^3]
+}

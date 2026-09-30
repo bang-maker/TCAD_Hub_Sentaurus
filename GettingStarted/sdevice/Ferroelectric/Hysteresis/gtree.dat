@@ -1,0 +1,27 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vS-2021.06
+
+# --- simulation flow
+sde sde "" {}
+sde Lfe "100e-3" {100e-3}
+sde Tfe "40e-3" {40e-3}
+sat_loop sdevice "" {}
+p_sat_loop svisual "" {}
+depol sdevice "" {}
+p_depol svisual "" {}
+mem_wipeout sdevice "" {}
+p_mem_wipeout svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Lfe ""
+scenario default Tfe ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {100e-3} {default} 0
+2 3 2 {40e-3} {default} 0
+3 7 3 {} {default} 0
+4 8 7 {} {default} 0
+5 4 8 {} {default} 0
+6 9 4 {} {default} 0
+7 6 9 {} {default} 0
+8 10 6 {} {default} 0

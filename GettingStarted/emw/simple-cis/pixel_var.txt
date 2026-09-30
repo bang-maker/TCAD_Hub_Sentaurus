@@ -1,0 +1,40 @@
+################################################################################
+# global parameters
+
+# width of the pixel
+#seth w_pixel 1
+
+# width of the poly
+#seth w_poly 0.4
+
+# thickness of the poly
+#seth t_poly 0.1
+
+# thickness of the substrate
+#seth t_sub 2
+
+# thickness of the top air above the lens
+#seth t_air 0.2
+
+################################################################################
+# metalization thicknesses
+#seth t_MeNi 0.1
+#seth t_Me1 0.2
+#seth t_Me2 0.1
+
+################################################################################
+# rear reflector
+#seth w_ref 0.8
+#seth t_ref 0.1
+#seth t_refbot 0.1
+
+################################################################################
+# lens  
+
+# radius
+#seth r_Lens 0.5
+
+# thickness of the pedestal
+#seth t_pedestal 1
+
+# :mode=spp: jedit syntax mode selection

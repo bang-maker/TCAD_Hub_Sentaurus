@@ -1,0 +1,26 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vS-2021.06-L1
+
+# --- simulation flow
+sde sde "" {}
+BV sdevice "" {}
+BV BVmethod "resistor" {ABA_poisson ABA_coupled resistor voltage2current continuation transient}
+BV_SV svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default BVmethod ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {ABA_poisson} {default} 0
+3 9 3 {} {default} 0
+2 4 2 {ABA_coupled} {default} 0
+3 10 4 {} {default} 0
+2 5 2 {resistor} {default} 0
+3 11 5 {} {default} 0
+2 6 2 {voltage2current} {default} 0
+3 12 6 {} {default} 0
+2 7 2 {continuation} {default} 0
+3 13 7 {} {default} 0
+2 8 2 {transient} {default} 0
+3 14 8 {} {default} 0

@@ -1,0 +1,33 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-DEV, Wed May 10 14:32:58 2017
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess Domain "TN" {TN}
+sprocess Poly "1" {1}
+sprocess Ext "1" {1}
+sprocess SDEpi "1" {1}
+sprocess simgeo "5.0E-4" {1.0E-4}
+sprocess SD "1" {1}
+sprocess Silicide "1" {1}
+sprocess DeviceMesh "1" {1}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Domain ""
+scenario default Poly ""
+scenario default Ext ""
+scenario default SDEpi ""
+scenario default simgeo ""
+scenario default SD ""
+scenario default Silicide ""
+scenario default DeviceMesh ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {TN} {default} 0
+2 3 2 {1} {default} 0
+3 4 3 {1} {default} 0
+4 5 4 {1} {default} 0
+5 6 5 {1.0E-4} {default} 0
+6 7 6 {1} {default} 0
+7 8 7 {1} {default} 0
+8 9 8 {1} {default} 0

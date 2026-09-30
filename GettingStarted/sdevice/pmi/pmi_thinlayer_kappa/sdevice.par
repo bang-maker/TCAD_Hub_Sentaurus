@@ -1,0 +1,47 @@
+Material = "Silicon" {
+  
+  # pmi kappa parameters
+  # kappa = kappa0*kd(d)*kh(h)
+  #  where
+  #   kappa0 = constant value [W/(K*cm)]
+  #   d  = Doping[cm-3]/ScaleDoping[cm-3] is unitless doping
+  #   h  = LayerThicknes[um]/ScaleThickness[um] is unitless layer thickness 
+  #   kd(d) = (a2*(d-d0)^2 + a1*(d-d0) + a0)*exp(alpha*(d-d0))
+  #   kh(h) = (b2*(h-h0)^2 + b1*(h-h0) + b0)*exp(beta*(h-h0))
+  
+  #if [string match -nocase @ParameterSet@ set1]
+  pmi_thinlayer_kappa {
+    kappa0 = 1  # [W/(K*cm)]
+    ScaleDoping = 1.e+18    # [cm-3]
+    d0    = 0     # [1]
+    a0    = 1     # [1]
+    a1    = 0     # [1]
+    a2    = 0     # [1]
+    alpha = 2     # [1]
+    
+    ScaleThickness = 1.e-3  # [um] = 1 nm
+    h0    = 0     # [1]
+    b0    = 1     # [1]
+    b1    = 0     # [1]
+    b2    = 0     # [1]
+    beta  = 0.1     # [1]
+  }
+  #elif [string match -nocase @ParameterSet@ set2]
+  pmi_thinlayer_kappa {
+    kappa0 = 1  # [W/(K*cm)]
+    ScaleDoping = 1.e+18    # [cm-3]
+    d0    = 0     # [1]
+    a0    = 1     # [1]
+    a1    = 1     # [1]
+    a2    = 2     # [1]
+    alpha = 0     # [1]
+    
+    ScaleThickness = 1.e-3  # [um] = 1 nm
+    h0    = 0     # [1]
+    b0    = 0     # [1]
+    b1    = 1     # [1]
+    b2    = 0.1   # [1]
+    beta  = 0     # [1]
+  }
+  #endif
+}

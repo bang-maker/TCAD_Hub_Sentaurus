@@ -1,0 +1,12 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-L1, Wed May 24 09:21:39 2017
+
+# --- simulation flow
+parameterized_diode sde "" {}
+parameterized_diode SiWidth "1.0" {1.0}
+# --- variables
+# --- scenarios and parameter specs
+scenario default SiWidth ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {1.0} {default} 0

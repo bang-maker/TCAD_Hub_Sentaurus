@@ -1,0 +1,9 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-L1, Wed May 24 09:21:39 2017
+
+# --- simulation flow
+FinFET_procem sde "" {}
+# --- variables
+# --- scenarios and parameter specs
+# --- simulation tree
+0 1 0 {} {default} 0

@@ -1,0 +1,77 @@
+# Define lattice parameters 
+LatticeParameters {
+	X = (0, 0,-1)
+	Y = (1, 1, 0)
+}
+
+Thermionic {
+	Formula= 1
+}
+
+BarrierTunneling "NLM_Gate" {
+   g= _g_c_ ,  _g_v_
+	mt= _mt_e_  ,  _mt_h_
+}
+
+Material= "GaN" {
+	ConstantMobility:
+	{ * mu_const = mumax (T/T0)^(-Exponent)
+		mumax	= 1800 ,	150	# [cm^2/(Vs)]
+		Exponent	= 1 ,	2.1	# [1]
+		mutunnel	= 0.05 ,	0.05	# [cm^2/(Vs)]
+	}
+	
+	Scharfetter * relation and trap level for SRH recombination:
+	{ * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+	  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+	  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+		taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+		taumax	= 1e-11,	1e-11	# [s]
+		Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+		gamma	= 1 ,	1	# [1]
+		Talpha	= -1.5000e+00 ,	-1.5000e+00	# [1]
+		Tcoeff	= 2.55 ,	2.55	# [1]
+		Etrap	= 0.0000e+00	# [eV]
+	}
+
+	# Same as original parameters for electrons.
+	# Only effective change is in optical phonon energy (hbarOmega)
+	# Significant changes for holes that result in much lower II
+	vanOverstraetendeMan * Impact Ionization:
+	{ * G_impact = alpha_n n v_drift_n  +  alpha_p p v_drift_p
+	  * with alpha = gamma a  exp(-b gamma/E) for E<E0 (low) and E>E0 (high)
+	  *  with gamma = tanh(hbarOmega/(2kT0)) / tanh(hbarOmega/(2kT))
+		a(low)	= 2.9e+08 ,	5.4100e+06		# [1/cm]
+		a(high)	= 2.9e+08 ,	5.4100e+06		# [1/cm]
+		b(low)	= 3.4e+07 ,	1.9600e+07		# [V/cm]
+		b(high)	= 3.4e+07 ,	1.9600e+07		# [V/cm]
+		# E0	= 4.0000e+05 ,	4.0000e+05		# [V/cm]
+		# hbarOmega	= 0.035 ,	0.035		# [eV]
+		E0	= 1.0000e+00 ,	1.0000e+00		# [V/cm]
+		hbarOmega	= 0.066 ,	0.066		# [eV]
+	}
+
+	QuantumPotentialParameters
+	{ * gamma:  weighting factor for quantum potential
+	  * theta:  weight for quadratic term
+	  * xi:     weight for quasi Fermi potential
+	  * eta:    weight for electrostatic potential
+		gamma	= 1.4 ,	5.6	# [1]
+		theta	= 0.5 ,	0.5	# [1]
+		xi	= 1 ,	1	# [1]
+		eta	= 1 ,	1	# [1]
+	}
+	
+	Ionization {
+		Species ("pMagnesiumActiveConcentration") {
+			type= acceptor
+			E_0= 0.2	# Matches values in publications
+			alpha= 8e-9	# Slightly smaller than value for Si to match Ref [4]
+			g= 4
+			Xsec = 1.0e-14
+		}
+	}
+
+}
+
+

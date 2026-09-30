@@ -1,0 +1,6 @@
+#define ParFileDir .
+
+Material="Silicon" {
+  #includeext "ParFileDir/Silicon.par"
+
+}

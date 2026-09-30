@@ -1,0 +1,23 @@
+LatticeParameters { 
+  * X and Y vectors define the simulation coordinate system relative to the
+  * crystal orientation system.
+  X = (0 0 -1)
+  Y = (1 0  0)
+}
+
+Material= "GaN" {
+  Ionization {
+    Species ("PDopantActiveConcentration") {
+      E_0   = 0.15
+      alpha = 0
+      g     = 4.0
+      Xsec  = 1e-12
+    }
+    Species ("NDopantActiveConcentration") {
+      E_0   = 0.05
+      alpha = 0
+      g     = 2.0
+      Xsec  = 1e-12
+    }
+  }
+}

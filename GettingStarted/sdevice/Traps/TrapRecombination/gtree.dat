@@ -1,0 +1,48 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vV-2024.03-L1, saved by gsub0
+
+# --- simulation flow
+sde sde "" {}
+sde n_dop_conc "1e15" {1e17} V
+sde p_peak "1e18" {1e18} R
+sim1 sdevice "" {}
+sim1 regime "forward" {reverse} V
+sim1 shift "0" {0 0.1 0.2 0.3 0.4} V
+sim1 Xsec "1e-10" {1e-10 1e-9 1e-8 1e-7 1e-6} R
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default n_dop_conc "à¶ê	ç	"
+scenario default p_peak ""
+scenario default regime ""
+scenario default shift ""
+scenario default Xsec ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {1e17} {default} 0
+2 3 2 {1e18} {default} 0
+3 4 3 {} {default} 0
+4 5 4 {reverse} {default} 0
+5 6 5 {0} {default} 0
+6 11 6 {1e-10} {default} 0
+7 20 11 {} {default} 0
+6 12 6 {1e-9} {default} 0
+7 21 12 {} {default} 0
+6 13 6 {1e-8} {default} 0
+7 22 13 {} {default} 0
+6 14 6 {1e-7} {default} 0
+7 23 14 {} {default} 0
+6 15 6 {1e-6} {default} 0
+7 24 15 {} {default} 0
+5 7 5 {0.1} {default} 0
+6 16 7 {1e-8} {default} 0
+7 25 16 {} {default} 0
+5 8 5 {0.2} {default} 0
+6 17 8 {1e-8} {default} 0
+7 26 17 {} {default} 0
+5 9 5 {0.3} {default} 0
+6 18 9 {1e-8} {default} 0
+7 27 18 {} {default} 0
+5 10 5 {0.4} {default} 0
+6 19 10 {1e-8} {default} 0
+7 28 19 {} {default} 0

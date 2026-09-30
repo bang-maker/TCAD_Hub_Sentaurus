@@ -1,0 +1,42 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vT-2022.03-L0
+
+# --- simulation flow
+svisual svisual "" {}
+svisual script_file "AbsList" {AbsList.tcl DiffForwardList.tcl DiffList.tcl ExtractBVi.tcl ExtractBVv.tcl ExtractEarlyV.tcl ExtractExtremum.tcl ExtractGm.tcl ExtractIoff.tcl ExtractRdiff.tcl ExtractRsh.tcl ExtractSS.tcl ExtractSsub.tcl ExtractValue.tcl ExtractVdlin.tcl ExtractVdlog.tcl ExtractVglin.tcl ExtractVglog.tcl ExtractVtgm.tcl ExtractVti.tcl ExtractVtsat.tcl FilterTable.tcl FindExtrema.tcl FindVals.tcl LinFit.tcl Linspace.tcl LinTransList.tcl Log10List.tcl RemoveDuplicates.tcl RemoveZeros.tcl SubLists.tcl}
+# --- variables
+# --- scenarios and parameter specs
+scenario default script_file ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {AbsList.tcl} {default} 0
+1 3 1 {DiffForwardList.tcl} {default} 0
+1 4 1 {DiffList.tcl} {default} 0
+1 5 1 {ExtractBVi.tcl} {default} 0
+1 6 1 {ExtractBVv.tcl} {default} 0
+1 7 1 {ExtractEarlyV.tcl} {default} 0
+1 8 1 {ExtractExtremum.tcl} {default} 0
+1 9 1 {ExtractGm.tcl} {default} 0
+1 10 1 {ExtractIoff.tcl} {default} 0
+1 11 1 {ExtractRdiff.tcl} {default} 0
+1 12 1 {ExtractRsh.tcl} {default} 0
+1 13 1 {ExtractSS.tcl} {default} 0
+1 14 1 {ExtractSsub.tcl} {default} 0
+1 15 1 {ExtractValue.tcl} {default} 0
+1 16 1 {ExtractVdlin.tcl} {default} 0
+1 17 1 {ExtractVdlog.tcl} {default} 0
+1 18 1 {ExtractVglin.tcl} {default} 0
+1 19 1 {ExtractVglog.tcl} {default} 0
+1 20 1 {ExtractVtgm.tcl} {default} 0
+1 21 1 {ExtractVti.tcl} {default} 0
+1 22 1 {ExtractVtsat.tcl} {default} 0
+1 23 1 {FilterTable.tcl} {default} 0
+1 24 1 {FindExtrema.tcl} {default} 0
+1 25 1 {FindVals.tcl} {default} 0
+1 26 1 {LinFit.tcl} {default} 0
+1 27 1 {Linspace.tcl} {default} 0
+1 28 1 {LinTransList.tcl} {default} 0
+1 29 1 {Log10List.tcl} {default} 0
+1 30 1 {RemoveDuplicates.tcl} {default} 0
+1 31 1 {RemoveZeros.tcl} {default} 0
+1 32 1 {SubLists.tcl} {default} 0

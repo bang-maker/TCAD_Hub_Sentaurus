@@ -1,0 +1,62 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vV-2023.12, saved by swb
+
+# --- simulation flow
+sde sde "" {}
+sde n_dop_conc "1e15" {1e17} R
+sde p_peak "1e18" {1e18} R
+sim1 sdevice "" {}
+sim1 regime "forward" {reverse} R
+sim1 shift "0" {0.4} R
+sim1 Xsec_model "default" {default PooleFrenkel} R
+sim1 Xsec "1e-10" {1e-8} R
+sim1 ActivatePF "1" {1 0} R
+sim1 ActivatePhonon "0" {0} R
+sim1 par "-" {- a_power epsPF} R
+sim1 par_val "1" {1.2 0 10.7 1.4 1.6 12.7} R
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default n_dop_conc "à¶ê	ç	"
+scenario default p_peak ""
+scenario default regime ""
+scenario default shift ""
+scenario default Xsec_model ""
+scenario default Xsec ""
+scenario default ActivatePF ""
+scenario default ActivatePhonon ""
+scenario default par ""
+scenario default par_val ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {1e17} {default} 0
+2 3 2 {1e18} {default} 0
+3 4 3 {} {default} 0
+4 5 4 {reverse} {default} 0
+5 6 5 {0.4} {default} 0
+6 7 6 {default} {default} 0
+7 9 7 {1e-8} {default} 0
+8 11 9 {0} {default} 0
+9 13 11 {0} {default} 0
+10 15 13 {-} {default} 0
+11 19 15 {0} {default} 0
+12 26 19 {} {default} 0
+6 8 6 {PooleFrenkel} {default} 0
+7 10 8 {1e-8} {default} 0
+8 12 10 {1} {default} 0
+9 14 12 {0} {default} 0
+10 16 14 {-} {default} 0
+11 20 16 {0} {default} 0
+12 27 20 {} {default} 0
+10 17 14 {a_power} {default} 0
+11 21 17 {1.2} {default} 0
+12 28 21 {} {default} 0
+11 22 17 {1.4} {default} 0
+12 29 22 {} {default} 0
+11 23 17 {1.6} {default} 0
+12 30 23 {} {default} 0
+10 18 14 {epsPF} {default} 0
+11 24 18 {10.7} {default} 0
+12 31 24 {} {default} 0
+11 25 18 {12.7} {default} 0
+12 32 25 {} {default} 0

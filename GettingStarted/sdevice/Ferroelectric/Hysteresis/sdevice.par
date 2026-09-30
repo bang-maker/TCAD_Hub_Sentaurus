@@ -1,0 +1,9 @@
+Material = "HfO2" {
+    Polarization
+    { * Remanent polarization P_r, saturation polarization P_s, 
+      * and coercive field Fc for InsulatorX for x,y,z direction
+    	    P_r	= (1.2e-5, 1.2e-5, 0)
+    	    P_s	= (2e-5, 2e-5, 0)
+    	    F_c	= (5e+5, 5e+5, 0)
+    }
+}

@@ -1,0 +1,18 @@
+
+
+PooleFrenkel
+{ 
+
+   ActivatePF  =  _ActivatePF_e_,   _ActivatePF_e_	
+   a_power = _a_power_e_, _a_power_h_	
+   epsPF	= _epsPF_e_,	_epsPF_h_	
+
+   ActivatePhonon = _ActivatePhonon_e_, _ActivatePhonon_h_	
+   b_power = _b_power_e_, _b_power_h_			
+   ph_mass = _ph_mass_e_ , _ph_mass_h_		
+   ph_tau1 = _ph_tau1_e_ , _ph_tau1_h_		
+
+}
+
+
+

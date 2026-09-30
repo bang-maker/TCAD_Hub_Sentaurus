@@ -1,0 +1,161 @@
+#if "@Type@" == "nMOS"
+.subckt mos14n d g s b l=@lgate@ nfin=1 rgc_en=1 rdc_en=1 rsc_en=1
+
+.param r_gc	=0
+.param rgc_fin	='r_gc/nfin*rgc_en'
+.param r_sc	=0
+.param rsc_fin	='r_sc/nfin*rsc_en'
+.param r_dc	=0
+.param rdc_fin	='r_dc/nfin*rdc_en'
+
+
+rd	d	d_i	rdc_fin
+rs	s	s_i	rsc_fin
+rg	g	g_i	rgc_fin
+
+mos d_i g_i s_i b mosmod l=l nfin=nfin
+.model mosmod nmos
++ DEVTYPE=1
++ EASUB = 4.0727
++ NI0SUB = 1.1055e16
++ BG0SUB = 1.1242
++ NC0SUB = 2.9951e25
++ PHIG = 4
++ RDSW = 50
++ RDSWMIN = 50
++ CDSCD = 1e-10
++ VSAT = 130000
++ UA = 0.001
++ PDIBL2 = 2e-5
++ PCLM = 1e-10
++ PCLMG = 0.0
+#else if "@Type" == "pMOS"
+.subckt mos14p d g s b l=@lgate@ nfin=1 rgc_en=1 rdc_en=1 rsc_en=1
+
+.param r_gc	=0
+.param rgc_fin	='r_gc/nfin*rgc_en'
+.param r_sc	=0
+.param rsc_fin	='r_sc/nfin*rsc_en'
+.param r_dc	=0
+.param rdc_fin	='r_dc/nfin*rdc_en'
+
+
+rd	d	d_i	rdc_fin
+rs	s	s_i	rsc_fin
+rg	g	g_i	rgc_fin
+
+mos d_i g_i s_i b mosmod l=l nfin=nfin
+.model mosmod pmos
++ DEVTYPE=0
++ EASUB = 4.1312
++ NI0SUB = 4.3638e16
++ BG0SUB = 1.0379
++ NC0SUB = 2.0734e25
++ PHIG = 4.71037658684
++ RDSW = 30
++ RDSWMIN = 30
++ CDSCD = 0.01
++ VSAT = 150000
++ UA = 1.2
++ PDIBL2 = 0.003
++ PCLM = 1e-9
++ PCLMG = 0.1
++ CHARGEWF = 0
+#endif
++ level=72
++ VERSION=108
++ BULKMOD=1
++ CAPMOD=1
++ IGCMOD=0
++ IGBMOD=0
++ GIDLMOD=0
++ COREMOD=0
++ GEOMOD=1
++ CGEOMOD=0
++ IIMOD=0
++ RDSMOD = 0
++ TNOM = 25
++ XL = 0
++ LINT = 0e-9
++ LL = 0
++ LLC = 0
++ LLN = 1
++ DLC = 0
++ EOT = 1.0E-9
++ TFIN=15.0e-09
++ HFIN=35.0e-09
++ FPITCH=3e-08
++ FECH=1
++ NF = 1
++ NFIN = 1
++ NBODY=2e24
++ NSD=2e26
++ NGATE = 0
++ LPHIG = 0
++ LRDSW=0
++ ARDSW=0
++ BRDSW=1e-8
++ PRWG=0
++ CIT = 0
++ CDSC = 0.1
++ LCDSC = 0
++ LCDSCD = 0
++ DVT0 = 0.0
++ LDVT0 = 0
++ DVT1 = 0.7
++ LDVT1 = 0
++ PHIN = 0
++ LPHIN = 0
++ ETA0 = 10.0
++ LETA0 = 0
++ DSUB = 1.06
++ LDSUB = 0
++ K1RSCE = 0
++ LK1RSCE = 0
++ LPE0 = 0
++ LLPE0 = 0
++ QMFACTOR = 1.0
++ QM0 = 1e-3
++ LVSAT = 0
++ AVSAT = 0
++ BVSAT = 6e-8
++ AVSAT1 = 0
++ BVSAT1 = 6e-8
++ KSATIV = 1
++ LKSATIV = 0
++ DELTAVSAT = 1.0
++ MEXP = 4
++ LMEXP = 0
++ AMEXP = 0
++ BMEXP = 1
++ PTWG = 0
++ LPTWG = 0
++ APTWG = 0
++ BPTWG = 6e-8
++ U0 = 0.01
++ LU0 = 0
++ ETAMOB = 2
++ UP = 0
++ LUP = 0
++ LPA = 1
++ LUA = 0
++ AUA = 0
++ BUA = 6e-8
++ EU = 2.5
++ LEU = 0
++ UD = 0.02
++ LUD = 0
++ AUD = 0
++ BUD = 0.00000005
++ UCS = 1
++ LUCS = 0
++ PDIBL1 = 1e-9
++ LPDIBL1 = 0
++ LPDIBL2 = 0
++ DROUT = 1.06
++ LDROUT = 0
++ PVAG = 1
++ LPVAG = 0
++ LPCLM = 0.0
++ CFS=0
+.ends

@@ -1,0 +1,50 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vR-2020.09-L1
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess Lg "0.25" {0.25}
+sprocess NWell "1e+17" {5e+16 1e+17}
+sprocess GOxTime "10" {10}
+sprocess LDD_Dose "1e+14" {1e+14}
+sdevice sdevice "" {}
+sdevice VdLin "0.05" {0.05}
+sdevice VdSat "2.5" {3.0}
+sdevice pmi "builtin" {builtin pmi pmi_std}
+IV svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Lg ""
+scenario default NWell ""
+scenario default GOxTime ""
+scenario default LDD_Dose ""
+scenario default VdLin ""
+scenario default VdSat ""
+scenario default pmi ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {0.25} {default} 0
+2 3 2 {5e+16} {default} 0
+3 5 3 {10} {default} 0
+4 7 5 {1e+14} {default} 0
+5 9 7 {} {default} 0
+6 11 9 {0.05} {default} 0
+7 13 11 {3.0} {default} 0
+8 15 13 {builtin} {default} 0
+9 19 15 {} {default} 0
+8 16 13 {pmi} {default} 0
+9 20 16 {} {default} 0
+8 23 13 {pmi_std} {default} 0
+9 24 23 {} {default} 0
+2 4 2 {1e+17} {default} 0
+3 6 4 {10} {default} 0
+4 8 6 {1e+14} {default} 0
+5 10 8 {} {default} 0
+6 12 10 {0.05} {default} 0
+7 14 12 {3.0} {default} 0
+8 17 14 {builtin} {default} 0
+9 21 17 {} {default} 0
+8 18 14 {pmi} {default} 0
+9 22 18 {} {default} 0
+8 25 14 {pmi_std} {default} 0
+9 26 25 {} {default} 0

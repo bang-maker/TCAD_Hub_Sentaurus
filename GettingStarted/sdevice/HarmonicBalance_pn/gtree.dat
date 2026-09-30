@@ -1,0 +1,54 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vQ-2019.12-DEV
+
+# --- simulation flow
+diode sde "" {}
+SDFT sdevice "" {}
+SDFT Vdc "10" {2 -2}
+SDFT NumHarm "5" {4}
+SDFT f1 "1e5" {1e5}
+SDFT mag "0.2" {1.0}
+MDFT sdevice "" {}
+harmonics svisual "" {}
+timedomain svisual "" {}
+MDFT_2Tone sdevice "" {}
+MDFT_2Tone f2 "1.01e5" {1.01e5}
+MDFT_2Tone mag1 "0.2" {0.5}
+MDFT_2Tone mag2 "0.5" {0.5}
+beat svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Vdc ""
+scenario default NumHarm ""
+scenario default f1 ""
+scenario default mag ""
+scenario default f2 ""
+scenario default mag1 ""
+scenario default mag2 ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {2} {default} 0
+3 5 3 {4} {default} 0
+4 7 5 {1e5} {default} 0
+5 9 7 {1.0} {default} 0
+6 11 9 {} {default} 0
+7 13 11 {} {default} 0
+8 15 13 {} {default} 0
+9 17 15 {} {default} 0
+10 19 17 {1.01e5} {default} 0
+11 21 19 {0.5} {default} 0
+12 23 21 {0.5} {default} 0
+13 25 23 {} {default} 0
+2 4 2 {-2} {default} 0
+3 6 4 {4} {default} 0
+4 8 6 {1e5} {default} 0
+5 10 8 {1.0} {default} 0
+6 12 10 {} {default} 0
+7 14 12 {} {default} 0
+8 16 14 {} {default} 0
+9 18 16 {} {default} 0
+10 20 18 {1.01e5} {default} 0
+11 22 20 {0.5} {default} 0
+12 24 22 {0.5} {default} 0
+13 26 24 {} {default} 0

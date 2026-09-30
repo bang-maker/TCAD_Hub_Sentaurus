@@ -1,0 +1,118 @@
+layer add 1:0
+layer hide 1:0
+layer configure 1:0 -fill #ffff00 -pattern fill12-c -outline #ffff00 -lineStyle solid -lineWidth 1 -order 0
+layer add 3:0
+layer show 3:0
+layer configure 3:0 -fill #ff6699 -pattern fill12-f -outline #ff6699 -lineStyle solid -lineWidth 1 -order 2
+layer add 3:201
+layer hide 3:201
+layer configure 3:201 -fill #ff6699 -pattern fill50 -outline #ff6699 -lineStyle solid -lineWidth 1 -order 3
+layer add 3:203
+layer show 3:203
+layer configure 3:203 -fill #00ff00 -pattern fill50 -outline #00ff00 -lineStyle solid -lineWidth 1 -order 4
+layer add 5:0
+layer show 5:0
+layer configure 5:0 -fill #ff0099 -pattern fill12-a -outline #ff0099 -lineStyle solid -lineWidth 1 -order 6
+layer add 5:11
+layer show 5:11
+layer configure 5:11 -fill #ff0099 -pattern fill12-a -outline #ff0099 -lineStyle solid -lineWidth 1 -order 7
+layer add 40:0
+layer show 40:0
+layer configure 40:0 -fill #33ff66 -pattern empty -outline #33ff66 -lineStyle solid -lineWidth 1 -order 23
+layer add 40:2
+layer hide 40:2
+layer configure 40:2 -fill #33ff66 -pattern empty -outline #33ff66 -lineStyle solid -lineWidth 1 -order 24
+layer add 41:70
+layer hide 41:70
+layer configure 41:70 -fill #9900cc -pattern fill12-c -outline #9900cc -lineStyle solid -lineWidth 1 -order 12
+layer add 60:0
+layer show 60:0
+layer configure 60:0 -fill #669966 -pattern fill12-d -outline #669966 -lineStyle solid -lineWidth 1 -order 13
+layer add 60:2
+layer hide 60:2
+layer configure 60:2 -fill #669966 -pattern fill12-d -outline #669966 -lineStyle solid -lineWidth 1 -order 14
+layer add 60:13
+layer hide 60:13
+layer configure 60:13 -fill #669966 -pattern fill12-d -outline #669966 -lineStyle solid -lineWidth 1 -order 15
+layer add 60:14
+layer hide 60:14
+layer configure 60:14 -fill #669966 -pattern fill12-d -outline #669966 -lineStyle solid -lineWidth 1 -order 16
+layer add 60:20
+layer hide 60:20
+layer configure 60:20 -fill #669966 -pattern fill12-d -outline #669966 -lineStyle solid -lineWidth 1 -order 17
+layer add 61:0
+layer show 61:0
+layer configure 61:0 -fill #9999ff -pattern fill12 -outline #9999ff -lineStyle solid -lineWidth 1 -order 11
+layer add 62:70
+layer hide 62:70
+layer configure 62:70 -fill #ffcc99 -pattern fill12 -outline #ffcc99 -lineStyle solid -lineWidth 1 -order 33
+layer add 98:3
+layer hide 98:3
+layer configure 98:3 -fill #ccff66 -pattern fill12-b -outline #ccff66 -lineStyle solid -lineWidth 1 -order 18
+layer add 106:28
+layer hide 106:28
+layer configure 106:28 -fill #000066 -pattern fill12-f -outline #000066 -lineStyle solid -lineWidth 1 -order 25
+layer add 106:29
+layer hide 106:29
+layer configure 106:29 -fill #000066 -pattern fill12-f -outline #000066 -lineStyle solid -lineWidth 1 -order 26
+layer add 106:32
+layer hide 106:32
+layer configure 106:32 -fill #000066 -pattern fill12-f -outline #000066 -lineStyle solid -lineWidth 1 -order 27
+layer add 108:0
+layer hide 108:0
+layer configure 108:0 -fill #ccff99 -pattern fill12-d -outline #ccff99 -lineStyle solid -lineWidth 1 -order 20
+layer add 161:0
+layer show 161:0
+layer configure 161:0 -fill #ffffcc -pattern fill12-c -outline #ffffcc -lineStyle solid -lineWidth 1 -order 21
+layer add 162:0
+layer hide 162:0
+layer configure 162:0 -fill #cc99ff -pattern fill12-d -outline #cc99ff -lineStyle solid -lineWidth 1 -order 22
+layer add 191:1
+layer hide 191:1
+layer configure 191:1 -fill #330000 -pattern empty -outline #330000 -lineStyle solid -lineWidth 1 -order 29
+layer add 213:0
+layer hide 213:0
+layer configure 213:0 -fill #330033 -pattern fill12-e -outline #330033 -lineStyle solid -lineWidth 1 -order 31
+layer add 250:0
+layer hide 250:0
+layer configure 250:0 -fill #009933 -pattern fill12-b -outline #009933 -lineStyle solid -lineWidth 1 -order 35
+layer add 310:0
+layer hide 310:0
+layer configure 310:0 -fill #ffff00 -pattern fill12 -outline #ffff00 -lineStyle solid -lineWidth 1 -order 43
+layer add 320:0
+layer hide 320:0
+layer configure 320:0 -fill #00ff00 -pattern fill12 -outline #00ff00 -lineStyle solid -lineWidth 1 -order 44
+layer add 500:0
+layer hide 500:0
+layer configure 500:0 -fill #66ff00 -pattern fill12-d -outline #66ff00 -lineStyle solid -lineWidth 1 -order 28
+layer add 500:1
+layer hide 500:1
+layer configure 500:1 -fill #66ff00 -pattern fill12-d -outline #66ff00 -lineStyle solid -lineWidth 1 -order 30
+layer add 501:0
+layer hide 501:0
+layer configure 501:0 -fill #9999ff -pattern fill12-e -outline #9999ff -lineStyle solid -lineWidth 1 -order 32
+layer add 501:1
+layer hide 501:1
+layer configure 501:1 -fill #9999ff -pattern fill12-e -outline #9999ff -lineStyle solid -lineWidth 1 -order 34
+layer add 501:2
+layer hide 501:2
+layer configure 501:2 -fill #9999ff -pattern fill12-e -outline #9999ff -lineStyle solid -lineWidth 1 -order 36
+layer add 501:3
+layer hide 501:3
+layer configure 501:3 -fill #9999ff -pattern fill12-e -outline #9999ff -lineStyle solid -lineWidth 1 -order 37
+layer add 502:0
+layer hide 502:0
+layer configure 502:0 -fill #ffcc99 -pattern fill12-f -outline #ffcc99 -lineStyle solid -lineWidth 1 -order 38
+layer add 502:1
+layer hide 502:1
+layer configure 502:1 -fill #ffcc99 -pattern fill12-f -outline #ffcc99 -lineStyle solid -lineWidth 1 -order 39
+layer add 502:2
+layer hide 502:2
+layer configure 502:2 -fill #ffcc99 -pattern fill12-f -outline #ffcc99 -lineStyle solid -lineWidth 1 -order 40
+layer add 502:3
+layer hide 502:3
+layer configure 502:3 -fill #ffcc99 -pattern fill12-f -outline #ffcc99 -lineStyle solid -lineWidth 1 -order 41
+layer add 502:31
+layer show 502:31
+layer configure 502:31 -fill #ff99ff -pattern fill12-f -outline #ff99ff -lineStyle solid -lineWidth 1 -order 42
+layer active 310:0

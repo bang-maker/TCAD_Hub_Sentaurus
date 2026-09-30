@@ -1,0 +1,18 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vP-2019.03-L1, Tue Dec  4 11:47:33 2018
+
+# --- simulation flow
+rectangle sde "" {}
+evaluation sde "" {}
+evaluation case "0" {0 1}
+sweeping sde "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default case ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {0} {default} 0
+3 5 3 {} {default} 0
+2 4 2 {1} {default} 0
+3 6 4 {} {default} 0

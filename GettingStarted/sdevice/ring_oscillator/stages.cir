@@ -1,0 +1,28 @@
+.TITLE 'Five Stage Ring Oscillator'
+
+.MODEL nMOS_L54 NMOS Level=54
++ version =    4.6
++ vth0=0.22
+
+.MODEL pMOS_L54 PMOS Level=54
++ version =    4.5
++ vth0=-0.22
+
+.GLOBAL gnd
+.PARAM L=130n WP=150n WN=100n
+
+.SUBCKT INVERTER IN OUT DD SS
+*    Drain  Gate  Source  SubStrate  Model       L        W      
+M1   OUT    IN    DD      DD         pMOS_L54  L=L  W='2*WP'
+M2   OUT    IN    SS      SS         nMOS_L54  L=L  W='2*WN'
+C1   OUT    gnd   1f
+.ENDS INVERTER
+ 
+*X1 defined with physical devices in System section
+X2 2  3  nvd  gnd INVERTER  
+X3 3  4  nvd  gnd INVERTER  
+X4 4  5  nvd  gnd INVERTER  
+X5 5  1  nvd  gnd INVERTER  
+
+.END
+

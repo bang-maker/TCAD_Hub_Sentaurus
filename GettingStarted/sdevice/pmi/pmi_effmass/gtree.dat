@@ -1,0 +1,16 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vcurrent
+
+# --- simulation flow
+sdevice sdevice "" {}
+sdevice EMmodel "default" {default pmi_effmass}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default EMmodel ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {default} {default} 0
+2 4 2 {} {default} 0
+1 3 1 {pmi_effmass} {default} 0
+2 5 3 {} {default} 0

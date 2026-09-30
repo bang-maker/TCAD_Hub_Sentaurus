@@ -1,0 +1,30 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vV-2023.09-L0
+
+# --- simulation flow
+svisualpy svisualpy "" {}
+svisualpy script_file "create_dataset.py" {create_dataset.py export.py export_s2p.py get_fk1.py get_fmax.py get_ft.py get_nearest_index.py get_noise_figure.py get_pars_at_point.py get_power_gain.py noise_figure.py polar_backdrop.py power_gain.py rfc_slice.py RFX.py smith_backdrop.py y2h.py y2s.py y2z.py}
+# --- variables
+# --- scenarios and parameter specs
+scenario default script_file ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {create_dataset.py} {default} 0
+1 3 1 {export.py} {default} 0
+1 4 1 {export_s2p.py} {default} 0
+1 5 1 {get_fk1.py} {default} 0
+1 6 1 {get_fmax.py} {default} 0
+1 7 1 {get_ft.py} {default} 0
+1 8 1 {get_nearest_index.py} {default} 0
+1 9 1 {get_noise_figure.py} {default} 0
+1 10 1 {get_pars_at_point.py} {default} 0
+1 11 1 {get_power_gain.py} {default} 0
+1 12 1 {noise_figure.py} {default} 0
+1 13 1 {polar_backdrop.py} {default} 0
+1 14 1 {power_gain.py} {default} 0
+1 15 1 {rfc_slice.py} {default} 0
+1 16 1 {RFX.py} {default} 0
+1 17 1 {smith_backdrop.py} {default} 0
+1 18 1 {y2h.py} {default} 0
+1 19 1 {y2s.py} {default} 0
+1 20 1 {y2z.py} {default} 0

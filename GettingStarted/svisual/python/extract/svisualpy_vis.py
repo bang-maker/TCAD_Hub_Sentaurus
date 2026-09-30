@@ -1,0 +1,1 @@
+#includeext "@script_file@"

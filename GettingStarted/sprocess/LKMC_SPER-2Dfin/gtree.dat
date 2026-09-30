@@ -1,0 +1,18 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-DEV, Wed Jul  5 15:18:57 2017
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess temp "550" {600}
+sprocess model "Coordinations.Planes" {Coordinations.Planes}
+sprocess p "0" {0.5}
+# --- variables
+# --- scenarios and parameter specs
+scenario default temp ""
+scenario default model ""
+scenario default p ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {600} {default} 0
+2 3 2 {Coordinations.Planes} {default} 0
+3 4 3 {0.5} {default} 0

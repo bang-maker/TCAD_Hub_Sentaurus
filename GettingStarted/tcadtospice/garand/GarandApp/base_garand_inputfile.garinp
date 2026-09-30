@@ -1,0 +1,83 @@
+# ------------------------------- SIMULATION TYPE ------------------------------
+SIMULATION  solve=on                 # Perform solution
+SIMULATION  sim_type=IdVg            # [IdVg, IdVd, target]
+SIMULATION  accept_unconverged=on    # if "off" all unconverged datapoints will
+                                     # appear as '0' in the database
+
+#if "@Type@" == "pMOS"
+#define    __BAND__ valence
+SIMULATION  n_or_p=p                 # p-type simulation
+BIAS    drain=-0.05                  # Drain Bias     [V]
+BIAS    gate=0.0                     # Gate Bias      [V]
+BIAS    substrate=0.0                # Substrate Bias [V]
+BIAS    delta=-0.07                  # Voltage step for I-V curve [V]
+BIAS    ivpoints=11                  # Number of points in the I-V curve
+#else if "@Type@" == "nMOS"
+#define    __BAND__ conduction
+SIMULATION  n_or_p=n                 # n-type simulation
+BIAS    drain=0.05                   # Drain Bias     [V]
+BIAS    gate=0.0                     # Gate Bias      [V]
+BIAS    substrate=0.0                # Substrate Bias [V]
+BIAS    delta=0.07                   # Voltage step for I-V curve [V]
+BIAS    ivpoints=11                  # Number of points in the I-V curve
+#endif
+
+# ------------------------------- SIMULATION MODEL -----------------------------
+MODEL   density_gradient=on    # Density gradient solution (majority carriers)
+MODEL   minority_dg=on         # Density gradient solution (minority carriers)
+MODEL   dg_doping_limit=5e19         # DG application density threshold [/cm3]
+MODEL   fermi_dirac  status=off      # Fermi-Dirac statistics
+
+SIMULATION gummel_acc=1e-4           # Gummel loop accuracy
+SIMULATION bounded_fermi		= on
+
+SIMULATION import_bands = off
+SIMULATION T = 300                   # simulation temperature
+
+#------------------------------ SIMULATION DOMAIN ------------------------------
+STRUCTURE  IMPORT  filename=@tdr@    # Device structure file
+STRUCTURE  gate_length=@<lgate*1e3>@ # Nominal gate length [nm]
+
+#------------------------------- MESH DEFINITION -------------------------------
+MESH IMPORT                          # import the whole mesh in the structure
+
+#------------------------------ CONTACT DEFINITION -----------------------------
+# Gate contact bounding box
+CONTACT  metal_gate  import=@gate_con@   name='@gate_con@' 
+# Source contact bounding box
+CONTACT  source      import=@source_con@ name='@source_con@' 
+# Drain contact bounding box
+CONTACT  drain       import=@drain_con@  name='@drain_con@' 
+# Substrate contact bounding box
+CONTACT  substrate   import=@bulk_con@   name='@bulk_con@' 
+
+CONTACT  work_function=@workfn@          # set the metal workfunction
+CONTACT  confined_boundary=off           # Do not apply DG at contact interfaces
+
+# ---------------------------- MATERIAL REDEFINITION ---------------------------
+MATERIAL Silicon.__BAND__.dgy  0.3   # Density gradient mass x  [me]          
+MATERIAL SiliconGermanium.__BAND__.dgy  0.3   # Density gradient mass x  [me] 
+MATERIAL Oxide.__BAND__.dgy    0.1   # Density gradient mass x  [me]          
+MATERIAL Silicon.__BAND__.dgx  0.3   # Density gradient mass x  [me]          
+MATERIAL SiliconGermanium.__BAND__.dgx  0.3   # Density gradient mass x  [me] 
+MATERIAL Oxide.__BAND__.dgx    0.1   # Density gradient mass x  [me]          
+MATERIAL Silicon.__BAND__.dgz  5.0   # Density gradient mass x  [me]          
+MATERIAL SiliconGermanium.__BAND__.dgz  5.0   # Density gradient mass x  [me] 
+MATERIAL Oxide.__BAND__.dgz    5.0   # Density gradient mass x  [me]  
+
+MATERIAL Nitride.permittivity  7.5   # Setup permittivity of Nitride material 
+MATERIAL Oxide.permittivity    3.9   # Setup permittivity of Oxide material   
+MATERIAL Silicon.permittivity  11.7  # Setup permittivity of Silicon material 
+MATERIAL LowK.permittivity     2.5   # Setup permittivity of LowK material    
+
+# ---------------------------- MATERIAL STRESS ---------------------------------
+STRAIN import=on                     # enable strain import
+
+# ---------------------------------- MOBILITY ----------------------------------
+MATERIAL Silicon.__BAND__.mobility.bulk masetti   # bulk mobility model
+MATERIAL Silicon.__BAND__.mobility.eprp yamaguchi # low-field mobility model
+MATERIAL Silicon.__BAND__.mobility.elat caughey   # high-field mobility model
+
+# ------------------------------ SIMULATION OUTPUT -----------------------------
+OUTPUT  directory=results      # Directory to which output files are written
+OUTPUT  experiment=n@node@     # Output file header if running I-V curve

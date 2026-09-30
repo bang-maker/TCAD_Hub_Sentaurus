@@ -1,0 +1,35 @@
+#if [string is double "@b_e@"]
+OkutoCrowell {
+  * G_impact = alpha_n n v_drift_n  +  alpha_p p v_drift_p
+  * with alpha = a (1+c(T-300)) E^gamma exp[-(b (1+d(T-300)) /E )^delta]
+  a     = 0.426,    0.243      # [1/cm]
+  b     = @b_e@,   6.53e5     # [V/cm]
+  c     = 3.05e-4,  5.35e-4    # [1/K]
+  d     = 6.86e-4,  5.67e-4    # [1/K]
+  gamma = 1,        1          # [1]
+  delta = 2,        2          # [1]
+}
+
+pmi_Okuto {
+  a_e = 0.426      # [1/cm]
+  a_h = 0.243      # [1/cm]
+  b_e = @b_e@     # [V/cm]
+  b_h = 6.53e5     # [V/cm]
+  c_e = 3.05e-4    # [1/K]
+  c_h = 5.35e-4    # [1/K]
+  d_e = 6.86e-4    # [1/K]
+  d_h = 5.67e-4    # [1/K]
+}
+
+pmi_Okuto_std {
+  a_e = 0.426      # [1/cm]
+  a_h = 0.243      # [1/cm]
+  b_e = @b_e@     # [V/cm]
+  b_h = 6.53e5     # [V/cm]
+  c_e = 3.05e-4    # [1/K]
+  c_h = 5.35e-4    # [1/K]
+  d_e = 6.86e-4    # [1/K]
+  d_h = 5.67e-4    # [1/K]
+}
+
+#endif

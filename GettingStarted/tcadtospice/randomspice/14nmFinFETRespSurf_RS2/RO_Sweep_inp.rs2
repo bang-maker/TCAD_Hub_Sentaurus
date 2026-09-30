@@ -1,0 +1,107 @@
+
+.rs2
+[Circuit]
+netlist     = None
+number      = 1
+seed        = 12345678
+startnum    = 1
+
+[Simulation]
+spice       = hspice
+spiceargs   = 
+
+[Variability]
+statistical = False
+process_resp_only = True
+
+[Output]
+dir         = @pwd@/@nodedir@/n@node@_/ro_results
+prefix      = ro
+savenets    = False
+processor   = @pwd@/@nodedir@/pp@node@_eng.py
+
+[Models]
+library     = @pwd@/@nodedir|BuildLibrary@/n@node|BuildLibrary@_library.rsl
+
+[Database]
+enabled     = True
+project     = @node@
+dataset     = @node@-ro-0
+.endrs2
+
+
+* Simple RO
+
+.PARAM SUPPLY=@Vdd_nom@
+.PARAM COUT=0.5f
+
+.subckt invx1:RAND in out vdd vss vpw vnw
+xmp out in vdd vnw pmos NFIN=2
+xmn out in vss vpw nmos NFIN=2
+cout out 0 COUT
+.ends
+
+.subckt nandx2:RAND a b y vdd vss vpw vnw
+xmp1 y a vdd vnw pmos NFIN=2 
+xmp2 y b vdd vnw pmos NFIN=2
+xmn1 y a int vpw nmos NFIN=2
+xmn2 int b vss vpw nmos NFIN=2
+cout out 0 COUT
+.ends
+
+
+* 11 stage RO
+xien st_en enable out0 vdd vss vpw vnw nandx2:RAND
+.ic v(out0)=SUPPLY
+xi1 out0 out1 vdd vss vpw vnw invx1:RAND
+.ic v(out1)=0
+xi2 out1 out2 vdd vss vpw vnw invx1:RAND
+.ic v(out2)=SUPPLY
+xi3 out2 out3 vdd vss vpw vnw invx1:RAND
+.ic v(out3)=0
+xi4 out3 out4 vdd vss vpw vnw invx1:RAND
+.ic v(out4)=SUPPLY
+xi5 out4 out5 vdd vss vpw vnw invx1:RAND
+.ic v(out5)=0
+xi6 out5 out6 vdd vss vpw vnw invx1:RAND
+.ic v(out6)=SUPPLY
+xi7 out6 out7 vdd vss vpw vnw invx1:RAND
+.ic v(out7)=0
+xi8 out7 out8 vdd vss vpw vnw invx1:RAND
+.ic v(out8)=SUPPLY
+xi9 out8 out9 vdd vss vpw vnw invx1:RAND
+.ic v(out9)=0
+xi10 out9 st_en vdd vss vpw vnw invx1:RAND
+
+.ic v(in0)=0
+.ic v(out0)=SUPPLY
+.ic v(out1)=0
+.ic v(out2)=SUPPLY
+.ic v(out3)=0
+.ic v(out4)=SUPPLY
+
+* supplies
+vvdd vdd 0 SUPPLY
+vvss vss 0 0
+vvpw vpw 0 0
+vvnw vnw 0 SUPPLY
+venable enable 0 pwl 0 0 10n 0 10.01n SUPPLY
+
+.tran 1p 1000n
+*.PRINT tran V(in0)
+
+.meas tran iddq avg i(vvdd) from=1n to=5n
+.meas tran t_period trig v(out5) val="0.5*SUPPLY" rise=5 targ v(out5) val="0.5*SUPPLY" rise=6
+.meas tran cyc_freq PARAM='1/t_period'
+.meas tran stage_delay PARAM='t_period/11/2'
+.meas tran start_integ when v(out5)="0.5*SUPPLY" rise=5
+.meas tran end_integ when v(out5)="0.5*SUPPLY" rise=8
+.meas tran i_3_periods integ i(vvdd) from=start_integ to=end_integ
+.meas tran cyc_pwr PARAM='abs(SUPPLY*i_3_periods)/(3*(t_period))'
+.meas tran sw_pwr PARAM='cyc_pwr - iddq*SUPPLY'
+
+
+.OPTIONS NOMOD NOPAGE INGOLD=2 AUTOSTOP measdgt=8 runlvl=6 method=gear maxord=2
+.TEMP 27
+
+.END

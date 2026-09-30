@@ -1,0 +1,20 @@
+// HSpice MOS Level 54 (BSIM4)
+PSET NMOS_comp_pset
+  DEVICE HMOS_L54
+  PARAMETERS
+    level = 54
+    version = 4.5
+    nmos = 1
+    toxp = @tox@
+//    acm = 0
+END PSET
+
+PSET PMOS_comp_pset
+  DEVICE HMOS_L54
+  PARAMETERS
+    level = 54
+    version = 4.5
+    pmos = 1
+    toxp = @tox@
+//    acm = 0
+END PSET

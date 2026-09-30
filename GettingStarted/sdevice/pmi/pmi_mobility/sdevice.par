@@ -1,0 +1,113 @@
+ConstantMobility {
+  * mu_const = mumax (T/T0)^(-Exponent)
+  mumax   = 1.4170e+03,  4.7050e+02      # [cm^2/(Vs)]
+  Exponent= 2.5,         2.2
+}
+
+
+DopingDependence {
+  formula = 1, 1
+  * mu_dop = mumin1 exp(-Pc/N) + (mu_const - mumin2)/(1+(N/Cr)^alpha)
+  *                             - mu1/(1+(Cs/N)^beta)
+  * with mu_const from ConstantMobility
+  mumin1  = 52.2,        44.9            # [cm^2/Vs]
+  mumin2  = 52.2,        0.0000e+00      # [cm^2/Vs]
+  mu1     = 43.4,        29              # [cm^2/Vs]
+  Pc      = 0.0000e+00,  9.2300e+16      # [cm^3]
+  Cr      = 9.6800e+16,  2.2300e+17      # [cm^3]
+  Cs      = 3.4300e+20,  6.1000e+20      # [cm^3]
+  alpha   = 0.68,        0.719
+  beta    = 2,           2
+}
+
+
+pmi_dopingdep {
+  * mu_const = mumax (T/T0)^(-Exponent)
+  mumax_e   = 1.4170e+03      # [cm^2/(Vs)]
+  mumax_h   = 4.7050e+02      # [cm^2/(Vs)]
+  Exponent_e= 2.5
+  Exponent_h= 2.2
+  mumin1_e  = 52.2            # [cm^2/Vs]
+  mumin1_h  = 44.9            # [cm^2/Vs]
+  mumin2_e  = 52.2            # [cm^2/Vs]
+  mumin2_h  = 0.0000e+00      # [cm^2/Vs]
+  mu1_e     = 43.4            # [cm^2/Vs]
+  mu1_h     = 29              # [cm^2/Vs]
+  Pc_e      = 0.0000e+00      # [cm^3]
+  Pc_h      = 9.2300e+16      # [cm^3]
+  Cr_e      = 9.6800e+16      # [cm^3]
+  Cr_h      = 2.2300e+17      # [cm^3]
+  Cs_e      = 3.4300e+20      # [cm^3]
+  Cs_h      = 6.1000e+20      # [cm^3]
+  alpha_e   = 0.68
+  alpha_h   = 0.719
+  beta_e    = 2
+  beta_h    = 2
+}
+
+
+EnormalDependence {
+  * mu_Enorm^(-1) = mu_ac^(-1) + mu_sr^(-1)  with:
+  * mu_ac = B / Enorm + C (T/T0)^(-k) (N/N0)^lambda / Enorm^(1/3) )
+  * mu_sr^-1 = Enorm^(A+alpha*n/(N+N1)^nu) / delta + Enorm^3 / eta
+  * EnormalDependence is added with factor exp(-l/l_crit), where l is
+  * the distance to the nearest point of semiconductor/insulator interface.
+  * Factor is equal to 1 if l_crit > 100.
+  B       = 4.7500e+07,  9.9250e+06      # [cm/s]
+  C       = 5.8000e+02,  2.9470e+03      # [cm^5/3/(sV^2/3)]
+  N0      = 1,           1               # [cm^-3]
+  lambda  = 0.125,       0.0317          # [1]
+  k       = 1,           1               # [1]
+  delta   = 5.8200e+14,  2.0546e+14      # [V/s]
+  A       = 2,           2               # [1]
+  alpha   = 0.0000e+00,  0.0000e+00      # [1]
+  N1      = 1,           1               # [cm^-3]
+  nu      = 1,           1               # [1]
+  eta     = 5.8200e+30,  2.0546e+30      # [V^2/cm*s]
+  l_crit  = 1.0000e-06,  1.0000e-06      # [cm]
+}
+
+pmi_enormal {
+  B_e       = 4.7500e+07      # [cm/s]
+  B_h       = 9.9250e+06      # [cm/s]
+  C_e       = 5.8000e+02      # [cm^5/3/(sV^2/3)]
+  C_h       = 2.9470e+03      # [cm^5/3/(sV^2/3)]
+  lambda_e  = 0.125           # [1]
+  lambda_h  = 0.0317          # [1]
+  delta_e   = 5.8200e+14      # [V/s]
+  delta_h   = 2.0546e+14      # [V/s]
+  eta_e     = 5.8200e+30      # [V^2/cm*s]
+  eta_h     = 2.0546e+30      # [V^2/cm*s]
+  l_crit_e  = 1.0000e-06      # [cm]
+  l_crit_h  = 1.0000e-06      # [cm]
+}
+
+
+HighFieldDependence{
+  * Caughey-Thomas model:
+  * mu_highfield = mu_lowfield / ( 1 + (mu_lowfield E / vsat)^beta )^1/beta
+  * beta = beta0 (T/T0)^betaexp.
+  beta0   = 1.109,       1.213   # [1]
+  betaexp = 0.66,        0.17    # [1]
+
+  * For vsat either Formula1 or Formula2 can be used.
+  Vsat_Formula = 1,      1       # [1]
+  * Formula1 for saturation velocity:
+  *            vsat = vsat0 (T/T0)^(-Vsatexp)
+  * (Parameter Vsat_Formula has to be not equal to 2):
+  vsat0   = 1.0700e+07,  8.3700e+06      # [1]
+  vsatexp = 0.87,        0.52    # [1]
+}
+
+
+pmi_highfield {
+  beta0_e   = 1.109   # [1]
+  beta0_h   = 1.213   # [1]
+  betaexp_e = 0.66    # [1]
+  betaexp_h = 0.17    # [1]
+  vsat0_e   = 1.07e7  # [1]
+  vsat0_h   = 8.37e6  # [1]
+  vsatexp_e = 0.87    # [1]
+  vsatexp_h = 0.52    # [1]
+}
+

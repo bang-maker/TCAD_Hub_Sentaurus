@@ -1,0 +1,81 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-L1, Wed Jun 28 10:40:17 2017
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess Lg "0.25" {0.25}
+sprocess NWell "1e+17" {1e+17 2e+17}
+sprocess GOxTime "10" {10 15}
+sprocess LDD_Dose "1e+14" {1e+14 2e+14}
+sdevice sdevice "" {}
+sdevice Vd "0.05" {0.05 1.0}
+IdVg svisual "" {}
+# --- variables
+variable tox ""
+variable Vtgm ""
+variable Id ""
+variable SS ""
+variable gm ""
+# --- scenarios and parameter specs
+scenario default Lg ""
+scenario default NWell ""
+scenario default GOxTime ""
+scenario default LDD_Dose ""
+scenario default Vd ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {0.25} {default} 0
+2 3 2 {1e+17} {default} 0
+3 5 3 {10} {default} 0
+4 9 5 {1e+14} {default} 0
+5 17 9 {} {default} 0
+6 25 17 {0.05} {default} 0
+7 41 25 {} {default} 0
+6 26 17 {1.0} {default} 0
+7 42 26 {} {default} 0
+4 10 5 {2e+14} {default} 0
+5 18 10 {} {default} 0
+6 27 18 {0.05} {default} 0
+7 43 27 {} {default} 0
+6 28 18 {1.0} {default} 0
+7 44 28 {} {default} 0
+3 6 3 {15} {default} 0
+4 11 6 {1e+14} {default} 0
+5 19 11 {} {default} 0
+6 29 19 {0.05} {default} 0
+7 45 29 {} {default} 0
+6 30 19 {1.0} {default} 0
+7 46 30 {} {default} 0
+4 12 6 {2e+14} {default} 0
+5 20 12 {} {default} 0
+6 31 20 {0.05} {default} 0
+7 47 31 {} {default} 0
+6 32 20 {1.0} {default} 0
+7 48 32 {} {default} 0
+2 4 2 {2e+17} {default} 0
+3 7 4 {10} {default} 0
+4 13 7 {1e+14} {default} 0
+5 21 13 {} {default} 0
+6 33 21 {0.05} {default} 0
+7 49 33 {} {default} 0
+6 34 21 {1.0} {default} 0
+7 50 34 {} {default} 0
+4 14 7 {2e+14} {default} 0
+5 22 14 {} {default} 0
+6 35 22 {0.05} {default} 0
+7 51 35 {} {default} 0
+6 36 22 {1.0} {default} 0
+7 52 36 {} {default} 0
+3 8 4 {15} {default} 0
+4 15 8 {1e+14} {default} 0
+5 23 15 {} {default} 0
+6 37 23 {0.05} {default} 0
+7 53 37 {} {default} 0
+6 38 23 {1.0} {default} 0
+7 54 38 {} {default} 0
+4 16 8 {2e+14} {default} 0
+5 24 16 {} {default} 0
+6 39 24 {0.05} {default} 0
+7 55 39 {} {default} 0
+6 40 24 {1.0} {default} 0
+7 56 40 {} {default} 0

@@ -1,0 +1,126 @@
+! Copyright (c) 1994-2015 Synopsys, Inc.
+! This file and the associated documentation are proprietary to
+! Synopsys, Inc.  This file may only be used in accordance with the
+! terms and conditions of a written license agreement with Synopsys,
+! Inc.  All other use, reproduction, or distribution of this file is
+! strictly prohibited.
+!
+DATEX2.1
+Datacode
+"$DateTime: 2015/02/24 15:50:29 $"
+"Data codes for semiconductor process and device simulation"
+
+
+Variables {
+    
+MagnesiumActiveConcentration, MgActive {
+    label     = "substitutional Magnesium concentration"
+    symbol    = "MgActive"
+    unit      = "cm^-3"
+    factor    = 1.0e+12
+    precision = 4
+    interpol  = log
+    material  = Semiconductor
+}
+
+MagnesiumConcentration, MagnesiumChemicalConcentration {
+    label     = "total (chemical) Magnesium concentration"
+    symbol    = "MgTotal"
+    unit      = "cm^-3"
+    factor    = 1.0e+12
+    precision = 4
+    interpol  = log
+    material  = All
+    property("floops") = "MgActive"
+    doping    = acceptor (
+                     active = MagnesiumActiveConcentration
+                     ionized = MagnesiumMinusConcentration
+                     material = AlN, GaN, AlGaN, InGaAs, InGaAsP, InP
+                 )
+}
+
+MagnesiumMinusConcentration {
+    label     = "Magnesium- concentration (incomplete ionization)"
+    symbol    = "N-Mg-"
+    unit      = "cm^-3"
+    factor    = 1.0e+12
+    precision = 4
+    interpol  = log
+    material  = Semiconductor
+} 
+
+nSiliconActiveConcentration {
+    label     = "substitutional nSilicon concentration"
+    symbol    = "nSiActive"
+    unit      = "cm^-3"
+    factor    = 1.0e+12
+    precision = 4
+    interpol  = log
+    material  = Semiconductor
+    property("floops") = "nSiActive"
+}
+
+nSiliconConcentration, nSiliconChemicalConcentration {
+    label     = "total (chemical) nSilicon concentration"
+    symbol    = "SiSubIII"
+    unit      = "cm^-3"
+    factor    = 1.000E+12
+    precision = 4
+    interpol  = arsinh
+    material  = All
+    property("floops") = "SiSubIII"
+    doping    = donor (
+                    active = nSiliconActiveConcentration
+                    ionized = nSiliconPlusConcentration
+                    material = AlN, GaN, AlGaN
+                )
+}
+
+nSiliconPlusConcentration {
+    label     = "nSilicon+ concentration (incomplete ionization)"
+    symbol    = "N-Si+"
+    unit      = "cm^-3"
+    factor    = 1.0e+12
+    precision = 4
+    interpol  = log
+    material  = Semiconductor
+}
+
+pSiliconActiveConcentration {
+    label     = "substitutional pSilicon concentration"
+    symbol    = "pSiActive"
+    unit      = "cm^-3"
+    factor    = 1.0e+12
+    precision = 4
+    interpol  = log
+    material  = Semiconductor
+    property("floops") = "pSiActive"
+}
+
+pSiliconConcentration, pSiliconChemicalConcentration {
+    label     = "total (chemical) pSilicon concentration"
+    symbol    = "SiSubV"
+    unit      = "cm^-3"
+    factor    = 1.000E+12
+    precision = 4
+    interpol  = arsinh
+    material  = All
+    property("floops") = "SiSubV"
+    doping    = acceptor (
+                    active = pSiliconActiveConcentration
+                    ionized = pSiliconMinusConcentration
+                    material = AlN, GaN, AlGaN
+                )
+}
+
+pSiliconMinusConcentration {
+    label     = "pSilicon- concentration (incomplete ionization)"
+    symbol    = "N-Si-"
+    unit      = "cm^-3"
+    factor    = 1.0e+12
+    precision = 4
+    interpol  = log
+    material  = Semiconductor
+}    
+    
+}

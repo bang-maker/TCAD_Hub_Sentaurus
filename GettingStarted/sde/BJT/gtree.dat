@@ -1,0 +1,9 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-L1, Fri Jun 23 11:42:14 2017
+
+# --- simulation flow
+BJT sde "" {}
+# --- variables
+# --- scenarios and parameter specs
+# --- simulation tree
+0 1 0 {} {default} 0

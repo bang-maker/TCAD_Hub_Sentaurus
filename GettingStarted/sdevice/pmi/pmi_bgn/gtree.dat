@@ -1,0 +1,18 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vcurrent
+
+# --- simulation flow
+sdevice sdevice "" {}
+sdevice BGNmodel "Bennett" {Slotboom BennettWilson pmi_bgn}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default BGNmodel ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {Slotboom} {default} 0
+2 5 2 {} {default} 0
+1 3 1 {BennettWilson} {default} 0
+2 6 3 {} {default} 0
+1 4 1 {pmi_bgn} {default} 0
+2 7 4 {} {default} 0

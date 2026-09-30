@@ -1,0 +1,15 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-L1, Wed Jun 28 20:59:22 2017
+
+# --- simulation flow
+tensor snmesh "" {}
+tensor example "1" {2 3 4 5}
+# --- variables
+# --- scenarios and parameter specs
+scenario default example ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {2} {default} 0
+1 3 1 {3} {default} 0
+1 4 1 {4} {default} 0
+1 5 1 {5} {default} 0

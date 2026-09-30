@@ -1,0 +1,128 @@
+Material = "ChalcogenideC" {
+  Epsilon { epsilon = 12. }
+
+  LatticeHeatCapacity {
+    cv = 1.3  # [J/(Kcm^3)]
+  }
+  
+  Kappa {
+    formula=1
+    kappa = 0.01 # [W/(K cm)]
+  }
+  
+  Bandgap { 
+    Chi0  = 4.25  # [eV]
+    Eg0 = 0.5 # [eV]
+    alpha = 0 # [eV K^-1]
+  }
+  
+  eDOSMass {
+    Formula=2
+    Nc300=2.5e19
+  }
+  
+  hDOSMass {
+    Formula=2
+    Nv300=2.5e19
+  }
+  
+  ConstantMobility: { 
+    mumax = 0.1 , 15  # [cm^2/(Vs)]
+  }
+  
+  Lackner {   
+    a   =   2e5 , 2.e5  # [1/cm]
+    b   = 3.3e5 , 3.3e5 # [V/cm]
+    hbarOmega =  0.06 , 0.06  # [eV]
+  }
+  
+  QuantumPotentialParameters { 
+    * gamma:  weighting factor for quantum potential
+    * theta:  weight for quadratic term
+    * xi:     weight for quasi Fermi potential
+    * eta:    weight for electrostatic potential
+    gamma   = 0. ,  0.      # [1]
+    theta   = 0. ,  0.      # [1]
+    xi      = 1 ,   1       # [1]
+    eta     = 1 ,   1       # [1]
+  }
+  
+  pmi_ce_msconfig {
+    nb_states = 3
+    nb_transitions = 3
+    
+    parset = 2
+    
+    * parset 2
+    
+    t0_s0 = 0
+    t0_s1 = 1
+    t0_Eact = 1.3
+    t0_r0 = 0.5e18
+    t0_use_Tc_and_lng = 0
+    
+    t1_s0 = 0
+    t1_s1 = 2
+    t1_Eact = 1.
+    t1_r0 = 5.e13
+    t1_use_Tc_and_lng = 1
+    t1_Tc = 889.  
+    t1_lng = 60
+    
+    t2_s0 = 1
+    t2_s1 = 2
+    t2_Eact = 2.
+    t2_r0 = 1.e25
+    t2_use_Tc_and_lng = 1
+    t2_Tc = 653.
+    t2_lng = 25
+    
+    * end of parset 0
+  }
+  
+  pmi_abes {
+    * lambda0 = 1.e-3 # eV
+    dlambda_ds = 0.1 # eV / 1
+    * dlambda_dn = 0.2e-16
+    * dlambda_dp = 1.e-15
+  }
+  
+  pmi_heatcapacity {
+    cv = 1.3 # [J/(Kcm^3)]
+    dcv_dT = 1. 
+  }
+  
+  pmi_msc_heatcapacity {
+    cv = 1.3    # [J/(Kcm^3)]
+    dcv_dn = 0.   # [J/K]
+    dcv_dp = 0.   # [J/K]
+    dcv_dT = 0.   # [J/(K^2 cm^3)]
+    ref_T = 300.  # K
+    dcv_deT = 0.  # [J/(K^2 cm^3)]
+    dcv_dhT = 0.  # [J/(K^2 cm^3)]
+    dcv_ds = 0.3  # [J/(Kcm^3)]
+    ref_s = 1.    # [1]
+    s0 = 0    # state index of MSC
+  }
+  
+}
+
+Material = "Tungsten" {
+  
+  Kappa {
+    kappa = 1.75  # [W/(K cm)]
+    
+    kappa_b  = 0.0000e+00   # [W/(K^2 cm)]
+    kappa_c  = 0.0000e+00   # [W/(K^3 cm)]
+  }
+  
+  LatticeHeatCapacity {
+    cv = 2.58  # [J/(Kcm^3)]
+  }
+  
+  MetalResistivity { * Resist(T) = Resist0 * ( 1 + TempCoef * ( T - 273 ) )
+    Resist0 = 1.e-6    # [ohm*cm]
+    TempCoef        = 4.5000e-03    # [1/K]
+  }
+}
+

@@ -1,0 +1,19 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vR-2020.09-L1
+
+# --- simulation flow
+test python "" {}
+test x "1" {0}
+test y "1" {0}
+# --- variables
+# --- scenarios and parameter specs
+scenario default x ""
+scenario default y ""
+scenario stage_1 x ""
+scenario stage_1 y ""
+scenario stage_2 x ""
+scenario stage_2 y ""
+# --- simulation tree
+0 1 0 {} {stage_1 default} 0
+1 2 1 {0} {stage_1 default} 0
+2 3 2 {0} {stage_1 default} 0

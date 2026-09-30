@@ -1,0 +1,39 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vV-2024.03-L1, saved by gsub0
+
+# --- simulation flow
+sde sde "" {}
+sde type "p" {p} R
+sim1 sdevice "" {}
+sim1 spatial_dist "using_sfactor" {sfactor spatialshape none} V
+sim1 trap_type "eneutral" {FixedCharge Multiple_Traps} V
+sim1 conc "0" {0 1e18} V
+sim1 case "def" {def sf2 sf1 ss2 ss1} R
+# --- variables
+# --- scenarios and parameter specs
+scenario default type ""
+scenario default spatial_dist ""
+scenario default trap_type ""
+scenario default conc ""
+scenario default case ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {p} {default} 0
+2 3 2 {} {default} 0
+3 4 3 {sfactor} {default} 0
+4 7 4 {FixedCharge} {default} 0
+5 11 7 {0} {default} 0
+6 16 11 {sf1} {default} 0
+5 12 7 {1e18} {default} 0
+6 17 12 {sf2} {default} 0
+3 5 3 {spatialshape} {default} 0
+4 8 5 {FixedCharge} {default} 0
+5 13 8 {1e18} {default} 0
+6 18 13 {ss1} {default} 0
+4 9 5 {Multiple_Traps} {default} 0
+5 14 9 {1e18} {default} 0
+6 19 14 {ss2} {default} 0
+3 6 3 {none} {default} 0
+4 10 6 {FixedCharge} {default} 0
+5 15 10 {1e18} {default} 0
+6 20 15 {def} {default} 0

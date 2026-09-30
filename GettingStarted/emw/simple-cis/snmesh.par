@@ -1,0 +1,6 @@
+#define _ParFileDir par
+
+Material="Copper" {
+  #includeext "_ParFileDir/Copper.par"
+}
+

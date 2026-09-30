@@ -1,0 +1,7 @@
+#- $Id: //tcad/gemini/w2024.09/allTests/L1.5/GettingStarted/emw/simple3d/air-nk.par#1 $
+# optical data for air 
+  ComplexRefractiveIndex {
+    Formula = 0
+    n_0 = 1
+    k_0 = 0
+  }

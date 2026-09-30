@@ -1,0 +1,20 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vR-2020.09-L1
+
+# --- simulation flow
+sdevice sdevice "" {}
+sdevice pmi "pmi_currentplot" {pmi_currentplot pmi_float_currentplot}
+sdevice extPrec "1" {1 0}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default pmi ""
+scenario default extPrec ""
+# --- simulation tree
+0 2 0 {} {default} 0
+1 4 2 {pmi_currentplot} {default} 0
+2 1 4 {0} {default} 0
+3 6 1 {} {default} 0
+1 5 2 {pmi_float_currentplot} {default} 0
+2 3 5 {1} {default} 0
+3 7 3 {} {default} 0

@@ -1,0 +1,15 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vQ-2019.12-DEV
+
+# --- simulation flow
+sprocess sprocess "" {}
+svisual svisual "" {}
+svisual select "0" {asimplanted annealed}
+# --- variables
+# --- scenarios and parameter specs
+scenario default select ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {asimplanted} {default} 0
+2 4 2 {annealed} {default} 0

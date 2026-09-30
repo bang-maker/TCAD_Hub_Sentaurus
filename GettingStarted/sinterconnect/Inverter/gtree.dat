@@ -1,0 +1,12 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vS-2021.06-L1
+
+# --- simulation flow
+sinterconnect sinterconnect "" {}
+sinterconnect Electrostatic "1" {1}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Electrostatic ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {1} {default} 0

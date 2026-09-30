@@ -1,0 +1,167 @@
+DATEX2.1
+Datacode
+"$Id: //tcad/gemini/main/src/datexcodes/datexcodes.txt#129 $ $Author: bufler $ $DateTime: 2011/05/11 04:41:54 $"
+"Data codes for semiconductor process and device simulation"
+
+Materials {
+	Oxide1 {
+		label = "Oxide1"
+		group = Insulator
+		color = #ffff64
+	}
+	Oxide2 {
+		label = "Oxide2"
+		group = Insulator
+		color = #ffff64
+	}
+	Oxide3 {
+		label = "Oxide3"
+		group = Insulator
+		color = #ffff64
+	}
+	Oxide4 {
+		label = "Oxide4"
+		group = Insulator
+		color = #ffff64
+	}
+	Oxide5 {
+		label = "Oxide5"
+		group = Insulator
+		color = #ffff64
+	}
+	OxideBOX {
+		label = "OxideBOX"
+		group = Insulator
+		color = #ffff64
+	}
+	OxidePMD {
+		label = "OxidePMD"
+		group = Insulator
+		color = #555500
+	}
+	OxidePMD2 {
+		label = "OxidePMD2"
+		group = Insulator
+		color = #888800
+	}
+	Void {
+		label = "Void"
+		group = Insulator
+		color = #ffff64
+	}
+	SiON {
+		label = "SiON"
+		group = Insulator
+		color = #ffff64
+	}
+	Nitride2 {
+		label = "Nitride2"
+		group = Insulator
+		color = #ffff64
+	}
+	NitrideARC {
+		label = "NitrideARC"
+		group = Insulator
+		color = #ffff64
+	}
+	LowK {
+		label = "LowK"
+		group = Insulator
+		color = #ffff64
+	}
+	NAPF {
+		label = "NAPF"
+		group = Insulator
+		color = #ffff64
+	}
+	LowK0 {
+		label = "LowK0"
+		group = Insulator
+		color = #ffff64
+	}
+	OxideThermal {
+		label = "OxideThermal"
+		group = Insulator
+		color = #ffff64
+	}
+	OxideHM {
+		label = "OxideHM"
+		group = Insulator
+		color = #ffff64
+	}
+	SOC {
+		label = "SOC"
+		group = Insulator
+		color = #ffff64
+	}
+	SOG {
+		label = "SOG"
+		group = Insulator
+		color = #ffff64
+	}
+	ODL {
+		label = "ODL"
+		group = Insulator
+		color = #ffff64
+	}
+	SiN {
+		label = "SiN"
+		group = Insulator
+		color = #ffff64
+	}
+	CESL {
+		label = "CESL"
+		group = Insulator
+		color = #ffff64
+	}
+	SiOC {
+		label = "SiOC"
+		group = Insulator
+		color = #ffff64
+	}
+	BARC {
+		label = "BARC"
+		group = Insulator
+		color = #ffff64
+	}
+	SiCN {
+		label = "SiCN"
+		group = Insulator
+		color = #ffff64
+	}
+	SiliconP {
+		label = "SiliconP"
+		group = Semiconductor
+		color = #ffff64
+	}
+	SiliconN {
+		label = "SiliconN"
+		group = Semiconductor
+		color = #eec28f, #ffa580
+	}
+	SiGeB {
+		label = "SiGeB"
+		group = Semiconductor
+		color = #cdc8b1, #eec28f
+	}
+	SiliconSOI {
+		label = "SiliconSOI"
+		group = Semiconductor
+		color = #ffff64
+	}
+	SiGeP {
+		label = "SiGeP"
+		group = Semiconductor
+		color = #ffff64
+	}
+	TaN {
+		label = "TaN"
+		group = Conductor
+		color = #cdc9c9, #ffff64
+	}
+	TiAlN {
+		label = "TiAlN"
+		group = Conductor
+		color = #c0baa0, #ffff64
+	}
+}

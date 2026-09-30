@@ -1,0 +1,23 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vT-2022.03-L0
+
+# --- simulation flow
+svisualpy svisualpy "" {}
+svisualpy script_file "abs_list" {gauss.py get_data_quantiles.py get_gaussian.py get_histogram.py get_moments.py get_mos_ivs.py get_mos_weights.py get_qq.py get_sifm_stddev.py read_csv.py read_sifm.py write_csv.py}
+# --- variables
+# --- scenarios and parameter specs
+scenario default script_file ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {gauss.py} {default} 0
+1 3 1 {get_data_quantiles.py} {default} 0
+1 4 1 {get_gaussian.py} {default} 0
+1 5 1 {get_histogram.py} {default} 0
+1 6 1 {get_moments.py} {default} 0
+1 7 1 {get_mos_ivs.py} {default} 0
+1 8 1 {get_mos_weights.py} {default} 0
+1 9 1 {get_qq.py} {default} 0
+1 10 1 {get_sifm_stddev.py} {default} 0
+1 11 1 {read_csv.py} {default} 0
+1 12 1 {read_sifm.py} {default} 0
+1 13 1 {write_csv.py} {default} 0

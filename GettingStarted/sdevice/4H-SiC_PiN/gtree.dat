@@ -1,0 +1,79 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vT-2022.03-L1
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess Overlap "0" {0 1}
+sprocess miscut "4" {4}
+sprocess LJTE1 "25" {25}
+sprocess LJTE2 "25" {25}
+sprocess epithick "10" {10}
+sprocess implant "1" {1}
+sprocess particles "2000" {3000}
+sprocess anneal "1" {1}
+sprocess contact "1" {1}
+BV sdevice "" {}
+BV EP "80" {80}
+BV extra "0" {0}
+BV update "0" {0}
+BV slae "ILS" {ILS}
+BV amodel "Hatakeyama" {Okuto}
+BV res "1e16" {1e16}
+BV aniso "1" {1}
+BV_SV svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Overlap ""
+scenario default miscut ""
+scenario default LJTE1 ""
+scenario default LJTE2 ""
+scenario default epithick ""
+scenario default implant ""
+scenario default particles ""
+scenario default anneal ""
+scenario default contact ""
+scenario default EP ""
+scenario default extra ""
+scenario default update ""
+scenario default slae ""
+scenario default amodel ""
+scenario default res ""
+scenario default aniso ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {0} {default} 0
+2 4 2 {4} {default} 0
+3 6 4 {25} {default} 0
+4 8 6 {25} {default} 0
+5 10 8 {10} {default} 0
+6 12 10 {1} {default} 0
+7 14 12 {3000} {default} 0
+8 16 14 {1} {default} 0
+9 18 16 {1} {default} 0
+10 20 18 {} {default} 0
+11 22 20 {80} {default} 0
+12 24 22 {0} {default} 0
+13 26 24 {0} {default} 0
+14 28 26 {ILS} {default} 0
+15 30 28 {Okuto} {default} 0
+16 32 30 {1e16} {default} 0
+17 34 32 {1} {default} 0
+18 36 34 {} {default} 0
+1 3 1 {1} {default} 0
+2 5 3 {4} {default} 0
+3 7 5 {25} {default} 0
+4 9 7 {25} {default} 0
+5 11 9 {10} {default} 0
+6 13 11 {1} {default} 0
+7 15 13 {3000} {default} 0
+8 17 15 {1} {default} 0
+9 19 17 {1} {default} 0
+10 21 19 {} {default} 0
+11 23 21 {80} {default} 0
+12 25 23 {0} {default} 0
+13 27 25 {0} {default} 0
+14 29 27 {ILS} {default} 0
+15 31 29 {Okuto} {default} 0
+16 33 31 {1e16} {default} 0
+17 35 33 {1} {default} 0
+18 37 35 {} {default} 0

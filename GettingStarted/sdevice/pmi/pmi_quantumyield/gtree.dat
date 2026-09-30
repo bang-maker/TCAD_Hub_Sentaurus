@@ -1,0 +1,13 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vR-2020.09-L1
+
+# --- simulation flow
+sdevice sdevice "" {}
+sdevice QY "builtin" {builtin pmi}
+# --- variables
+# --- scenarios and parameter specs
+scenario default QY ""
+# --- simulation tree
+0 2 0 {} {default} 0
+1 1 2 {builtin} {default} 0
+1 3 2 {pmi} {default} 0

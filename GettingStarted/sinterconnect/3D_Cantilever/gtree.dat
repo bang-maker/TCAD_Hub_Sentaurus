@@ -1,0 +1,18 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vH-2013.03-DEV, Tue Nov  6 17:17:50 2012
+
+# --- simulation flow
+sinterconnect sinterconnect "" {}
+sinterconnect res "0.3" {0.3}
+sinterconnect l "50" {50}
+sinterconnect p "-0.03" {-0.03}
+# --- variables
+# --- scenarios and parameter specs
+scenario default res ""
+scenario default l ""
+scenario default p ""
+# --- simulation tree
+0 1 0 {} {default}
+1 2 1 {0.3} {default}
+2 3 2 {50} {default}
+3 4 3 {-0.03} {default}

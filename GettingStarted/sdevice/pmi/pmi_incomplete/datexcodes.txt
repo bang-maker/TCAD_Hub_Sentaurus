@@ -1,0 +1,65 @@
+! Copyright (c) 1994-2014 Synopsys, Inc.
+! This file and the associated documentation are proprietary to
+! Synopsys, Inc.  This file may only be used in accordance with the
+! terms and conditions of a written license agreement with Synopsys,
+! Inc.  All other use, reproduction, or distribution of this file is
+! strictly prohibited.
+!
+DATEX2.1
+Datacode
+"$Id: //tcad/gemini/main/src/dessis/Test/pmi_incomplete/datexcodes.txt#7 $ $Author: vonmatt $ $DateTime: 2012/09/13 10:28:07 $"
+"Data codes for semiconductor process and device simulation"
+
+Variables {
+
+    NitrogenDoping {
+        label     = "total (chemical) Nitrogen concentration"
+        symbol    = "NitrogenTotal"
+        unit      = "cm^-3"
+        factor    = 1.0e+12
+        precision = 4
+        interpol  = log
+        material  = Semiconductor
+        alter1    = N
+        alter2    = 2
+        doping    = donor (
+                      ionized = NitrogenPlusDoping
+                    )
+    }
+
+    NitrogenPlusDoping {
+        label     = "Nitrogen+ concentration (incomplete ionization)"
+        symbol    = "N-Nitrogen+"
+        unit      = "cm^-3"
+        factor    = 1.0e+12
+        precision = 4
+        interpol  = log
+        material  = Semiconductor
+    }
+
+    AlDoping {
+        label     = "total (chemical) Al concentration"
+        symbol    = "AlTotal"
+        unit      = "cm^-3"
+        factor    = 1.0e+12
+        precision = 4
+        interpol  = log
+        material  = Semiconductor
+        alter1    = Al
+        alter2    = 2
+        doping    = acceptor (
+                      ionized = AlMinusDoping
+                    )
+    }
+
+    AlMinusDoping {
+        label     = "Al- concentration (incomplete ionization)"
+        symbol    = "P-Al-"
+        unit      = "cm^-3"
+        factor    = 1.0e+12
+        precision = 4
+        interpol  = log
+        material  = Semiconductor
+    }
+
+}

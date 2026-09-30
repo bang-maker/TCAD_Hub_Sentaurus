@@ -1,0 +1,45 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vG-2012.06-DEV, Wed Nov  7 09:59:58 2012
+
+# --- simulation flow
+sinterconnect sinterconnect "" {}
+sinterconnect METAL1 "Aluminum" {Aluminum}
+sinterconnect METAL2 "Copper" {Copper}
+sinterconnect M1_DEPO "1" {1}
+sinterconnect M1_LITHO "1" {1}
+sinterconnect OX_DEPO "1" {1}
+sinterconnect OX_LITHO "1" {1}
+sinterconnect M2_DEPO "1" {1}
+sinterconnect M2_LITHO "1" {1}
+sinterconnect M3_DEPO_LITHO "1" {1}
+sinterconnect REMESH "1" {1}
+sinterconnect CONTACT "1" {1}
+sinterconnect MATRICES "1" {1}
+# --- variables
+# --- scenarios and parameter specs
+scenario default METAL1 ""
+scenario default METAL2 ""
+scenario default M1_DEPO ""
+scenario default M1_LITHO ""
+scenario default OX_DEPO ""
+scenario default OX_LITHO ""
+scenario default M2_DEPO ""
+scenario default M2_LITHO ""
+scenario default M3_DEPO_LITHO ""
+scenario default REMESH ""
+scenario default CONTACT ""
+scenario default MATRICES ""
+# --- simulation tree
+0 1 0 {} {default}
+1 2 1 {Aluminum} {default}
+2 3 2 {Copper} {default}
+3 4 3 {1} {default}
+4 5 4 {1} {default}
+5 6 5 {1} {default}
+6 7 6 {1} {default}
+7 8 7 {1} {default}
+8 9 8 {1} {default}
+9 10 9 {1} {default}
+10 11 10 {1} {default}
+11 12 11 {1} {default}
+12 13 12 {1} {default}

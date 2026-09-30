@@ -1,0 +1,21 @@
+DEVICE tres
+  ELECTRODES
+    u1 // input voltage 1
+    u2 // input voltage 2
+  
+  THERMODES
+    t1 // thermode for Joule heat
+  
+  INTERNALS
+    i // current through resistor
+  
+  PARAMETERS
+    double r = 1 // resistance
+    double alpha = 0 // linear temperature coefficient
+    double beta = 0 // quadratic temperature coefficient
+    double tref = 300.15 // reference temperature
+END DEVICE
+
+PSET tres_pset
+  DEVICE tres
+END PSET

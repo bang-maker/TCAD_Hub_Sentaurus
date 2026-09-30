@@ -1,0 +1,29 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vP-2019.03-L1-181120, Fri Nov 23 15:32:43 2018
+
+# --- simulation flow
+SPtoSD cshell "-f" {}
+vtc sdevice "" {}
+vtc vdd "1.6" {1.5}
+vtc vin "1.4" {1.3}
+vtc wnmos "7" {7}
+vtc wpmos "14" {14}
+vtc_SV svisual "" {}
+switching sdevice "" {}
+switching_SV svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default vdd ""
+scenario default vin ""
+scenario default wnmos ""
+scenario default wpmos ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {1.5} {default} 0
+3 4 3 {1.3} {default} 0
+4 5 4 {7} {default} 0
+5 6 5 {14} {default} 0
+6 7 6 {} {default} 0
+7 8 7 {} {default} 0
+8 9 8 {} {default} 0

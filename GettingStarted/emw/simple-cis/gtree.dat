@@ -1,0 +1,83 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vT-2022.03-L1
+
+# --- simulation flow
+pixel sde "" {}
+pixel geo "_" {_}
+pixel t_sub "1" {1}
+beol sde "" {}
+beol MeStack "1" {1}
+beol Lens "1" {1}
+beol r_Lens "0.5" {0.4}
+snmesh snmesh "" {}
+snmesh wavelength "0.94" {0.6}
+snmesh npw "5" {15}
+snmesh npwz "_" {20}
+snmesh fmax "2" {1.5}
+emw emw "-hw @gpu@ --profile" {}
+emw model "dispersive_plot" {plot_transSens}
+emw tol "1e-2" {20}
+emw Nrise "4" {4}
+emw movieCuts "Ex_Gzpoly" {Ex}
+emw movieTickStep "0" {100}
+emw nthreads "8" {4}
+emw gpu "none" {none}
+svisual svisual "" {}
+movie svisual "-ss" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default geo ""
+scenario default t_sub ""
+scenario default MeStack ""
+scenario default Lens ""
+scenario default r_Lens ""
+scenario default wavelength ""
+scenario default npw ""
+scenario default npwz ""
+scenario default fmax ""
+scenario default model ""
+scenario default tol ""
+scenario default Nrise ""
+scenario default movieCuts ""
+scenario default movieTickStep ""
+scenario default nthreads ""
+scenario default gpu ""
+scenario integrVar geo ""
+scenario integrVar t_sub ""
+scenario integrVar MeStack ""
+scenario integrVar Lens ""
+scenario integrVar r_Lens ""
+scenario integrVar wavelength ""
+scenario integrVar npw ""
+scenario integrVar npwz ""
+scenario integrVar fmax ""
+scenario integrVar model ""
+scenario integrVar tol ""
+scenario integrVar Nrise ""
+scenario integrVar movieCuts ""
+scenario integrVar movieTickStep ""
+scenario integrVar nthreads ""
+scenario integrVar gpu ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {_} {default} 0
+2 3 2 {1} {default} 0
+3 4 3 {} {default} 0
+4 5 4 {1} {default} 0
+5 6 5 {1} {default} 0
+6 7 6 {0.4} {default} 0
+7 8 7 {} {default} 0
+8 9 8 {0.6} {default} 0
+9 10 9 {15} {default} 0
+10 11 10 {20} {default} 0
+11 12 11 {1.5} {default} 0
+12 13 12 {} {default} 0
+13 14 13 {plot_transSens} {default} 0
+14 15 14 {20} {default} 0
+15 16 15 {4} {default} 0
+16 17 16 {Ex} {default} 0
+17 18 17 {100} {default} 0
+18 19 18 {4} {default} 0
+19 20 19 {none} {default} 0
+20 21 20 {} {default} 0
+21 22 21 {} {default} 0

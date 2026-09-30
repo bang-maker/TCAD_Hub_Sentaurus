@@ -1,0 +1,15 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vJ-2014.09-DEV, Tue Jun 10 14:43:47 2014
+
+# --- simulation flow
+sinterconnect sinterconnect "" {}
+sinterconnect Mechanical "1" {1}
+sinterconnect ElectroThermal "1" {1}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Mechanical ""
+scenario default ElectroThermal ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {1} {default} 0
+2 3 2 {1} {default} 0

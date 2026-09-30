@@ -1,0 +1,18 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vcurrent, saved by gsub0
+
+# --- simulation flow
+geometry sde "" {} { geometry_dvs.cmd commands}
+doping sde "" {} { doping_dvs.cmd commands}
+soifet sde "" {}
+soifet_parameterized sde "" {}
+soifet_parameterized Tox "0.004" {0.004} R
+# --- variables
+# --- scenarios and parameter specs
+scenario default Tox ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {} {default} 0
+3 4 3 {} {default} 0
+4 5 4 {0.004} {default} 0

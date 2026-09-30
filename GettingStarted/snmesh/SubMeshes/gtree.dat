@@ -1,0 +1,13 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vM-2016.12-DEV, Mon Sep 26 15:30:35 2016
+
+# --- simulation flow
+SubMesh1d snmesh "" {}
+SubMesh2d snmesh "" {}
+SubMesh2dII snmesh "" {}
+# --- variables
+# --- scenarios and parameter specs
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {} {default} 0

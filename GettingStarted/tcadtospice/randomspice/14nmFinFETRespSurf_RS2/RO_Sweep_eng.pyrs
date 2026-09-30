@@ -1,0 +1,102 @@
+#setdep @node|BuildLibrary:all@
+
+# Generic Python imports
+from itertools import product
+from mako.template import Template
+# Helper imports
+from plt3d_helpers import multiDimSurfaceMatrix
+
+#########################################################################################################
+#########################################################################################################
+# Parameter setup: RandomSpice application and FoM calculation settings					#
+#########################################################################################################
+#########################################################################################################
+
+# Set up the basics for the RandomSpice application
+randomspice.wait	= False
+randomspice.clear_data  = True
+
+# For net manipulation
+base_inputfile_name		= "@pwd@/@nodedir@/pp@node@_eng.rs2"
+randomspice.inputfile		= base_inputfile_name
+
+# Simulation parameters
+sampling		= 5
+
+#########################################################################################################
+#########################################################################################################
+# Database interactions:										#
+#   - pull out DoE midpoint nodes									#
+#   - pull out remapped names from the "BuildLibrary" stage						#
+#   - pull out all DoE axes, and calculate min/max ranges from the "UploadData" stage   		#
+#########################################################################################################
+#########################################################################################################
+
+# Set up metadata for simulations
+build_library 	= dbi.get_project(swb__tool_label="BuildLibrary")
+remap_names	= build_library.metadata["remap_names"]
+
+n_device        = remap_names['nMOS']+":nmos"
+p_device        = remap_names['pMOS']+":pmos"
+
+# setup a doe parameter sweep
+axes_sweeps	= {}
+axes_df 	= pd.DataFrame(build_library.metadata["axes_df"])
+
+#########################################################################################################
+#########################################################################################################
+# Sctual SPICE simulation launching step, 								#
+#   - step through DoE points using "sampling" points and simulate at each process condition		#
+#   - in this case we get 5^sampling, as there are 5 axes of 						#
+#     process considered (l,tfin,hfin,afin,tspacer)							#
+#########################################################################################################
+#########################################################################################################
+# Set up the sampling points for each axis
+axes_list=list(axes_df.columns)
+for k in axes_list:
+     axes_sweeps[k]=np.linspace(min(axes_df[k]),max(axes_df[k]), sampling)
+
+for i,ax in enumerate(product(*axes_sweeps.values())):
+
+    doe_point = {axes_list[ii]:ax[ii] for ii in range(len(ax))}
+
+    randomspice.rs2file.SetOption('database', 'dataset', f"@node@-ro-{i+1}")
+    randomspice.rs2file.SetOption('models', f'instance_params_{n_device}', doe_point)
+    randomspice.rs2file.SetOption('models', f'instance_params_{p_device}', doe_point)
+    randomspice.rs2file.SetOption('models', 'mapping', str({"nmos":n_device, "pmos":p_device}))
+
+    # add new inputfile and simulate
+    print(f"Stepping to DoE point: {doe_point}")
+    randomspice.simulate()
+    if i%100 == 0:
+        randomspice.Wait()
+    i+=1
+
+#########################################################################################################
+#########################################################################################################
+# Retrieveing data from the DB, and associating this data with the DoE conditions			#
+#########################################################################################################
+#########################################################################################################
+
+randomspice.Wait()
+pdata=pd.DataFrame()
+for i,ax in enumerate(product(*axes_sweeps.values())):
+
+    print(i,ax)
+    data={axes_list[j]:ax[j] for j in range(len(axes_list))}
+    print(data)
+
+    data.update(dbi.get_data(project=node_prj.name, \
+                parent=f"@node@-ro-{i+1}").data)
+    pdata=pd.concat([pdata, pd.DataFrame(data, index=[0])])
+
+pdata.to_csv(f"@pwd@/n@node@_RO_data.csv", index=False)
+multiDimSurfaceMatrix(pdata, axes_list, "freq", sampling=11,fontsize=20, outpath="./",prefix="@node@_", errorplot=False, errorlims=10)
+
+
+pdata.drop("circuit", axis=1, inplace=True)
+pdata=pdata[axes_list+["freq","pwr","leakage"]]
+plotter._dist_data=[pdata]
+plotter.plot_scatter_matrix(filename=f"{garand.workdir}/n@node@_RO_scatterplot")
+
+

@@ -1,0 +1,93 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vR-2020.09-SP1
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess xMole "0.0" {0.2}
+sprocess ThickBarr "0.012" {0.014}
+sprocess Ls "0.25" {0.25}
+sprocess Lsg "0.2" {0.5}
+sprocess Lg "1.0" {1.0}
+sprocess Lgd "0.2" {4.0}
+sprocess Lgfp "0.1" {0.3}
+sprocess Lfp "0.75" {1.00}
+sprocess Ldfp "0.1" {0.1}
+sprocess Ld "0.25" {0.25}
+sprocess pGateMg "1e19" {5e19}
+sprocess WaferDirection "0:0:1" {0:0:1}
+sprocess SliceDirection "110" {1:1:0}
+sprocess backend "-" {-}
+sprocess contacts "-" {-}
+IdVg sdevice "" {}
+IdVg aniso "yes" {yes}
+IdVg Tl "297" {298}
+IdVg complete "no" {yes}
+IdVg StrainFrom "model" {file model stress}
+IdVg Vds "10" {15 1}
+IdVg Vgs "5" {4}
+vis_IdVg svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default xMole ""
+scenario default ThickBarr ""
+scenario default Ls ""
+scenario default Lsg ""
+scenario default Lg ""
+scenario default Lgd ""
+scenario default Lgfp ""
+scenario default Lfp ""
+scenario default Ldfp ""
+scenario default Ld ""
+scenario default pGateMg ""
+scenario default WaferDirection ""
+scenario default SliceDirection ""
+scenario default backend ""
+scenario default contacts ""
+scenario default aniso ""
+scenario default Tl ""
+scenario default complete ""
+scenario default StrainFrom ""
+scenario default Vds ""
+scenario default Vgs ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {0.2} {default} 0
+2 3 2 {0.014} {default} 0
+3 4 3 {0.25} {default} 0
+4 5 4 {0.5} {default} 0
+5 6 5 {1.0} {default} 0
+6 7 6 {4.0} {default} 0
+7 8 7 {0.3} {default} 0
+8 9 8 {1.00} {default} 0
+9 10 9 {0.1} {default} 0
+10 11 10 {0.25} {default} 0
+11 12 11 {5e19} {default} 0
+12 13 12 {0:0:1} {default} 0
+13 14 13 {1:1:0} {default} 0
+14 15 14 {-} {default} 0
+15 16 15 {-} {default} 0
+16 17 16 {} {default} 0
+17 18 17 {yes} {default} 0
+18 19 18 {298} {default} 0
+19 20 19 {yes} {default} 0
+20 21 20 {file} {default} 0
+21 24 21 {15} {default} 0
+22 30 24 {4} {default} 0
+23 36 30 {} {default} 1
+21 25 21 {1} {default} 0
+22 31 25 {4} {default} 0
+23 37 31 {} {default} 1
+20 22 20 {model} {default} 0
+21 26 22 {15} {default} 0
+22 32 26 {4} {default} 0
+23 38 32 {} {default} 1
+21 27 22 {1} {default} 0
+22 33 27 {4} {default} 0
+23 39 33 {} {default} 1
+20 23 20 {stress} {default} 0
+21 28 23 {15} {default} 0
+22 34 28 {4} {default} 0
+23 40 34 {} {default} 1
+21 29 23 {1} {default} 0
+22 35 29 {4} {default} 0
+23 41 35 {} {default} 0

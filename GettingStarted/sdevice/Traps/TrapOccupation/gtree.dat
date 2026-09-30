@@ -1,0 +1,27 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-L1, Wed May 24 09:26:04 2017
+
+# --- simulation flow
+sde sde "" {}
+sde type "p" {p}
+sim1 sdevice "" {}
+sim1 trap_type "eneutral" {eneutral}
+sim1 bias "level" {0}
+sim1 shift "-0.2" {-0.4 -0.1 0 0.1 0.3}
+# --- variables
+# --- scenarios and parameter specs
+scenario default type ""
+scenario default trap_type ""
+scenario default bias ""
+scenario default shift ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {p} {default} 0
+2 3 2 {} {default} 0
+3 4 3 {eneutral} {default} 0
+4 5 4 {0} {default} 0
+5 6 5 {-0.4} {default} 0
+5 7 5 {-0.1} {default} 0
+5 8 5 {0} {default} 0
+5 9 5 {0.1} {default} 0
+5 10 5 {0.3} {default} 0

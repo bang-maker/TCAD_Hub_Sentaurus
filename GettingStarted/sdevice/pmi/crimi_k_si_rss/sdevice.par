@@ -1,0 +1,14 @@
+pmi_criRss {
+  Egone0 = 1.1557 * eV
+  Egtwo0 = 2.5 * eV
+  Egd0 = 3.2 * eV
+  Ep1 = 0.01827 * eV
+  Ep2 = 0.05773 * eV
+  C1 = 5.5 * 1
+  C2 = 4.0 * 1
+  A1 = 3.231e2 * cm^-1eV^-2
+  A2 = 7.237e3 * cm^-1eV^-2
+  Ad = 1.052e6 * cm^-1eV^-2
+  Beta = 7.021e-04 * eV/K
+  Gamma = 1108 * K
+} 

@@ -1,0 +1,17 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vO-2018.06-SP1, Fri Nov 23 12:15:17 2018
+
+# --- simulation flow
+SJ_IGBT sprocess "" {}
+SJ_IGBT PT "100.0" {100.0}
+SJ_IGBT dmesh "1.0" {1.0}
+mq python "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default PT ""
+scenario default dmesh ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {100.0} {default} 0
+2 3 2 {1.0} {default} 0
+3 4 3 {} {default} 0

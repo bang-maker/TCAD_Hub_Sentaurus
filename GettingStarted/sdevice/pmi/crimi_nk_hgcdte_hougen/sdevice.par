@@ -1,0 +1,12 @@
+* Copyright (c) 1994-2020 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+Material = "HgCdTe" {
+  crimi_nk_hgcdte_hougen {
+    Formula = 3 # 1 = real part only, 2 = imag part only, 3 = both parts, 3 is default
+  } 
+}

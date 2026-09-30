@@ -1,0 +1,67 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vU-2022.12-L1
+
+# --- simulation flow
+tool1 sprocess "-n" {}
+tool1 param1 "1" {1 2 3 4 5}
+tool2 sde "" {}
+tool2 param2 "ABC" {ABC DEF}
+tool3 svisualpy "" {}
+tool3 param3 "lin" {lin log}
+# --- variables
+# --- scenarios and parameter specs
+scenario default param1 ""
+scenario default param2 ""
+scenario default param3 ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {1} {default} 0
+2 7 2 {} {default} 0
+3 12 7 {ABC} {default} 0
+4 22 12 {} {default} 0
+5 32 22 {lin} {default} 0
+5 33 22 {log} {default} 0
+3 13 7 {DEF} {default} 0
+4 23 13 {} {default} 0
+5 34 23 {lin} {default} 0
+5 35 23 {log} {default} 0
+1 3 1 {2} {default} 0
+2 8 3 {} {default} 0
+3 14 8 {ABC} {default} 0
+4 24 14 {} {default} 0
+5 36 24 {lin} {default} 0
+5 37 24 {log} {default} 0
+3 15 8 {DEF} {default} 0
+4 25 15 {} {default} 0
+5 38 25 {lin} {default} 0
+5 39 25 {log} {default} 0
+1 4 1 {3} {default} 0
+2 9 4 {} {default} 0
+3 16 9 {ABC} {default} 0
+4 26 16 {} {default} 0
+5 40 26 {lin} {default} 0
+5 41 26 {log} {default} 0
+3 17 9 {DEF} {default} 0
+4 27 17 {} {default} 0
+5 42 27 {lin} {default} 0
+5 43 27 {log} {default} 0
+1 5 1 {4} {default} 0
+2 10 5 {} {default} 0
+3 18 10 {ABC} {default} 0
+4 28 18 {} {default} 0
+5 44 28 {lin} {default} 0
+5 45 28 {log} {default} 0
+3 19 10 {DEF} {default} 0
+4 29 19 {} {default} 0
+5 46 29 {lin} {default} 0
+5 47 29 {log} {default} 0
+1 6 1 {5} {default} 0
+2 11 6 {} {default} 0
+3 20 11 {ABC} {default} 0
+4 30 20 {} {default} 0
+5 48 30 {lin} {default} 0
+5 49 30 {log} {default} 0
+3 21 11 {DEF} {default} 0
+4 31 21 {} {default} 0
+5 50 31 {lin} {default} 0
+5 51 31 {log} {default} 0

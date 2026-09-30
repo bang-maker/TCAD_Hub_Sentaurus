@@ -1,0 +1,37 @@
+# Sentaurus layout information - Wed Oct 24 15:36:06 CEST 2012
+# version - G-2012.06-SP1.322245 (Production)
+# file: 
+# cell: base
+# Cell transform info - 1.0 0.0 0 0.0 0.0
+default winding 1
+layout new base -dbu 1e-09
+layer add 0:0
+layer configure 0:0 -name {} -fill #ff0000 -pattern fill12 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 1:0
+layer configure 1:0 -name {} -fill #00ff00 -pattern fill12-a -outline #00ff00 -lineStyle solid -lineWidth 1 
+layer add 2:0
+layer configure 2:0 -name {} -fill #0000ff -pattern fill12-b -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 3:0
+layer configure 3:0 -name {} -fill #ffff00 -pattern fill12-c -outline #ffff00 -lineStyle solid -lineWidth 1 
+layer add 4:0
+layer configure 4:0 -name {} -fill #ff00ff -pattern fill12 -outline #ff00ff -lineStyle solid -lineWidth 1 
+layer add 5:0
+layer configure 5:0 -name {} -fill #ff0099 -pattern fill12 -outline #ff0099 -lineStyle solid -lineWidth 1 
+layer add 6:0
+layer configure 6:0 -name {} -fill #9999ff -pattern fill88 -outline #9999ff -lineStyle solid -lineWidth 1 
+highlight add {-269.0 -96.0 1439.0 1083.0} SIM3D1
+polygon -layer 1:0 { -220.0 210.0 60.0 210.0 60.0 -70.0 -220.0 -70.0 } 
+polygon -layer 1:0 { 20.0 120.0 20.0 20.0 620.0 20.0 620.0 120.0 } 
+polygon -layer 1:0 { 430.0 750.0 710.0 750.0 710.0 470.0 430.0 470.0 } 
+polygon -layer 1:0 { 520.0 20.0 620.0 20.0 620.0 620.0 520.0 620.0 } 
+polygon -layer 2:0 { 1020.0 670.0 1380.0 670.0 1380.0 1020.0 1020.0 1020.0 } 
+polygon -layer 2:0 { 390.0 440.0 750.0 440.0 750.0 790.0 390.0 790.0 } 
+polygon -layer 2:0 { 670.0 790.0 1120.0 790.0 1120.0 690.0 670.0 690.0 } 
+polygon -layer 3:0 { 500.0 530.0 650.0 530.0 650.0 690.0 500.0 690.0 } 
+polygon -layer 4:0 { -170.0 -20.0 -170.0 160.0 10.0 160.0 10.0 -20.0 } 
+polygon -layer 5:0 { 1130.0 740.0 1130.0 960.0 1350.0 960.0 1350.0 740.0 } 
+polygon -layer 6:0 { 10.0 1093.0 10.0 -106.0 190.0 -106.0 190.0 1093.0 } 
+polygon -layer 6:0 { 440.0 1093.0 440.0 -106.0 620.0 -106.0 620.0 1093.0 } 
+polygon -layer 6:0 { 970.0 1093.0 970.0 -106.0 1150.0 -106.0 1150.0 1093.0 } 
+select clear
+catch {view default }

@@ -1,0 +1,18 @@
+###########################################
+# Sentaurus Visual W-2024.09.
+# Tcl log file.
+#------------------------------------------
+# Date: Apr 07, 2026. 14:23:21.
+# Version: 2024.09.9150440
+# Mode: Interactive (GUI).
+# Mesa: enabled.
+# Hostname: localhost.localdomain.
+# Machine: Linux, x86_64, linux64.
+# Kernel: 4.18.0-514.el8.x86_64.
+###########################################
+
+load_script_file /home/workstation/STDB/tmp/14nmFinFETRespSurf_NoLV.vis.cmd
+cd /home/workstation/STDB/tmp
+#!-> Error: load_script_file: '/home/workstation/STDB/tmp/14nmFinFETRespSurf_NoLV.vis.cmd': Error: load_script_file: filename needs to be specified.. (line 17).
+exit 0
+ 

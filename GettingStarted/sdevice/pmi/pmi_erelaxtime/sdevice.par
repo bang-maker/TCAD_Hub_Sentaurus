@@ -1,0 +1,21 @@
+EnergyRelaxationTime {
+  * Energy relaxation times in picoseconds
+  tau_w_ele = 0.3   # [ps]
+  tau_w_hol = 0.25  # [ps]
+}
+
+
+pmi_erelaxtime {
+  tau_const_e = 0.3e-12   # [s]
+  tau_const_h = 0.25e-12  # [s]
+}
+
+pmi_rational {
+  a_e = 0.8e-12   # [s]
+  b_e = 3e-10     # [K*s]
+  c_e = 857       # [K]
+  a_h = 0.25e-12  # [s]
+  b_h = 0         # [K*s]
+  c_h = 0         # [K]
+}
+

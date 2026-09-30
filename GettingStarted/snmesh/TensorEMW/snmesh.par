@@ -1,0 +1,23 @@
+Material = "Insulator1" {
+  ComplexRefractiveIndex {
+    Formula = 0
+    n_0 = 2.4
+    k_0 = 0
+  }
+}
+
+Material = "Insulator2" {
+  ComplexRefractiveIndex {
+    Formula = 0
+    n_0 = 2.0
+    k_0 = 0
+  }
+}
+
+Material = "Insulator3" {
+  ComplexRefractiveIndex {
+    Formula = 0
+    n_0 = 1.6
+    k_0 = 0
+  }
+}

@@ -1,0 +1,12 @@
+Bennett { 
+  * deltaEg = dEg0 + Ebgn (ln(N/Nref))^2
+  * dEg0 is defined in BandGap section 
+  Ebgn  = 6.84e-3     # [eV]
+  Nref  = 3.162e18    # [cm^-3]
+}
+
+
+pmi_bgn {
+  Ebgn  = 6.84e-3
+  Nref  = 3.162e18
+}

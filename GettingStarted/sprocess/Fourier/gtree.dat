@@ -1,0 +1,16 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vL-2016.03-SP1, Tue Aug 16 10:14:40 2016
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess1 sprocess "" {}
+sprocess1 eTYPE "0" {polygon trapezoidal fourier}
+# --- variables
+# --- scenarios and parameter specs
+scenario default eTYPE ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {polygon} {default} 0
+2 4 2 {trapezoidal} {default} 0
+2 5 2 {fourier} {default} 0

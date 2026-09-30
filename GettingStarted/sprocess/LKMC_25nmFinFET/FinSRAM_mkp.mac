@@ -1,0 +1,60 @@
+# Sentaurus markup information - Tue Jul 26 02:09:46 PDT 2011
+# version - D-2010.06-8.263326 (Production)
+default winding 1
+layout open FinSRAM.gds SRAM
+cell transform 1.0 0.0 0 0.0 0.0
+layer add 0:0
+layer configure 0:0 -name FIN -fill #ff0000 -pattern fill12 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 1:0
+layer configure 1:0 -name GATE -fill #00ff00 -pattern fill12-a -outline #00ff00 -lineStyle solid -lineWidth 1 
+layer add 2:0
+layer configure 2:0 -name CONTACT -fill #ffffff -pattern fill12-b -outline #ffffff -lineStyle solid -lineWidth 1 
+layer add 3:0
+layer configure 3:0 -name NWELL -fill #ffff00 -pattern fill12-c -outline #ffff00 -lineStyle solid -lineWidth 1 
+layer add 4:0
+layer configure 4:0 -name Gate_ACC1 -fill #0000ff -pattern fill12 -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 5:0
+layer configure 5:0 -name Drain_ACC1 -fill #0000ff -pattern fill50 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 6:0
+layer configure 6:0 -name PD1 -fill #0000ff -pattern fill12 -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 7:0
+layer configure 7:0 -name PS1 -fill #0000ff -pattern fill12 -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 8:0
+layer configure 8:0 -name Gate_ACC2 -fill #0000ff -pattern fill12 -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 9:0
+layer configure 9:0 -name Drain_ACC2 -fill #0000ff -pattern fill50 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 10:0
+layer configure 10:0 -name PD2 -fill #0000ff -pattern fill12 -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 11:0
+layer configure 11:0 -name PS2 -fill #0000ff -pattern fill12 -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 12:0
+layer configure 12:0 -name Source_P1 -fill #0000ff -pattern fill12 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 13:0
+layer configure 13:0 -name Drain_P1 -fill #0000ff -pattern fill12 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 14:0
+layer configure 14:0 -name Source_P2 -fill #0000ff -pattern fill12 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 15:0
+layer configure 15:0 -name Drain_P2 -fill #0000ff -pattern fill12 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 16:0
+layer configure 16:0 -name Gate_N1 -fill #0000ff -pattern fill12 -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 17:0
+layer configure 17:0 -name Gate_N2 -fill #0000ff -pattern fill12 -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 18:0
+layer configure 18:0 -name Gate_P1 -fill #0000ff -pattern fill12 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 19:0
+layer configure 19:0 -name Gate_P2 -fill #0000ff -pattern fill12 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 20:0
+layer configure 20:0 -name Gate_A1 -fill #999900 -pattern fill12 -outline #ff0000 -lineStyle solid -lineWidth 1 
+layer add 21:0
+layer configure 21:0 -name Gate_A2 -fill #999900 -pattern fill12 -outline #ff0000 -lineStyle solid -lineWidth 1 
+cell edit_state 1
+polygon -layer 20:0 {108.0 182.5 108.0 207.5 142.0 207.5 142.0 182.5 }
+polygon -layer 21:0 {343.5 52.5 343.5 77.5 379.0 77.5 379.0 52.5 }
+gauge add {125.5 65.0 125.5 0.0} TN2D
+gauge add {197.5 65.0 197.5 0.0} TP2D
+highlight add {0.0 195.0 76.0 260.0} TACC
+highlight add {100.5 0.0 125.5 65.0} TN
+highlight add {162.0 0.0 197.5 65.0} TP
+highlight add {0.0 0.0 487.0 260.0} SRAM10T
+select clear
+catch {view default }

@@ -1,0 +1,18 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vM-2016.12-DEV, Wed Sep 21 10:03:05 2016
+
+# --- simulation flow
+sde sde "" {}
+snmesh snmesh "" {}
+snmesh wavelength "0.5" {0.6}
+emw emw "" {}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default wavelength ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {0.6} {default} 0
+3 4 3 {} {default} 0
+4 5 4 {} {default} 0

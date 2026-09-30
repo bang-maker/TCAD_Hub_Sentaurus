@@ -1,0 +1,24 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vP-2019.03-DEV, Mon Nov 26 17:53:45 2018
+
+# --- simulation flow
+nmos sde "" {}
+nmos nLg "0.15" {0.13}
+pmos sde "" {}
+pmos pLg "0.12" {0.13}
+osci sdevice "" {}
+osci vdd "1.6" {2.0}
+visIV svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default nLg ""
+scenario default pLg ""
+scenario default vdd ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {0.13} {default} 0
+2 3 2 {} {default} 0
+3 4 3 {0.13} {default} 0
+4 5 4 {} {default} 0
+5 6 5 {2.0} {default} 0
+6 7 6 {} {default} 0

@@ -1,0 +1,8 @@
+# Copyright (C) 1994-2005 Synopsys Inc.
+# gtree vF-2011.09-DEV, Tue Jul 12 09:30:05 2011
+# --- simulation flow
+tdx tdx "" {}
+# --- variables
+# --- scenarios and parameter specs
+# --- simulation tree
+0 1 0 {} {default}

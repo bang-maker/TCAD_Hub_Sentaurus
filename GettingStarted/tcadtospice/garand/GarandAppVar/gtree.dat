@@ -1,0 +1,105 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vQ-2019.12
+
+# --- simulation flow
+Variability_IdVg enigma_garand "" {}
+Variability_IdVg Type "nMOS" {pMOS nMOS}
+Variability_IdVg tdr "none" {INPUTS/n1220_msh.tdr INPUTS/n1256_msh.tdr}
+Variability_IdVg lgate "24e-9" {0.010}
+Variability_IdVg workfn "4.8782" {4.83 4.5}
+Variability_IdVg Vdd_nom "-0.8" {-0.7 0.7}
+Variability_IdVg Vdd_lin "-0.05" {-0.05 0.05}
+Variability_IdVg drain_con "drain" {drain}
+Variability_IdVg gate_con "gate" {gate}
+Variability_IdVg source_con "source" {source}
+Variability_IdVg bulk_con "substrate" {substrate}
+Variability_IdVg chan_dir "x" {z}
+Variability_IdVg RDD "True" {True}
+Variability_IdVg LER "False" {True}
+Variability_IdVg MGG "False" {True}
+Variability_IdVg LER_rms "0.667" {0.667}
+Variability_IdVg MGG_dia "7.0" {7.0}
+Variability_IdVg TDR "True" {False}
+Variability_IdVg VT_only "False" {False True}
+Variability_IdVg VT_current_criterion "10e-9" {10e-9}
+Variability_IdVg ensemble_size "10" {10}
+Retrieve_DB_data enigma "" {}
+Visualize_Plots_Variability_idvg svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Type ""
+scenario default tdr ""
+scenario default lgate ""
+scenario default workfn ""
+scenario default Vdd_nom ""
+scenario default Vdd_lin ""
+scenario default drain_con ""
+scenario default gate_con ""
+scenario default source_con ""
+scenario default bulk_con ""
+scenario default chan_dir ""
+scenario default RDD ""
+scenario default LER ""
+scenario default MGG ""
+scenario default LER_rms ""
+scenario default MGG_dia ""
+scenario default TDR ""
+scenario default VT_only ""
+scenario default VT_current_criterion ""
+scenario default ensemble_size ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {pMOS} {default} 0
+2 4 2 {INPUTS/n1220_msh.tdr} {default} 0
+3 6 4 {0.010} {default} 0
+4 8 6 {4.83} {default} 0
+5 10 8 {-0.7} {default} 0
+6 12 10 {-0.05} {default} 0
+7 14 12 {drain} {default} 0
+8 16 14 {gate} {default} 0
+9 18 16 {source} {default} 0
+10 20 18 {substrate} {default} 0
+11 22 20 {z} {default} 0
+12 24 22 {True} {default} 0
+13 26 24 {True} {default} 0
+14 28 26 {True} {default} 0
+15 30 28 {0.667} {default} 0
+16 32 30 {7.0} {default} 0
+17 34 32 {False} {default} 0
+18 36 34 {False} {default} 0
+19 40 36 {10e-9} {default} 0
+20 44 40 {10} {default} 0
+21 48 44 {} {default} 0
+22 52 48 {} {default} 0
+18 37 34 {True} {default} 0
+19 41 37 {10e-9} {default} 0
+20 45 41 {10} {default} 0
+21 49 45 {} {default} 0
+22 53 49 {} {default} 0
+1 3 1 {nMOS} {default} 0
+2 5 3 {INPUTS/n1256_msh.tdr} {default} 0
+3 7 5 {0.010} {default} 0
+4 9 7 {4.5} {default} 0
+5 11 9 {0.7} {default} 0
+6 13 11 {0.05} {default} 0
+7 15 13 {drain} {default} 0
+8 17 15 {gate} {default} 0
+9 19 17 {source} {default} 0
+10 21 19 {substrate} {default} 0
+11 23 21 {z} {default} 0
+12 25 23 {True} {default} 0
+13 27 25 {True} {default} 0
+14 29 27 {True} {default} 0
+15 31 29 {0.667} {default} 0
+16 33 31 {7.0} {default} 0
+17 35 33 {False} {default} 0
+18 38 35 {False} {default} 0
+19 42 38 {10e-9} {default} 0
+20 46 42 {10} {default} 0
+21 50 46 {} {default} 0
+22 54 50 {} {default} 0
+18 39 35 {True} {default} 0
+19 43 39 {10e-9} {default} 0
+20 47 43 {10} {default} 0
+21 51 47 {} {default} 0
+22 55 51 {} {default} 0

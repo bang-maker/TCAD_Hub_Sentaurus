@@ -1,0 +1,16 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vQ-2019.12-DEV
+
+# --- simulation flow
+sdevice sdevice "" {}
+sdevice alpha "0" {0 0.1 0.1}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default alpha ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {0} {default} 0
+2 4 2 {} {default} 0
+1 3 1 {0.1} {default} 0
+2 5 3 {} {default} 0

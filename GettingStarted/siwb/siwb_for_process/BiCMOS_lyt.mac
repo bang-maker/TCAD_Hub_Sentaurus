@@ -1,0 +1,174 @@
+# Sentaurus layout information - Mon Mar 12 10:43:00 CET 2012
+# version - D-2010.06-14.303664 (Production)
+# file: ./BICMOSinverter.gds
+# cell: Inverter
+# Cell transform info - 1.0 0.0 0 0.0 0.0
+default winding 1
+layout new Inverter -dbu 1e-09
+layer add 1:0
+layer configure 1:0 -name NWELL -fill #00ff00 -pattern fill12-a -outline #00ff00 -lineStyle solid -lineWidth 1 
+layer add 2:0
+layer configure 2:0 -name NPDIFF -fill #0000ff -pattern fill12-b -outline #0000ff -lineStyle solid -lineWidth 1 
+layer add 3:0
+layer configure 3:0 -name PPDIFF -fill #f0f000 -pattern fill12-c -outline #f0f000 -lineStyle solid -lineWidth 1 
+layer add 4:0
+layer configure 4:0 -name NPLUG -fill #ff9900 -pattern fill12-d -outline #ff9900 -lineStyle solid -lineWidth 1 
+layer add 5:0
+layer configure 5:0 -name POLY -fill #00f0f0 -pattern fill12-e -outline #00f0f0 -lineStyle solid -lineWidth 1 
+layer add 6:0
+layer configure 6:0 -name PBASE -fill #ff6699 -pattern fill12-f -outline #ff6699 -lineStyle solid -lineWidth 1 
+layer add 7:0
+layer configure 7:0 -name EMIT -fill #f000f0 -pattern empty -outline #f000f0 -lineStyle solid -lineWidth 1 
+layer add 8:0
+layer configure 8:0 -name METAL -fill #999999 -pattern fill12 -outline #999999 -lineStyle solid -lineWidth 1 
+layer add 9:0
+layer configure 9:0 -name CONT -fill #ffffff -pattern fill12-a -outline #ffffff -lineStyle solid -lineWidth 1 
+layer add 20:0
+layer configure 20:0 -name ndrain -fill #9900ff -pattern fill12-d -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 21:0
+layer configure 21:0 -name ngate -fill #9900ff -pattern fill12-e -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 22:0
+layer configure 22:0 -name nsource -fill #9900ff -pattern fill12-f -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 23:0
+layer configure 23:0 -name pdrain -fill #9900ff -pattern empty -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 24:0
+layer configure 24:0 -name pgate -fill #9900ff -pattern fill12 -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 25:0
+layer configure 25:0 -name psource -fill #9900ff -pattern fill12-a -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 26:0
+layer configure 26:0 -name base -fill #9900ff -pattern fill12-b -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 27:0
+layer configure 27:0 -name emitter -fill #9900ff -pattern fill12-c -outline #9900ff -lineStyle solid -lineWidth 1 
+layer add 28:0
+layer configure 28:0 -name collect -fill #9900ff -pattern fill12-d -outline #9900ff -lineStyle solid -lineWidth 1 
+point add {8900.0 8100.0} Emit1D
+polygon -layer 1:0 {8890.0 8090.0 8910.0 8090.0 8910.0 8110.0 8890.0 8110.0 }
+polygon -layer 5:0 {8890.0 8090.0 8910.0 8090.0 8910.0 8110.0 8890.0 8110.0 }
+polygon -layer 6:0 {8890.0 8090.0 8910.0 8090.0 8910.0 8110.0 8890.0 8110.0 }
+polygon -layer 7:0 {8890.0 8090.0 8910.0 8090.0 8910.0 8110.0 8890.0 8110.0 }
+point add {8850.0 9350.0} SubCol1D
+polygon -layer 1:0 {8840.0 9340.0 8860.0 9340.0 8860.0 9360.0 8840.0 9360.0 }
+polygon -layer 4:0 {8840.0 9340.0 8860.0 9340.0 8860.0 9360.0 8840.0 9360.0 }
+polygon -layer 8:0 {8840.0 9340.0 8860.0 9340.0 8860.0 9360.0 8840.0 9360.0 }
+polygon -layer 9:0 {8840.0 9340.0 8860.0 9340.0 8860.0 9360.0 8840.0 9360.0 }
+point add {1050.0 4750.0} NGate1D
+polygon -layer 2:0 {1040.0 4740.0 1060.0 4740.0 1060.0 4760.0 1040.0 4760.0 }
+polygon -layer 5:0 {1040.0 4740.0 1060.0 4740.0 1060.0 4760.0 1040.0 4760.0 }
+polygon -layer 21:0 {1040.0 4760.0 1060.0 4760.0 1060.0 4740.0 1040.0 4740.0 }
+point add {1050.0 5250.0} NSD1D
+polygon -layer 2:0 {1040.0 5240.0 1060.0 5240.0 1060.0 5260.0 1040.0 5260.0 }
+polygon -layer 8:0 {1040.0 5240.0 1060.0 5240.0 1060.0 5260.0 1040.0 5260.0 }
+polygon -layer 9:0 {1040.0 5240.0 1060.0 5240.0 1060.0 5260.0 1040.0 5260.0 }
+polygon -layer 20:0 {1040.0 5260.0 1060.0 5260.0 1060.0 5240.0 1040.0 5240.0 }
+point add {2150.0 8650.0} PGate1D
+polygon -layer 1:0 {2140.0 8640.0 2160.0 8640.0 2160.0 8660.0 2140.0 8660.0 }
+polygon -layer 3:0 {2140.0 8640.0 2160.0 8640.0 2160.0 8660.0 2140.0 8660.0 }
+polygon -layer 5:0 {2140.0 8640.0 2160.0 8640.0 2160.0 8660.0 2140.0 8660.0 }
+polygon -layer 24:0 {2140.0 8660.0 2160.0 8660.0 2160.0 8640.0 2140.0 8640.0 }
+point add {2150.0 9150.0} PSD1D
+polygon -layer 1:0 {2140.0 9140.0 2160.0 9140.0 2160.0 9160.0 2140.0 9160.0 }
+polygon -layer 3:0 {2140.0 9140.0 2160.0 9140.0 2160.0 9160.0 2140.0 9160.0 }
+polygon -layer 8:0 {2140.0 9140.0 2160.0 9140.0 2160.0 9160.0 2140.0 9160.0 }
+polygon -layer 9:0 {2140.0 9140.0 2160.0 9140.0 2160.0 9160.0 2140.0 9160.0 }
+polygon -layer 25:0 {2140.0 9160.0 2160.0 9160.0 2160.0 9140.0 2140.0 9140.0 }
+gauge add {2300.0 2700.0 2300.0 2000.0} NBODY
+rectangle -layer 3:0 { 2290.0 1990.0 2310.0 2400.0 }
+rectangle -layer 8:0 { 2290.0 1990.0 2310.0 2400.0 }
+rectangle -layer 9:0 { 2290.0 1990.0 2310.0 2300.0 }
+gauge add {1000.0 4100.0 1000.0 6200.0} NMOS
+stretch add {229.0 4744.0 1531.0 4744.0} nmosstretch
+rectangle -layer 2:0 { 990.0 4090.0 1010.0 5600.0 }
+rectangle -layer 5:0 { 990.0 4600.0 1010.0 4900.0 }
+rectangle -layer 8:0 { 990.0 4090.0 1010.0 4500.0 }
+rectangle -layer 8:0 { 990.0 5000.0 1010.0 6210.0 }
+rectangle -layer 9:0 { 990.0 4090.0 1010.0 4400.0 }
+rectangle -layer 9:0 { 990.0 5100.0 1010.0 5400.0 }
+rectangle -layer 20:0 { 990.0 5150.0 1010.0 5350.0 }
+rectangle -layer 21:0 { 990.0 4650.0 1010.0 4850.0 }
+rectangle -layer 22:0 { 990.0 4150.0 1010.0 4350.0 }
+gauge add {2100.0 7900.0 2100.0 10000.0} PMOS
+stretch add {683.0 8629.0 2749.0 8629.0} pmosstretch
+rectangle -layer 1:0 { 2090.0 7890.0 2110.0 10010.0 }
+rectangle -layer 2:0 { 2090.0 9300.0 2110.0 9800.0 }
+rectangle -layer 3:0 { 2090.0 7890.0 2110.0 9300.0 }
+rectangle -layer 5:0 { 2090.0 8500.0 2110.0 8800.0 }
+rectangle -layer 8:0 { 2090.0 8900.0 2110.0 10010.0 }
+rectangle -layer 8:0 { 2090.0 7890.0 2110.0 8400.0 }
+rectangle -layer 9:0 { 2090.0 8000.0 2110.0 8300.0 }
+rectangle -layer 9:0 { 2090.0 9000.0 2110.0 9600.0 }
+rectangle -layer 23:0 { 2090.0 8050.0 2110.0 8250.0 }
+rectangle -layer 24:0 { 2090.0 8550.0 2110.0 8750.0 }
+rectangle -layer 25:0 { 2090.0 9050.0 2110.0 9250.0 }
+gauge add {5800.0 8100.0 8400.0 8100.0} BJTBE
+rectangle -layer 1:0 { 6200.0 8110.0 8410.0 8090.0 }
+rectangle -layer 5:0 { 7000.0 8110.0 7800.0 8090.0 }
+rectangle -layer 6:0 { 6400.0 8110.0 8410.0 8090.0 }
+rectangle -layer 7:0 { 7200.0 8110.0 7600.0 8090.0 }
+rectangle -layer 8:0 { 5790.0 8110.0 6900.0 8090.0 }
+rectangle -layer 8:0 { 7900.0 8110.0 8410.0 8090.0 }
+rectangle -layer 9:0 { 6500.0 8110.0 6800.0 8090.0 }
+rectangle -layer 9:0 { 8000.0 8110.0 8300.0 8090.0 }
+rectangle -layer 26:0 { 6550.0 8110.0 6750.0 8090.0 }
+rectangle -layer 26:0 { 8050.0 8110.0 8250.0 8090.0 }
+rectangle -layer 27:0 { 7250.0 8110.0 7550.0 8090.0 }
+gauge add {8200.0 8500.0 8200.0 10000.0} BJTC
+stretch add {683.0 8629.0 2749.0 8629.0} pmosstretch
+rectangle -layer 1:0 { 8190.0 8490.0 8210.0 10010.0 }
+rectangle -layer 4:0 { 8190.0 9000.0 8210.0 9700.0 }
+rectangle -layer 8:0 { 8190.0 8900.0 8210.0 10010.0 }
+rectangle -layer 8:0 { 8190.0 8490.0 8210.0 8700.0 }
+rectangle -layer 9:0 { 8190.0 9200.0 8210.0 9500.0 }
+rectangle -layer 28:0 { 8190.0 9250.0 8210.0 9450.0 }
+highlight add {7900.0 7550.0 9900.0 9900.0} BJT3D
+stretch add {683.0 8629.0 2749.0 8629.0} pmosstretch
+polygon -layer 1:0 { 7890.0 7540.0 9910.0 7540.0 9910.0 9910.0 7890.0 9910.0 } 
+polygon -layer 4:0 { 7890.0 9000.0 9910.0 9000.0 9910.0 9700.0 7890.0 9700.0 } 
+polygon -layer 5:0 { 9300.0 7540.0 9300.0 8400.0 8500.0 8400.0 8500.0 7540.0 } 
+polygon -layer 6:0 { 7890.0 7540.0 9910.0 7540.0 9910.0 8400.0 7890.0 8400.0 } 
+polygon -layer 7:0 { 9100.0 7540.0 9100.0 8200.0 8700.0 8200.0 8700.0 7540.0 } 
+polygon -layer 8:0 { 7890.0 8400.0 9910.0 8400.0 9910.0 8700.0 7890.0 8700.0 } 
+polygon -layer 8:0 { 7890.0 8900.0 9910.0 8900.0 9910.0 9910.0 7890.0 9910.0 } 
+polygon -layer 8:0 { 8400.0 7540.0 8400.0 8400.0 7900.0 8400.0 7900.0 7540.0 } 
+polygon -layer 8:0 { 9900.0 7540.0 9900.0 8400.0 9400.0 8400.0 9400.0 7540.0 } 
+polygon -layer 9:0 { 8000.0 8000.0 8300.0 8000.0 8300.0 8300.0 8000.0 8300.0 } 
+polygon -layer 9:0 { 8100.0 9200.0 8400.0 9200.0 8400.0 9500.0 8100.0 9500.0 } 
+polygon -layer 9:0 { 8300.0 7540.0 8300.0 7700.0 8000.0 7700.0 8000.0 7540.0 } 
+polygon -layer 9:0 { 8700.0 9200.0 9000.0 9200.0 9000.0 9500.0 8700.0 9500.0 } 
+polygon -layer 9:0 { 9300.0 9200.0 9600.0 9200.0 9600.0 9500.0 9300.0 9500.0 } 
+polygon -layer 9:0 { 9500.0 8000.0 9800.0 8000.0 9800.0 8300.0 9500.0 8300.0 } 
+polygon -layer 9:0 { 9800.0 7540.0 9800.0 7700.0 9500.0 7700.0 9500.0 7540.0 } 
+polygon -layer 9:0 { 9910.0 9500.0 9900.0 9500.0 9900.0 9200.0 9910.0 9200.0 } 
+polygon -layer 26:0 { 8050.0 8050.0 8050.0 8250.0 8250.0 8250.0 8250.0 8050.0 } 
+polygon -layer 28:0 { 8150.0 9250.0 8150.0 9450.0 8350.0 9450.0 8350.0 9250.0 } 
+highlight add {800.0 6700.0 2200.0 10000.0} PMOS3D
+stretch add {683.0 8629.0 2749.0 8629.0} pmosstretch
+polygon -layer 1:0 { 2210.0 10000.0 800.0 10000.0 800.0 6690.0 2210.0 6690.0 } 
+polygon -layer 2:0 { 2210.0 9800.0 1500.0 9800.0 1500.0 9300.0 2210.0 9300.0 } 
+polygon -layer 3:0 { 2210.0 9300.0 1500.0 9300.0 1500.0 6900.0 2210.0 6900.0 } 
+polygon -layer 5:0 { 2210.0 7800.0 800.0 7800.0 800.0 7500.0 2210.0 7500.0 } 
+polygon -layer 5:0 { 2210.0 8800.0 800.0 8800.0 800.0 8500.0 2210.0 8500.0 } 
+polygon -layer 5:0 { 790.0 6690.0 2000.0 6690.0 2000.0 6900.0 790.0 6900.0 } 
+polygon -layer 5:0 { 800.0 6900.0 1200.0 6900.0 1200.0 8800.0 800.0 8800.0 } 
+polygon -layer 8:0 { 2210.0 7400.0 1000.0 7400.0 1000.0 6900.0 2210.0 6900.0 } 
+polygon -layer 8:0 { 2210.0 8400.0 1800.0 8400.0 1800.0 7900.0 2210.0 7900.0 } 
+polygon -layer 8:0 { 790.0 6900.0 1000.0 6900.0 1000.0 8900.0 790.0 8900.0 } 
+polygon -layer 8:0 { 790.0 8900.0 2210.0 8900.0 2210.0 10010.0 790.0 10010.0 } 
+polygon -layer 9:0 { 2210.0 7300.0 2000.0 7300.0 2000.0 7000.0 2210.0 7000.0 } 
+polygon -layer 9:0 { 2210.0 8300.0 2000.0 8300.0 2000.0 8000.0 2210.0 8000.0 } 
+polygon -layer 9:0 { 2210.0 9600.0 2000.0 9600.0 2000.0 9000.0 2210.0 9000.0 } 
+polygon -layer 23:0 { 2210.0 8050.0 2050.0 8050.0 2050.0 8250.0 2210.0 8250.0 } 
+polygon -layer 24:0 { 2210.0 8550.0 2050.0 8550.0 2050.0 8750.0 2210.0 8750.0 } 
+polygon -layer 25:0 { 2210.0 9050.0 2050.0 9050.0 2050.0 9250.0 2210.0 9250.0 } 
+highlight add {550.0 3750.0 1100.0 5800.0} NMOS3D
+stretch add {229.0 4744.0 1531.0 4744.0} nmosstretch
+polygon -layer 2:0 { 1110.0 5600.0 700.0 5600.0 700.0 3900.0 1110.0 3900.0 } 
+polygon -layer 5:0 { 540.0 4600.0 1110.0 4600.0 1110.0 4900.0 540.0 4900.0 } 
+polygon -layer 8:0 { 1110.0 4500.0 800.0 4500.0 800.0 3740.0 1110.0 3740.0 } 
+polygon -layer 8:0 { 800.0 5810.0 800.0 5000.0 1110.0 5000.0 1110.0 5810.0 } 
+polygon -layer 9:0 { 1110.0 4400.0 900.0 4400.0 900.0 4100.0 1110.0 4100.0 } 
+polygon -layer 9:0 { 1110.0 5400.0 900.0 5400.0 900.0 5100.0 1110.0 5100.0 } 
+polygon -layer 20:0 { 1110.0 5150.0 950.0 5150.0 950.0 5350.0 1110.0 5350.0 } 
+polygon -layer 21:0 { 1110.0 4650.0 950.0 4650.0 950.0 4850.0 1110.0 4850.0 } 
+polygon -layer 22:0 { 1110.0 4150.0 950.0 4150.0 950.0 4350.0 1110.0 4350.0 } 
+select clear
+catch {view default }

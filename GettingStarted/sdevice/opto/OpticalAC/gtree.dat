@@ -1,0 +1,20 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vU-2022.12-L1
+
+# --- simulation flow
+sde sde "" {}
+sdevice sdevice "" {}
+sdevice lambda "0.4" {0.4 0.6 0.8}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default lambda ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {0.4} {default} 0
+3 6 3 {} {default} 0
+2 4 2 {0.6} {default} 0
+3 7 4 {} {default} 0
+2 5 2 {0.8} {default} 0
+3 8 5 {} {default} 0

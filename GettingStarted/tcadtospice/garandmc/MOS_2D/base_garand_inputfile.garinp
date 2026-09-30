@@ -1,0 +1,57 @@
+#===============================================================================
+# SIMULATION PARAMETERS COMMON TO BOTH DD AND MC SIMULATION
+#===============================================================================
+#----------------------- LOCAL PREPROCESSOR DEFINITIONS ------------------------
+#define _chan_dir_   dgy       /* Define axis along channel direction [x/y/z] */
+
+#if "@Type@" == "nMOS"
+#define _n_or_p_     n         /* Set nMOS simulation */
+
+#elif "@Type@" == "pMOS"
+#define _n_or_p_     p         /* Set pMOS simulation */
+#else
+puts "Type is incorrect... @Type@"
+#endif
+
+#------------------------------ CONTACT DEFINITION -----------------------------
+CONTACT     metal_gate import = 'gate'      # Define gate      contact
+CONTACT     source     import = 'source'    # Define source    contact
+CONTACT     drain      import = 'drain'     # Define drain     contact
+CONTACT     substrate  import = 'substrate' # Define substrate contact
+
+CONTACT     work_function     = @WF@        # Define the gate workfunction
+
+#------------------------------- BIAS CONDITIONS -------------------------------
+BIAS        gate              = @Vg@        # Gate      bias [V]
+BIAS        drain             = @Vd@        # Drain     bias [V]
+BIAS        substrate         = 0.0         # Substrate bias [V]
+
+#------------------------------- SIMULATION MODEL ------------------------------
+SIMULATION  T                 = 300         # Lattice temperature [K]
+SIMULATION  n_or_p            = _n_or_p_    # n-type or p-type simulation
+
+MODEL       density_gradient  = on          # Density gradient solution
+
+#------------------------------ OUTPUT PARAMETERS ------------------------------
+OUTPUT      hierarchical      = off         # Write to hierarchical directories?
+OUTPUT      experiment        = n@node@     # Prefix for file names
+
+#------------------------------ SIMULATION DOMAIN ------------------------------
+STRUCTURE   AreaFactor        = 1.0         # Scaling factor for output current
+
+#------------------------------ STRESS DEFINITION ------------------------------
+STRAIN      Silicon.device_stress_tensor 0 @Syy@ 0 0 0 0 transfer_average=off
+
+#---------------------------- MATERIAL REDEFINITION ----------------------------
+
+# Remove higher conduction valleys as generally unoccupied
+!(
+  set matList [list Silicon]
+  set valList [list L1 L2 L3 L4 L5 L6 L7 L8 G]
+
+  foreach mat $matList {
+    foreach val $valList {
+      puts "MATERIAL    ${mat}.conduction.${val}     REMOVE "
+    }
+  }
+)!

@@ -1,0 +1,242 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vV-2023.09-L1
+
+# --- simulation flow
+sde sde "" {}
+sde Type "nMOS" {nMOS} R
+sde tbox "0.0044" {0.0044} R
+sde GateMat "-" {-} R
+sde TwoDielectric "1" {1} R
+sde InsMat "Oxide" {-} R
+sde NMg "1e18" {1e19} R
+sde IntMesh "1" {1} R
+sde mesh_fac "1" {0.5 1 0.1 2} R
+IgVg sdevice "" {}
+IgVg ContactType "Schottky" {schottky} R
+IgVg Tun "0" {OFF eBarr eBarr_B2BFull} R
+IgVg Length "15e-7" {15e-7 3e-7 4e-07 5e-07 6e-07 7e-07 8e-07 9e-07 12e-7 14e-7 16e-7 18e-7} R
+IgVg WF "4.5" {5.2} R
+IgVg par "-" {-} R
+IgVg par_val "-" {-} R
+IgVg_vis svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Type ""
+scenario default tbox ""
+scenario default GateMat ""
+scenario default TwoDielectric ""
+scenario default InsMat ""
+scenario default NMg ""
+scenario default IntMesh ""
+scenario default mesh_fac ""
+scenario default ContactType ""
+scenario default Tun ""
+scenario default Length ""
+scenario default WF ""
+scenario default par ""
+scenario default par_val ""
+scenario mt Type ""
+scenario mt tbox ""
+scenario mt GateMat ""
+scenario mt TwoDielectric ""
+scenario mt InsMat ""
+scenario mt NMg ""
+scenario mt IntMesh ""
+scenario mt mesh_fac ""
+scenario mt ContactType ""
+scenario mt Tun ""
+scenario mt Length ""
+scenario mt WF ""
+scenario mt par ""
+scenario mt par_val ""
+scenario NMg Type ""
+scenario NMg tbox ""
+scenario NMg GateMat ""
+scenario NMg TwoDielectric ""
+scenario NMg InsMat ""
+scenario NMg NMg ""
+scenario NMg IntMesh ""
+scenario NMg mesh_fac ""
+scenario NMg ContactType ""
+scenario NMg Tun ""
+scenario NMg Length ""
+scenario NMg WF ""
+scenario NMg par ""
+scenario NMg par_val ""
+scenario Physics Type ""
+scenario Physics tbox ""
+scenario Physics GateMat ""
+scenario Physics TwoDielectric ""
+scenario Physics InsMat ""
+scenario Physics NMg ""
+scenario Physics IntMesh ""
+scenario Physics mesh_fac ""
+scenario Physics ContactType ""
+scenario Physics Tun ""
+scenario Physics Length ""
+scenario Physics WF ""
+scenario Physics par ""
+scenario Physics par_val ""
+scenario Meshing Type ""
+scenario Meshing tbox ""
+scenario Meshing GateMat ""
+scenario Meshing TwoDielectric ""
+scenario Meshing InsMat ""
+scenario Meshing NMg ""
+scenario Meshing IntMesh ""
+scenario Meshing mesh_fac ""
+scenario Meshing ContactType ""
+scenario Meshing Tun ""
+scenario Meshing Length ""
+scenario Meshing WF ""
+scenario Meshing par ""
+scenario Meshing par_val ""
+scenario TAT Type ""
+scenario TAT tbox ""
+scenario TAT GateMat ""
+scenario TAT TwoDielectric ""
+scenario TAT InsMat ""
+scenario TAT NMg ""
+scenario TAT IntMesh ""
+scenario TAT mesh_fac ""
+scenario TAT ContactType ""
+scenario TAT Tun ""
+scenario TAT Length ""
+scenario TAT WF ""
+scenario TAT par ""
+scenario TAT par_val ""
+scenario Choice Type ""
+scenario Choice tbox ""
+scenario Choice GateMat ""
+scenario Choice TwoDielectric ""
+scenario Choice InsMat ""
+scenario Choice NMg ""
+scenario Choice IntMesh ""
+scenario Choice mesh_fac ""
+scenario Choice ContactType ""
+scenario Choice Tun ""
+scenario Choice Length ""
+scenario Choice WF ""
+scenario Choice par ""
+scenario Choice par_val ""
+scenario {default Type ""
+scenario {default tbox ""
+scenario {default GateMat ""
+scenario {default TwoDielectric ""
+scenario {default InsMat ""
+scenario {default NMg ""
+scenario {default IntMesh ""
+scenario {default mesh_fac ""
+scenario {default ContactType ""
+scenario {default Tun ""
+scenario {default Length ""
+scenario {default WF ""
+scenario {default par ""
+scenario {default par_val ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {nMOS} {default} 0
+2 3 2 {0.0044} {default} 0
+3 4 3 {-} {default} 0
+4 5 4 {1} {default} 0
+5 6 5 {-} {default} 0
+6 7 6 {1e19} {default} 0
+7 8 7 {1} {default} 0
+8 9 8 {1} {default} 0
+9 13 9 {} {default} 0
+10 17 13 {schottky} {default} 0
+11 21 17 {OFF} {default} 0
+12 27 21 {12e-7} {default} 0
+13 43 27 {5.2} {default} 0
+14 59 43 {-} {default} 0
+15 75 59 {-} {default} 0
+16 91 75 {} {default} 0
+11 22 17 {eBarr} {default} 0
+12 28 22 {12e-7} {default} 0
+13 44 28 {5.2} {default} 0
+14 60 44 {-} {default} 0
+15 76 60 {-} {default} 0
+16 92 76 {} {default} 0
+11 23 17 {eBarr_B2BFull} {default} 0
+12 29 23 {3e-7} {default} 0
+13 45 29 {5.2} {default} 0
+14 61 45 {-} {default} 0
+15 77 61 {-} {default} 0
+16 93 77 {} {default} 0
+12 30 23 {4e-07} {default} 0
+13 46 30 {5.2} {default} 0
+14 62 46 {-} {default} 0
+15 78 62 {-} {default} 0
+16 94 78 {} {default} 0
+12 31 23 {5e-07} {default} 0
+13 47 31 {5.2} {default} 0
+14 63 47 {-} {default} 0
+15 79 63 {-} {default} 0
+16 95 79 {} {default} 0
+12 32 23 {6e-07} {default} 0
+13 48 32 {5.2} {default} 0
+14 64 48 {-} {default} 0
+15 80 64 {-} {default} 0
+16 96 80 {} {default} 0
+12 33 23 {7e-07} {default} 0
+13 49 33 {5.2} {default} 0
+14 65 49 {-} {default} 0
+15 81 65 {-} {default} 0
+16 97 81 {} {default} 0
+12 34 23 {8e-07} {default} 0
+13 50 34 {5.2} {default} 0
+14 66 50 {-} {default} 0
+15 82 66 {-} {default} 0
+16 98 82 {} {default} 0
+12 35 23 {9e-07} {default} 0
+13 51 35 {5.2} {default} 0
+14 67 51 {-} {default} 0
+15 83 67 {-} {default} 0
+16 99 83 {} {default} 0
+12 36 23 {12e-7} {default} 0
+13 52 36 {5.2} {default} 0
+14 68 52 {-} {default} 0
+15 84 68 {-} {default} 0
+16 100 84 {} {default} 0
+12 37 23 {14e-7} {default} 0
+13 53 37 {5.2} {default} 0
+14 69 53 {-} {default} 0
+15 85 69 {-} {default} 0
+16 101 85 {} {default} 0
+12 38 23 {16e-7} {default} 0
+13 54 38 {5.2} {default} 0
+14 70 54 {-} {default} 0
+15 86 70 {-} {default} 0
+16 102 86 {} {default} 0
+12 39 23 {18e-7} {default} 0
+13 55 39 {5.2} {default} 0
+14 71 55 {-} {default} 0
+15 87 71 {-} {default} 0
+16 103 87 {} {default} 0
+8 10 8 {0.1} {default} 0
+9 14 10 {} {default} 0
+10 18 14 {schottky} {default} 0
+11 24 18 {eBarr_B2BFull} {default} 0
+12 40 24 {15e-7} {default} 0
+13 56 40 {5.2} {default} 0
+14 72 56 {-} {default} 0
+15 88 72 {-} {default} 0
+16 104 88 {} {default} 0
+8 11 8 {0.5} {{default} 0
+9 15 11 {} {default} 0
+10 19 15 {schottky} {default} 0
+11 25 19 {eBarr_B2BFull} {default} 0
+12 41 25 {15e-7} {default} 0
+13 57 41 {5.2} {default} 0
+14 73 57 {-} {default} 0
+15 89 73 {-} {default} 0
+16 105 89 {} {default} 0
+8 12 8 {2} {default} 0
+9 16 12 {} {default} 0
+10 20 16 {schottky} {default} 0
+11 26 20 {eBarr_B2BFull} {default} 0
+12 42 26 {15e-7} {default} 0
+13 58 42 {5.2} {default} 0
+14 74 58 {-} {default} 0
+15 90 74 {-} {default} 0
+16 106 90 {} {default} 0

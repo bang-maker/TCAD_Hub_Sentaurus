@@ -1,0 +1,31 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vL-2016.03-SP1, Tue Aug 16 10:14:54 2016
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess pdose "5.0e14" {5.0e14 1.0e15}
+sprocess penergy "40" {40 45 50 55 60}
+# --- variables
+# --- scenarios and parameter specs
+scenario default pdose ""
+scenario default penergy ""
+scenario high_energy pdose ""
+scenario high_energy penergy ""
+scenario low_dose pdose ""
+scenario low_dose penergy ""
+scenario low_energy pdose ""
+scenario low_energy penergy ""
+# --- simulation tree
+0 1 0 {} {default high_energy low_energy low_dose} 0
+1 2 1 {5.0e14} {default high_energy low_energy low_dose} 0
+2 4 2 {40} {default low_energy low_dose} 0
+2 5 2 {45} {default low_dose} 0
+2 6 2 {50} {default low_dose} 0
+2 7 2 {55} {default high_energy low_dose} 0
+2 8 2 {60} {default high_energy low_dose} 0
+1 3 1 {1.0e15} {default high_energy low_energy} 0
+2 9 3 {40} {default low_energy} 0
+2 10 3 {45} {default} 0
+2 11 3 {50} {default} 0
+2 12 3 {55} {default high_energy} 0
+2 13 3 {60} {default high_energy} 0

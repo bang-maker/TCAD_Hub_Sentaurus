@@ -1,0 +1,18 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vcurrent
+
+# --- simulation flow
+sdevice sdevice "" {}
+sdevice HCImodel "eLucky" {none eLucky PMI_LuckyModel}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default HCImodel ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {none} {default} 0
+2 5 2 {} {default} 0
+1 3 1 {eLucky} {default} 0
+2 6 3 {} {default} 0
+1 4 1 {PMI_LuckyModel} {default} 0
+2 7 4 {} {default} 0

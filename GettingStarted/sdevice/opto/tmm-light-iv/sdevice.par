@@ -1,0 +1,6 @@
+RegionInterface="frontArc/substrate" {
+  SurfaceRecombination {
+    S0 = 1000, 1000 * [cm/s]
+    Sref = 0 * [1]
+  }
+} * end RegionInterface="frontArc/substrate" 

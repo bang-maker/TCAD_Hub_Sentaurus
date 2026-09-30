@@ -1,0 +1,25 @@
+DATEX2.1
+Datacode
+"$Id: //tcad/gemini/Z-2007.03/src/datexcodes/datexcodes.txt#1 $ $Author: tcadprod $ $DateTime: 2006/12/11 06:47:24 $"
+"Data codes for semiconductor process and device simulation"
+
+Materials {
+
+  TitaniumNitride {
+        label   = "TitaniumNitride"
+        group   = Conductor
+        color   = #cdc8b1, #82d9d9
+        alter1  = TiNitride
+        alter2  = 88
+    }
+
+  TiNitride {
+        label   = "TitaniumNitride"
+        group   = Conductor
+        color   = #cdc8b1, #82d9d9
+        alter1  = TiNitride
+        alter2  = 88
+    }
+
+}
+

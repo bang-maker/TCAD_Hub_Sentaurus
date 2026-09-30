@@ -1,0 +1,29 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vT-2022.03-L0
+
+# --- simulation flow
+svisual svisual "" {}
+svisual script_file "Load.tcl" {CreateDataset.tcl Export.tcl GetFK1.tcl GetFmax.tcl GetFt.tcl GetNearestIndex.tcl GetNoiseFigure.tcl GetParsAtPoint.tcl GetPowerGain.tcl Load.tcl NoiseFigure.tcl PolarBackdrop.tcl PowerGain.tcl RFCList.tcl SmithBackdrop.tcl Y2H.tcl Y2S.tcl Y2Z.tcl}
+# --- variables
+# --- scenarios and parameter specs
+scenario default script_file ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {CreateDataset.tcl} {default} 0
+1 3 1 {Export.tcl} {default} 0
+1 4 1 {GetFK1.tcl} {default} 0
+1 5 1 {GetFmax.tcl} {default} 0
+1 6 1 {GetFt.tcl} {default} 0
+1 7 1 {GetNearestIndex.tcl} {default} 0
+1 8 1 {GetNoiseFigure.tcl} {default} 0
+1 9 1 {GetParsAtPoint.tcl} {default} 0
+1 10 1 {GetPowerGain.tcl} {default} 0
+1 11 1 {Load.tcl} {default} 0
+1 12 1 {NoiseFigure.tcl} {default} 0
+1 13 1 {PolarBackdrop.tcl} {default} 0
+1 14 1 {PowerGain.tcl} {default} 0
+1 15 1 {RFCList.tcl} {default} 0
+1 16 1 {SmithBackdrop.tcl} {default} 0
+1 17 1 {Y2H.tcl} {default} 0
+1 18 1 {Y2S.tcl} {default} 0
+1 19 1 {Y2Z.tcl} {default} 0

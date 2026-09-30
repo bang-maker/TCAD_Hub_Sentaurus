@@ -1,0 +1,16 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vO-2018.06-SP1, Wed Dec  5 11:32:54 2018
+
+# --- simulation flow
+BuildLibrary enigma "" {}
+Single_RO_sim enigma_randomspice "" {}
+Single_RO_sim Vdd_nom "0.8" {0.8}
+RO_Sweep enigma_randomspice "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Vdd_nom ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 24 1 {} {default} 0
+2 23 24 {0.8} {default} 0
+3 17 23 {} {default} 0

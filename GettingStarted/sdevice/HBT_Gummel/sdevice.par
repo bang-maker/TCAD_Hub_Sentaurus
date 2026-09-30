@@ -1,0 +1,53 @@
+Material = "GaAs" {
+Insert="GaAs.par"
+}
+
+#----------------------------------------------------------------------#
+Region = "GaAs_Base" {
+Insert="GaAs.par"
+Scharfetter * relation and trap level for SRH recombination:
+{ * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+	taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	taumax	= 1.0000e-10 ,	1.0000e-10	# [s]
+	Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	gamma	= 1 ,	1	# [1]
+	Talpha	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Tcoeff	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+}
+
+#----------------------------------------------------------------------#
+Region = "AlGaAs_Emitter" {
+
+Insert="AlGaAs.par"
+
+ConstantMobility:
+{ * mu_const = mumax (T/T0)^(-Exponent)
+        mumax   = 2000 ,        200     # [cm^2/(Vs)]
+        Exponent        = 1 ,   2.1     # [1]
+  * Mole fraction dependent model.
+  * If just above parameters are specified, then its values will be
+  * used for any mole fraction instead of an interpolation below.
+  * The linear interpolation is used on interval [0,1].
+        exponent(1)     = 1,    2.1     #[1]
+        mumax(1)        = 2000 ,        200     # [cm^2/(Vs)]
+}
+
+Scharfetter * relation and trap level for SRH recombination:
+{ * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+	taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	taumax	= 1.0000e-10 ,	1.0000e-10	# [s]
+	Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	gamma	= 1 ,	1	# [1]
+	Talpha	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Tcoeff	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+
+}
+#----------------------------------------------------------------------#

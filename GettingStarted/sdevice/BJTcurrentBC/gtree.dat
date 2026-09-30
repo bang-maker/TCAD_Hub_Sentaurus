@@ -1,0 +1,19 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-L1, Fri May 12 12:35:45 2017
+
+# --- simulation flow
+snmesh snmesh "" {}
+sdevice sdevice "" {}
+sdevice Ib_ini "1e-8" {1e-8}
+sdevice Ib_end "1e-7" {1e-7}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Ib_ini ""
+scenario default Ib_end ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {1e-8} {default} 0
+3 4 3 {1e-7} {default} 0
+4 5 4 {} {default} 0

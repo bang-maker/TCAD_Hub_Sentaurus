@@ -1,0 +1,2 @@
+set WB_tool(enigma_garand,input,garand_input_file,common) 1
+set WB_tool(enigma_garand,parallel,activate) 1

@@ -1,0 +1,22 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vR-2020.09-L1
+
+# --- simulation flow
+sdevice sdevice "" {}
+sdevice Affinity "builtin" {builtin pmi}
+sdevice delta "0.5" {0.5 0.0}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Affinity ""
+scenario default delta ""
+# --- simulation tree
+0 2 0 {} {default} 0
+1 4 2 {builtin} {default} 0
+2 1 4 {0.5} {default} 0
+3 7 1 {} {default} 0
+1 5 2 {pmi} {default} 0
+2 3 5 {0.5} {default} 0
+3 8 3 {} {default} 0
+2 6 5 {0.0} {default} 0
+3 9 6 {} {default} 0

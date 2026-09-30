@@ -1,0 +1,128 @@
+Material = "SiliconCarbide" {
+  Epsilon {
+    *  Ratio of the permittivities of material and vacuum
+    * epsilon() = epsilon
+    epsilon	= 9.66	# [1]
+  }
+  
+  Ionization { 
+    E_As_0  	= 0.1	# [eV]
+    alpha_As	= 3.1000e-08	# [eV cm]
+    g_As    	= 2	# [1]
+    Xsec_As	        = 1.0000e-12	# [cm^2/sec]
+    
+    E_P_0   	= 0.1	# [eV]
+    alpha_P 	= 3.1000e-08	# [eV cm]
+    g_P     	= 2	# [1]
+    Xsec_P     	= 1.0000e-12	# [cm^2/sec]
+    
+    E_Sb_0  	= 0.1	# [eV]
+    alpha_Sb	= 3.1000e-08	# [eV cm]
+    g_Sb    	= 2	# [1]
+    Xsec_Sb    	= 1.0000e-12	# [cm^2/sec]
+    
+    E_B_0   	= 0.2	# [eV]
+    alpha_B 	= 3.1000e-08	# [eV cm]
+    g_B     	= 4	# [1]
+    Xsec_B     	= 1.0000e-12	# [cm^2/sec]
+    
+    E_In_0  	= 0.2	# [eV]
+    alpha_In	= 3.1000e-08	# [eV cm]
+    g_In    	= 4	# [1]
+    Xsec_In    	= 1.0000e-12	# [cm^2/sec]
+    
+    E_N_0	= 0.1	# [eV]
+    alpha_N 	= 3.1000e-08	# [eV cm]
+    g_N	= 2	# [1]
+    Xsec_N	= 1.0000e-12	# [cm^2/sec]
+    
+    E_NDopant_0	= 0.1	# [eV]
+    alpha_NDopant 	= 3.1000e-08	# [eV cm]
+    g_NDopant	= 2	# [1]
+    Xsec_NDopant	= 1.0000e-12	# [cm^2/sec]
+    
+    E_PDopant_0	= 0.2	# [eV]
+    alpha_PDopant 	= 3.1000e-08	# [eV cm]
+    g_PDopant	= 4	# [1]
+    Xsec_PDopant	= 1.0000e-12	# [cm^2/sec]
+    
+    #  User spesies:
+    Species("NitrogenDoping") {
+      type    = donor        
+      E_0  	= 0.1   	# [eV]    6H-SiC
+      #	E_0  	= 0.065  	# [eV]    4H-SiC
+      alpha	= 3.1000e-08	# [eV cm]
+      g    	= 2	        # [1]
+      Xsec	= 1.0000e-12	# [cm^2/sec]	
+    }
+    
+    Species("AlDoping") {
+      type    = acceptor        
+      E_0  	= 0.2   	# [eV]    6H-SiC
+      #	E_0  	= 0.191  	# [eV]    4H-SiC
+      alpha	= 0.0   	# [eV cm]
+      g    	= 4	        # [1]
+      Xsec	= 1.0000e-12	# [cm^2/sec]
+    }
+    
+    NdCrit  	= 1.0000e+23	# [cm-3]
+    NaCrit  	= 1.0000e+23	# [cm-3]
+  }
+  
+  Bandgap {
+    * Eg = Eg0 + dEg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+    * dEg0(<bgn_model_name>) is a band gap correction term.  It is used together with 
+    * an appropriate BGN model, if this BGN model is chosen in Physics section 
+    * Parameter 'Tpar' specifies the value of lattice 
+    * temperature, at which parameters below are defined
+    * Chi0 is electron affinity.
+    Chi0	= 4.05	# [eV]
+    Bgn2Chi	= 0.5	# [1]
+    Eg0	= 3.1	# [eV]
+    dEg0(Bennett)	= 0.0000e+00	# [eV]
+    dEg0(Slotboom)	= 0.0000e+00	# [eV]
+    dEg0(OldSlotboom)	= 0.0000e+00	# [eV]
+    dEg0(delAlamo)	= 0.0000e+00	# [eV]
+    alpha	= 3.3000e-04	# [eV K^-1]
+    beta	= 0.0000e+00	# [K]
+    Tpar	= 0.0000e+00	# [K]
+  }
+  
+  pmi_incomplete {
+    * The Matsuura distribution function is given by [1]
+    *
+    *         f(T,dEA,Eex,gr,dEr) = 1/( 1 + g(T,dEA,Eex,gr,dEr)*exp(-dEf/kT) )
+    * where
+    * 	dEA = EA - EV
+    * 	dEf = Ef - EV
+    * 	
+    * 	g(T,dEA,Eex,gr,dEr) = 4*exp( (dEA-Eex)/kT )*( g1 + Sigma gr*exp((dEr - dEA)/kT) )
+    * 	
+    * Sigma is a symbol of sum
+    * 
+    * dEr is the formula (3) of the paper [1]
+    * Eex is the formula (8) of the paper [1]
+    * 
+    * PMI for function g(T,dEA,Eex,gr,dEr) only.
+    *         
+    * 
+    *  [1] H. Matsuura: "Influence of Excited States of Deep Acceptors on Hole Concentration in SiC "
+    *      Int'l Conf. On SiC and related Materials - ICSCRM2001, Tsukuba, Japan 2001
+    *
+    
+    Eccc_AlDoping = @Eccc@   
+    NumberOfItems_AlDoping = 4   
+    g1_AlDoping = 4
+    g2_AlDoping = 4
+    g3_AlDoping = 4
+    g4_AlDoping = 4   
+    
+    Eccc_NitrogenDoping = 0   
+    NumberOfItems_NitrogenDoping = 4   
+    g1_NitrogenDoping = 2
+    g2_NitrogenDoping = 2
+    g3_NitrogenDoping = 2
+    g4_NitrogenDoping = 2   
+    
+  }
+}

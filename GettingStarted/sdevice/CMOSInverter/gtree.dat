@@ -1,0 +1,19 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vcurrent, saved by gsub0
+
+# --- simulation flow
+nmos sde "" {}
+pmos sde "" {}
+vtc sdevice "" {}
+vtc_SV svisual "" {}
+switching sdevice "" {}
+switching_SV svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {} {default} 0
+3 4 3 {} {default} 0
+4 5 4 {} {default} 0
+5 6 5 {} {default} 0

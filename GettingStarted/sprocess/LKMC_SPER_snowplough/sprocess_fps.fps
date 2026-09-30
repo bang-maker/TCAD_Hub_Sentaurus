@@ -1,0 +1,47 @@
+set extra 0.4
+set size 51
+set SiO2nm 1.5
+set AmorphousConc [pdbGet KMC Si Damage AmorphizationThreshold]
+
+SetAtomistic
+AdvancedCalibration
+
+
+pdbSet KMC Si Damage SPER.Model Coordinations.Planes
+
+pdbSet KMC Si Damage SPER.Model.111 Twin.Assisted
+
+
+pdbSet KMC Si Damage probability.SPER.defect 0.5
+
+pdbSet KMC MaxYum [expr $size*1e-3]
+pdbSet KMC MaxZum [expr $size*1e-3]
+pdbSet KMC Movie ""
+pdbSet KMC Decade 10
+pdbSet KMC maxSnapshots 20
+ 
+line x loc=0.0    spa=1.5<nm>              tag=xleft  
+line x loc=50<nm> spa=1.5<nm>              tag=xright 
+line y loc=0 
+line y loc=$size<nm>
+
+region silicon   xlo=xleft xhi=xright
+
+init
+
+mask name=central left=10<nm> right=[expr $size-10]<nm> 
+etch silicon mask=central aniso thickness=30<nm>
+deposit oxide fill coord=-1.5<nm>
+
+sel z = "(x < 32e-3 )? [expr $AmorphousConc * (1+$extra)]:0" name = IV
+
+struct tdr=n4_init2D
+
+diffuse time=2000<s> temperature=600 init=2000<s>
+
+kmc extract tdrClear
+kmc extract tdrAdd concentrations defects
+kmc extract tdrWrite filename=n4_annealed2D
+
+
+

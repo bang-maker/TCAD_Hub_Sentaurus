@@ -1,0 +1,18 @@
+Kappa {
+  * kappa = 1 / ( Si_a + Si_b * T + Si_c * T^2 )
+  Si_a    = 0.03          # [K cm/W]
+  Si_b    = 1.5600e-03    # [cm/W]
+  Si_c    = 1.6500e-06    # [cm/(W K)]
+}
+
+pmi_thermalcond_std {
+  a = 0.03        # [K cm/W]
+  b = 1.56e-03    # [cm/W]
+  c = 1.65e-06    # [cm/(W K)]
+}
+
+pmi_thermalcond {
+  a = 0.03        # [K cm/W]
+  b = 1.56e-03    # [cm/W]
+  c = 1.65e-06    # [cm/(W K)]
+}

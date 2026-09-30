@@ -1,0 +1,22 @@
+Bandgap {
+  * Eg = Eg0 + dEg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+  * dEg0(<bgn_model_name>) is a band gap correction term.  It is used together with 
+  * an appropriate BGN model, if this BGN model is chosen in Physics section 
+  * Parameter 'Tpar' specifies the value of lattice 
+  * temperature, at which parameters below are defined
+  * Chi0 is electron affinity.
+	Eg0	= @Eg0@	# [eV]
+	dEg0(Bennett)	= 0.0000e+00	# [eV]
+	dEg0(Slotboom)	= -4.7950e-03	# [eV]
+	dEg0(OldSlotboom)	= -1.5950e-02	# [eV]
+	dEg0(delAlamo)	= -1.4070e-02	# [eV]
+	alpha	= 4.7300e-04	# [eV K^-1]
+	beta	= 6.3600e+02	# [K]
+	Tpar	= 0.0000e+00	# [K]
+}
+
+pmi_bg {
+	Eg0 = @Eg0@
+	alpha = 4.73e-4
+	beta = 636
+}

@@ -1,0 +1,18 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vR-2020.09-L1
+
+# --- simulation flow
+sde sde "" {}
+sdevice sdevice "" {}
+sdevice T "77" {77 300}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default T ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {77} {default} 0
+3 5 3 {} {default} 0
+2 4 2 {300} {default} 0
+3 6 4 {} {default} 0

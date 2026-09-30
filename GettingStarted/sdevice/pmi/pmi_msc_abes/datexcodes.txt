@@ -1,0 +1,37 @@
+! Copyright (c) 1994-2014 Synopsys, Inc.
+! This file and the associated documentation are proprietary to
+! Synopsys, Inc.  This file may only be used in accordance with the
+! terms and conditions of a written license agreement with Synopsys,
+! Inc.  All other use, reproduction, or distribution of this file is
+! strictly prohibited.
+!
+DATEX2.1
+Datacode
+""
+"Data codes for semiconductor process and device simulation"
+
+
+
+Materials {
+
+    ChalcogenideC {
+        code    = 888
+        label   = "cGST"
+        group   = Semiconductor
+        color   = #b34f10
+    }
+
+    ChalcogenideA {
+        code    = 889
+        label   = "aGST"
+        group   = Semiconductor
+        color   = #b34f11
+    }
+
+    GST {
+        code    = 890
+        label   = "GST"
+        group   = Semiconductor
+        color   = #b34f12
+    }
+}

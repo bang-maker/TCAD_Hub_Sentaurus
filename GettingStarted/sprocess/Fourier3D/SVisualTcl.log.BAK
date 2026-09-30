@@ -1,0 +1,39 @@
+###########################################
+# Sentaurus Visual W-2024.09.
+# Tcl log file.
+#------------------------------------------
+# Date: Aug 10, 2026. 22:53:25.
+# Version: 2024.09.9150440
+# Mode: Interactive (GUI).
+# Mesa: enabled.
+# Hostname: localhost.localdomain.
+# Machine: Linux, x86_64, linux64.
+# Kernel: 4.18.0-514.el8.x86_64.
+###########################################
+
+load_file /usr/synopsys/sentaurus/W-2024.09/bin/../tcad/current/Applications_Library/GettingStarted/sprocess/Fourier3D/n1_2_fps.tdr -fod
+create_plot -dataset n1_2_fps_geometry_0
+select_plots {Plot_n1_2_fps_geometry_0}
+#-> Plot_n1_2_fps_geometry_0
+#-> Plot_n1_2_fps_geometry_0
+create_plot -dataset n1_2_fps_geometry_1
+select_plots {Plot_n1_2_fps_geometry_1}
+#-> Plot_n1_2_fps_geometry_1
+#-> Plot_n1_2_fps_geometry_1
+#-> n1_2_fps_geometry_0
+select_plots {Plot_n1_2_fps_geometry_0}
+#-> Plot_n1_2_fps_geometry_0
+rotate_plot -plot Plot_n1_2_fps_geometry_0 -x -125.914 -y -130.166 -z -79.7597 -absolute
+#-> 0
+rotate_plot -plot Plot_n1_2_fps_geometry_0 -x 166.758 -y 106.965 -z -73.6234 -absolute
+#-> 0
+rotate_plot -plot Plot_n1_2_fps_geometry_0 -x -174.914 -y 54.4717 -z -27.1981 -absolute
+#-> 0
+rotate_plot -plot Plot_n1_2_fps_geometry_0 -x 154.063 -y -32.5809 -z -32.0536 -absolute
+#-> 0
+select_plots {Plot_n1_2_fps_geometry_1}
+#-> Plot_n1_2_fps_geometry_1
+rotate_plot -plot Plot_n1_2_fps_geometry_1 -x 127.622 -y 79.7254 -z -85.4711 -absolute
+#-> 0
+exit 0
+ 

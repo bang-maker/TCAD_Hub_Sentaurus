@@ -1,0 +1,28 @@
+Material="Silicon" {
+   BarrierTunneling { 
+      mt = 0.32 , 0.16
+   }
+}
+
+Material="PolySi" {
+	BarrierTunneling { 
+		mt = 0.36,0.38
+	}
+}
+
+Material="Oxide" {
+   BarrierTunneling { 
+      mt = 0.35,0.33
+   }
+}
+
+Material="NitrideAsSemiconductor" {
+  #include "sdevice_Nitride.par"
+
+}
+
+
+Material="Nitride" {
+  #include "sdevice_Nitride.par"
+
+}

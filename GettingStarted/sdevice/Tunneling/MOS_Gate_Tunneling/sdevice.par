@@ -1,0 +1,184 @@
+
+######################## FN ###################################
+#if "@model@" == "FN" 
+   #if "@case@" == "Ref"
+   RegionInterface="r.ox/r.si" {
+      FowlerModel
+      { 
+	      Aw	= 1.23e-06	# [A/V^2]
+	      Bw	= 2.37e+08	# [V/cm]
+	      Ae	= 1.87e-07	# [A/V^2]
+	      Be	= 1.88e+08	# [V/cm]
+	      Gm	= 1	      # [1]
+      }
+      }
+
+   #else
+   RegionInterface="r.ox/r.si" {
+      FowlerModel
+      { 
+	      Aw	= _Aw_	   # [A/V^2]
+	      Bw	= 2.37e+08	# [V/cm]
+	      Ae	= _Ae_	   # [A/V^2]
+	      Be	= 1.88e+08	# [V/cm]
+	      Gm	= 1	      # [1]
+      }
+      }
+   #endif
+#endif
+
+######################## DT ###################################
+#if "@model@" == "DT" 
+   #if "@par@" == "default"
+      RegionInterface="r.ox/r.si" {
+         DirectTunnelling
+            {  
+            eps_ins	= 2.13         # [1]
+            E_F_M	= 11.7            # [eV]
+            m_M	= 1               # [m0]
+            m_ins	= 0.5 ,	0.77	   # [m0]
+            E0	= 0 ,	0	            # [eV]
+            E1	= 0 ,	0	            # [eV]
+            E2	= 0 ,	0	            # [eV]
+            m_s	= 0.19 ,	0.16	   # [m0]
+            m_dos	= 0.32 , 0.3	      # [m0]
+            E_barrier = 3.15 ,	4.73	# [eV]         
+            }
+         }
+      RegionInterface="r.ox/r.polysi" {
+         DirectTunnelling
+            {  
+            eps_ins	= 2.13	      # [1]
+            E_F_M	= 11.7            # [eV]
+            m_M	= 1               # [m0]
+            m_ins	= 0.5 ,	0.77	   # [m0]
+            E0	= 0 ,	0	            # [eV]
+            E1	= 0 ,	0	            # [eV]
+            E2	= 0 ,	0	            # [eV]
+            m_s	= 0.19 ,	0.16	   # [m0]
+            m_dos	= 0.32 , 0.3	      # [m0]
+            E_barrier = 3.15 ,	4.73	# [eV]         
+            }
+         }
+
+   #else
+      RegionInterface="r.ox/r.si" {
+	      DirectTunnelling
+	      {  
+            m_ins	= _m_ins_e_ ,	_m_ins_h_
+
+            #if "@case@" == "imageforce"
+               E0	= 0 ,	0
+	            E1	= 0.3 ,	0.3	# [eV]
+	            E2	= 0.7 ,	0.7	# [eV]
+            #endif
+
+	         E_barrier	= _E_barrier_e_ ,	4.73	# [eV]  
+	      }
+         }
+
+      RegionInterface="r.ox/r.polysi" {
+	      DirectTunnelling
+	      {  
+            m_ins	= _m_ins_e_ ,	_m_ins_h_
+
+            #if "@case@" == "imageforce"
+               E0	= 0 ,	0
+	            E1	= 0.3 ,	0.3	# [eV]
+	            E2	= 0.7 ,	0.7	# [eV]
+            #endif
+
+	         E_barrier	= _E_barrier_e_ ,	4.73	# [eV]  
+	      }
+         }
+   #endif
+#endif
+
+###########################################################
+#if "@model@" == "NLT" || "@model@" == "NLM" 
+
+   #if "@par@" == "global_man"
+      BarrierTunneling  
+      { 
+	      mt	= _mte_ ,	_mth_	# [1]
+      }
+
+   #elif "@par@" == "global_opt"
+      BarrierTunneling  
+      { 
+	      mt	= _mte_ ,	_mth_	# [1]
+	      g	= 2.1 ,	0.66	# [1]
+	      alpha	= 0.0000e+00 ,	0.0000e+00	# [1]
+	      eoffset = () # eV
+	      hoffset = () # eV
+         
+      }
+   #else
+
+      BarrierTunneling  
+      { 
+      g	= _gc_ ,	_gv_
+      }
+
+      Material= "Oxide" {
+         BarrierTunneling  
+         { 
+	      mt	= _mte_ ,	_mth_	# [1]
+         }
+      }
+
+      Material= "Silicon" {
+         BarrierTunneling  
+         { 
+	      mt	= _mt_e_si_ ,	_mt_h_si_	# [1]
+         }
+      }
+
+      Material= "PolySi" {
+         BarrierTunneling  
+         { 
+	      mt	= 0.19 ,	0.16	# [1]
+         }
+      }
+
+      #if ("@par@" == "mt_e_ox" && "@par_val@" == "0.5") 
+         BarrierTunneling  
+         { 
+            C = 0.3 , 0.3
+            lambda = 1e7 , 1e7
+            omega = 5e7 , 5e7
+            phase= 0.0 , 0.0
+         }
+      #endif
+
+   #endif
+
+#endif
+
+###########################################################
+#if "@model@" == "TAT" 
+
+   Material= "Oxide" {
+	   BarrierTunneling  
+	   { 
+		   mt	= _mte_ ,	_mth_	# [1]
+	   }
+   }
+
+   Material= "Silicon" {
+	   BarrierTunneling  
+	   { 
+		   mt	= 0.19 ,	0.16	# [1]
+	   }
+   }
+
+   Material= "PolySi" {
+      BarrierTunneling  
+      { 
+	      mt	= 0.19 ,	0.16	# [1]
+      }
+   }
+
+#endif
+
+

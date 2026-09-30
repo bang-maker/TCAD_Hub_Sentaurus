@@ -1,0 +1,277 @@
+Material = "GaAs" {
+
+#if "@model@" == "static"
+
+   #if "@par@" == "-"
+      BarrierTunneling  
+      { 
+	      mt	= 0.03,0.06	# [1]
+      }
+
+   #elif "@par@" == "default"
+      { 
+	      mt	= 0.03,0.06	# [1]
+	      g	= 2.1 ,	0.66	# [1]
+      }
+
+   #elif "@par@" == "Permeation"
+      BarrierTunneling  
+      { * Non Local Barrier Tunneling 
+        * G(r) = g*A*T/kB*F(r)*Pt(r)*ln[(1+exp((E(r)-Es)/kB/T))/(1+exp((E(r)-Em)/kB/T))]
+        * where: 
+        *     Pt(r) is WKB approximation for the tunneling probability 
+        *     g = As/A, As is the Richardson constant for carriers in semiconductor
+        *     A is the Richardson constant for free electrons 
+        *     F(r) is the electric field 
+        *     E(r) is carrier energy 
+        *     Es is carrier quasi fermi energy in semiconductor
+        *     Em is carrier fermi energy in metal 
+	      g	= 0.068 ,	0.62	# [1]
+      *	g	= 68 ,	62	# [1]
+	      mt	= 0.03,0.06	# [1]
+      *	mt	= 0.1,0.4	# [1]
+      }
+   #endif
+
+#elif "@model@" == "both" || "@model@" == "bothFranz" 
+      BarrierTunneling  
+      { 
+	      g	= 0.068 ,	0.62	# [1]
+	      mt	= 0.03,0.06	# [1]
+      }
+
+#endif
+
+#if ("@model@" == "dynamic") && "@case@" == "-" 
+
+      #if "@par@" == "-"
+
+      #elif "@par@" == "default"
+         Band2BandTunneling 
+         { 
+            Apath	= 4e14	# [1/cm^3/sec]
+            Bpath	= 1.9e7	# [V/cm]
+            Dpath	= 0.0000e+00	# [eV]
+            Ppath	= 0.037	# [eV]
+            Rpath	= 0.0000e+00	# [1]
+            MaxTunnelLength	= 1.0000e-05	# [cm]
+
+            Cpath = 0
+            degeneracy = 0
+            Dcpath = 0
+            Dvpath = 0
+            ldir_c = (0,0,0)
+            m_c = 0
+            m_c_l = 0
+            m_c_t = 0
+            m_v = 0
+            m_c_q = 0.26
+            m_v_q = 0.16
+            }
+
+
+      #elif "@par@" == "set1"
+
+         Band2BandTunneling 
+         { 
+           * nonlocal B2B models for the following keywords in command file:
+           * Band2Band(Model=NonlocalPath) : Nonlocal B2B tunneling with transition process using the tunneling path
+           * For the nonlocal B2B process:
+           * Apath : Prefactor Ad or Ap in the uniform field limit for the direct or indirect tunneling
+           * Bpath : Exponent  Bd or Bp in the uniform field limit for the direct or indirect tunneling
+           * Dpath : The conduction band offset D
+           * Ppath : The phonon energy P
+           *         Note that the indirect tunneling process is assumed if P>0, and the direct tunneling process is assumed if P=0
+           * Rpath : The ratio mv/mc. If Rpathi=0, it is automatically determined by
+           *         mv/mc = (1 + 2*mr)/(1 - 2*mr)
+           *         where mr=mc*mv/(mc+mv) is the reduced mass
+           * In the uniform field limit, the generation rate can be expressed by
+           * G = A * (F/F0)^2   * Exp(-B/F) for   direct tunneling
+           *   = A * (F/F0)^2.5 * Exp(-B/F) for indirect tunneling
+           * where
+           * Ad = g * mr^0.5 * (qF0)^2 / (36 * pi * h_bar^2 *E_T^0.5)
+           * Ap = g *(mc*mv)^1.5 * (1+2*N) * (qF0)^2.5 * Dop^2 / (2^7.75 * pi^2.5 * h_bar^2.5 * mr^1.25 * E_T^1.75 * rho * P)
+           * Bd = pi    * mr^0.5 * E_T^1.5 / (2 * h_bar * q)
+           * Bp = 2^2.5 * mr^0.5 * E_T^1.5 / (3 * h_bar * q)
+           * F0 = 1 V/cm, qF0 = 1 eV/cm, E_T = E_G + D
+           * From the above expression, the microscopic parameters such as mr, mc, and mv for the nonlocal B2B model are extracted internally
+	         Apath	= 1e19	# [1/cm^3/sec]
+	         Bpath	= 1.05e7	# [V/cm]
+	         Dpath	= 0.0000e+00	# [eV]
+	         Ppath	= 0.0000e+00	# [eV]
+	         Rpath	= 0.0000e+00	# [1]
+	         MaxTunnelLength	= 1.0000e-05	# [cm]
+         }
+
+      #endif
+
+#elif ("@model@" == "dynamic") && ("@case@" == "direct" || "@case@" == "phonon-assisted") 
+      Band2BandTunneling 
+      {
+         #if "@par@" == "set1"
+            m_c = 0
+            m_v = 0
+            degeneracy = 0
+            Dcpath = 0
+            Dvpath = 0
+
+         #elif "@par@" == "set2"
+            Apath= 1e19
+            Bpath= 1.05e7
+            Rpath = 0
+            Dcpath = 0
+            Dvpath = 0
+
+         #else
+            Ppath	= _Ppath_
+            Apath= _Apath_
+            Bpath= _Bpath_
+         #endif
+      }
+
+#elif "@model@" == "both" || "@model@" == "bothFranz" 
+      Band2BandTunneling 
+      { 
+	         Apath	= 1e19	# [1/cm^3/sec]
+	         Bpath	= 1.05e7	# [V/cm]
+	         Dpath	= 0.0000e+00	# [eV]
+	         Ppath	= 0.0000e+00	# [eV]
+	         Rpath	= 0.0000e+00	# [1]
+	         MaxTunnelLength	= 1.0000e-05	# [cm]
+      }
+
+#endif
+
+Scharfetter * relation and trap level for SRH recombination:
+{ * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+	taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	taumax	= 1.0000e-10 ,	1.0000e-10	# [s]
+	Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	gamma	= 1 ,	1	# [1]
+	Talpha	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Tcoeff	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+
+RadiativeRecombination {
+  C = +2.0000000e-10
+}
+
+Auger{
+  A  = +1.0000000e-30, +1.0000000e-30 # [cm^6/s]
+  B  = +0.0000000e+00, +0.0000000e+00 # [cm^6/s]
+  C  = +0.0000000e+00, +0.0000000e+00 # [cm^6/s]
+  H  = +0.0000000e+00, +0.0000000e+00 # [1]
+  N0 = +1.0000000e+18, +1.0000000e+18 # [cm^-3]
+}
+
+TableBGN {
+    Acceptor  +1.0000000e+10,  +0.0000000e+00
+    Acceptor  +1.0000000e+15,  +2.3873864e-03
+    Acceptor  +1.2589254e+15,  +2.5623007e-03
+    Acceptor  +1.5848932e+15,  +2.7510110e-03
+    Acceptor  +1.9952623e+15,  +2.9547015e-03
+    Acceptor  +2.5118864e+15,  +3.1746676e-03
+    Acceptor  +3.1622777e+15,  +3.4123262e-03
+    Acceptor  +3.9810717e+15,  +3.6692288e-03
+    Acceptor  +5.0118723e+15,  +3.9470752e-03
+    Acceptor  +6.3095734e+15,  +4.2477283e-03
+    Acceptor  +7.9432823e+15,  +4.5732312e-03
+    Acceptor  +1.0000000e+16,  +4.9258260e-03
+    Acceptor  +1.2589254e+16,  +5.3079745e-03
+    Acceptor  +1.5848932e+16,  +5.7223812e-03
+    Acceptor  +1.9952623e+16,  +6.1720189e-03
+    Acceptor  +2.5118864e+16,  +6.6601572e-03
+    Acceptor  +3.1622777e+16,  +7.1903939e-03
+    Acceptor  +3.9810717e+16,  +7.7666905e-03
+    Acceptor  +5.0118723e+16,  +8.3934106e-03
+    Acceptor  +6.3095734e+16,  +9.0753641e-03
+    Acceptor  +7.9432823e+16,  +9.8178549e-03
+    Acceptor  +1.0000000e+17,  +1.0626735e-02
+    Acceptor  +1.2589254e+17,  +1.1508464e-02
+    Acceptor  +1.5848932e+17,  +1.2470176e-02
+    Acceptor  +1.9952623e+17,  +1.3519755e-02
+    Acceptor  +2.5118864e+17,  +1.4665915e-02
+    Acceptor  +3.1622777e+17,  +1.5918293e-02
+    Acceptor  +3.9810717e+17,  +1.7287556e-02
+    Acceptor  +5.0118723e+17,  +1.8785509e-02
+    Acceptor  +6.3095734e+17,  +2.0425225e-02
+    Acceptor  +7.9432823e+17,  +2.2221192e-02
+    Acceptor  +1.0000000e+18,  +2.4189466e-02
+    Acceptor  +1.2589254e+18,  +2.6347852e-02
+    Acceptor  +1.5848932e+18,  +2.8716101e-02
+    Acceptor  +1.9952623e+18,  +3.1316130e-02
+    Acceptor  +2.5118864e+18,  +3.4172273e-02
+    Acceptor  +3.1622777e+18,  +3.7311553e-02
+    Acceptor  +3.9810717e+18,  +4.0763992e-02
+    Acceptor  +5.0118723e+18,  +4.4562955e-02
+    Acceptor  +6.3095734e+18,  +4.8745534e-02
+    Acceptor  +7.9432823e+18,  +5.3352979e-02
+    Acceptor  +1.0000000e+19,  +5.8431179e-02
+    Acceptor  +1.2589254e+19,  +6.4031198e-02
+    Acceptor  +1.5848932e+19,  +7.0209877e-02
+    Acceptor  +1.9952623e+19,  +7.7030505e-02
+    Acceptor  +2.5118864e+19,  +8.4563571e-02
+    Acceptor  +3.1622777e+19,  +9.2887604e-02
+    Acceptor  +3.9810717e+19,  +1.0209011e-01
+    Acceptor  +5.0118723e+19,  +1.1226864e-01
+    Acceptor  +6.3095734e+19,  +1.2353193e-01
+    Acceptor  +7.9432823e+19,  +1.3600126e-01
+    Acceptor  +1.0000000e+20,  +1.4981192e-01
+    Donor     +1.0000000e+10,  +0.0000000e+00
+    Donor     +1.0000000e+15,  +3.2994600e-03
+    Donor     +1.2589254e+15,  +3.5228786e-03
+    Donor     +1.5848932e+15,  +3.7620893e-03
+    Donor     +1.9952623e+15,  +4.0182716e-03
+    Donor     +2.5118864e+15,  +4.2926989e-03
+    Donor     +3.1622777e+15,  +4.5867472e-03
+    Donor     +3.9810717e+15,  +4.9019035e-03
+    Donor     +5.0118723e+15,  +5.2397756e-03
+    Donor     +6.3095734e+15,  +5.6021030e-03
+    Donor     +7.9432823e+15,  +5.9907681e-03
+    Donor     +1.0000000e+16,  +6.4078093e-03
+    Donor     +1.2589254e+16,  +6.8554346e-03
+    Donor     +1.5848932e+16,  +7.3360372e-03
+    Donor     +1.9952623e+16,  +7.8522123e-03
+    Donor     +2.5118864e+16,  +8.4067751e-03
+    Donor     +3.1622777e+16,  +9.0027815e-03
+    Donor     +3.9810717e+16,  +9.6435503e-03
+    Donor     +5.0118723e+16,  +1.0332687e-02
+    Donor     +6.3095734e+16,  +1.1074113e-02
+    Donor     +7.9432823e+16,  +1.1872090e-02
+    Donor     +1.0000000e+17,  +1.2731260e-02
+    Donor     +1.2589254e+17,  +1.3656674e-02
+    Donor     +1.5848932e+17,  +1.4653837e-02
+    Donor     +1.9952623e+17,  +1.5728749e-02
+    Donor     +2.5118864e+17,  +1.6887953e-02
+    Donor     +3.1622777e+17,  +1.8138590e-02
+    Donor     +3.9810717e+17,  +1.9488454e-02
+    Donor     +5.0118723e+17,  +2.0946063e-02
+    Donor     +6.3095734e+17,  +2.2520724e-02
+    Donor     +7.9432823e+17,  +2.4222618e-02
+    Donor     +1.0000000e+18,  +2.6062883e-02
+    Donor     +1.2589254e+18,  +2.8053714e-02
+    Donor     +1.5848932e+18,  +3.0208470e-02
+    Donor     +1.9952623e+18,  +3.2541792e-02
+    Donor     +2.5118864e+18,  +3.5069736e-02
+    Donor     +3.1622777e+18,  +3.7809920e-02
+    Donor     +3.9810717e+18,  +4.0781683e-02
+    Donor     +5.0118723e+18,  +4.4006269e-02
+    Donor     +6.3095734e+18,  +4.7507023e-02
+    Donor     +7.9432823e+18,  +5.1309615e-02
+    Donor     +1.0000000e+19,  +5.5442288e-02
+    Donor     +1.2589254e+19,  +5.9936125e-02
+    Donor     +1.5848932e+19,  +6.4825360e-02
+    Donor     +1.9952623e+19,  +7.0147712e-02
+    Donor     +2.5118864e+19,  +7.5944764e-02
+    Donor     +3.1622777e+19,  +8.2262375e-02
+    Donor     +3.9810717e+19,  +8.9151153e-02
+    Donor     +5.0118723e+19,  +9.6666966e-02
+    Donor     +6.3095734e+19,  +1.0487152e-01
+    Donor     +7.9432823e+19,  +1.1383301e-01
+    Donor     +1.0000000e+20,  +1.2362682e-01
+}
+
+}
