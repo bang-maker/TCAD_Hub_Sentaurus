@@ -1,0 +1,72 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vJ-2014.09-DEV, Mon Mar 10 16:37:26 2014
+
+# --- simulation flow
+sdevice sdevice "" {}
+sdevice Device "NMOS" {NMOS PMOS}
+sdevice Nrand "1000" {10000}
+sdevice Mode "lin" {lin sat}
+PlotStdDevs svisual "" {}
+PlotIVs svisual "" {}
+PlotIVs Method "weighted" {weighted dI exp}
+PlotIVs jmin "0" {0}
+PlotIVs jmax "50" {50}
+Histograms svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Device ""
+scenario default Nrand ""
+scenario default Mode ""
+scenario default Method ""
+scenario default jmin ""
+scenario default jmax ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {NMOS} {default} 0
+2 4 2 {10000} {default} 0
+3 6 4 {lin} {default} 0
+4 10 6 {} {default} 0
+5 14 10 {} {default} 0
+6 18 14 {weighted} {default} 0
+7 26 18 {0} {default} 0
+8 34 26 {50} {default} 0
+9 42 34 {} {default} 0
+3 7 4 {sat} {default} 0
+4 11 7 {} {default} 0
+5 15 11 {} {default} 0
+6 19 15 {weighted} {default} 0
+7 27 19 {0} {default} 0
+8 35 27 {50} {default} 0
+9 43 35 {} {default} 0
+6 20 15 {dI} {default} 0
+7 28 20 {0} {default} 0
+8 36 28 {50} {default} 0
+9 44 36 {} {default} 0
+6 21 15 {exp} {default} 0
+7 29 21 {0} {default} 0
+8 37 29 {50} {default} 0
+9 45 37 {} {default} 0
+1 3 1 {PMOS} {default} 0
+2 5 3 {10000} {default} 0
+3 8 5 {lin} {default} 0
+4 12 8 {} {default} 0
+5 16 12 {} {default} 0
+6 22 16 {weighted} {default} 0
+7 30 22 {0} {default} 0
+8 38 30 {50} {default} 0
+9 46 38 {} {default} 0
+3 9 5 {sat} {default} 0
+4 13 9 {} {default} 0
+5 17 13 {} {default} 0
+6 23 17 {weighted} {default} 0
+7 31 23 {0} {default} 0
+8 39 31 {50} {default} 0
+9 47 39 {} {default} 0
+6 24 17 {dI} {default} 0
+7 32 24 {0} {default} 0
+8 40 32 {50} {default} 0
+9 48 40 {} {default} 0
+6 25 17 {exp} {default} 0
+7 33 25 {0} {default} 0
+8 41 33 {50} {default} 0
+9 49 41 {} {default} 0

@@ -1,0 +1,17 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vS-2021.06-L1
+
+# --- simulation flow
+nMOS sde "" {}
+AC sdevice "" {}
+svisual svisual "" {}
+AC1 sdevice "" {}
+svisual1 svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {} {default} 0
+2 3 2 {} {default} 0
+3 4 3 {} {default} 0
+4 5 4 {} {default} 0

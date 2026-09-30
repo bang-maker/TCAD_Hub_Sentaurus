@@ -1,0 +1,14 @@
+Material = "Oxide" {
+
+Epsilon
+{ *  Ratio of the permittivities of material and vacuum
+
+        epsilon = @<3.9*Dox/tox_eff>@  # [1] 3.9
+
+}
+
+
+}
+
+
+

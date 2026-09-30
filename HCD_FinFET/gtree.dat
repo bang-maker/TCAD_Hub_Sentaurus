@@ -1,0 +1,86 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vV-2023.09-L1
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess Wb "0.008" {0.008} V
+sprocess Wt "0.008" {0.008} V
+sprocess Type "pMOS" {pMOS nMOS} R
+sprocess DEVICEMESH "1" {1} R+
+HCD sdevice "" {}
+HCD Kf1 "0.76" {1e7 7.2e7} V
+HCD Kf3 "5.75e0" {1.0e-2 1e4} V
+HCD Vg_Stress "-1.0" {1.3 1.0 1.5 1.7} V
+HCD Vd_Stress "-1.7" {1.3 1.7 1.0 1.5} V
+HCD TfinalStress "1000" {1000} R
+sdevice_IV sdevice "--tcl" {}
+svisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Wb ""
+scenario default Wt ""
+scenario default Type ""
+scenario default DEVICEMESH ""
+scenario default Kf1 ""
+scenario default Kf3 ""
+scenario default Vg_Stress ""
+scenario default Vd_Stress ""
+scenario default TfinalStress ""
+scenario nMOS Wb ""
+scenario nMOS Wt ""
+scenario nMOS Type ""
+scenario nMOS DEVICEMESH ""
+scenario nMOS Kf1 ""
+scenario nMOS Kf3 ""
+scenario nMOS Vg_Stress ""
+scenario nMOS Vd_Stress ""
+scenario nMOS TfinalStress ""
+scenario pMOS Wb ""
+scenario pMOS Wt ""
+scenario pMOS Type ""
+scenario pMOS DEVICEMESH ""
+scenario pMOS Kf1 ""
+scenario pMOS Kf3 ""
+scenario pMOS Vg_Stress ""
+scenario pMOS Vd_Stress ""
+scenario pMOS TfinalStress ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {0.008} {default} 0
+2 3 2 {0.008} {default} 0
+3 4 3 {pMOS} {default} 0
+4 6 4 {1} {default} 0
+5 8 6 {} {default} 0
+6 10 8 {1e7} {default} 0
+7 12 10 {1.0e-2} {default} 0
+8 14 12 {1.3} {default} 0
+9 19 14 {1.3} {default} 0
+10 24 19 {1000} {default} 0
+11 29 24 {} {default} 0
+12 34 29 {} {default} 0
+8 15 12 {1.5} {default} 0
+9 20 15 {1.5} {default} 0
+10 25 20 {1000} {default} 0
+11 30 25 {} {default} 0
+12 35 30 {} {default} 0
+8 16 12 {1.7} {default} 0
+9 21 16 {1.7} {default} 0
+10 26 21 {1000} {default} 0
+11 31 26 {} {default} 0
+12 36 31 {} {default} 0
+3 5 3 {nMOS} {default} 0
+4 7 5 {1} {default} 0
+5 9 7 {} {default} 0
+6 11 9 {7.2e7} {default} 0
+7 13 11 {1e4} {default} 0
+8 17 13 {1.3} {default} 0
+9 22 17 {1.3} {default} 0
+10 27 22 {1000} {default} 0
+11 32 27 {} {default} 0
+12 37 32 {} {default} 0
+8 18 13 {1.0} {default} 0
+9 23 18 {1.0} {default} 0
+10 28 23 {1000} {default} 0
+11 33 28 {} {default} 0
+12 38 33 {} {default} 0
+

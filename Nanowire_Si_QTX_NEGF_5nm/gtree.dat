@@ -1,0 +1,455 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vT-2022.03-L1
+
+# --- simulation flow
+NWgen sprocess "" {}
+NWgen Shape "Circle" {Circle Trapezoid}
+NWgen Type "nMOS" {nMOS pMOS}
+NWgen tox "0.8" {0.8}
+NWgen Nch "0.0" {0.0}
+NWgen Nsd "1.0e20" {1.0e20}
+NWgen Lsd "10.0" {10.0}
+NWgen L "11.0" {11.0}
+NWgen Wtop "5.0" {5.0 4.5}
+NWgen Wbottom "5.0" {5.0 5.5}
+NWgen H "5.0" {5.0}
+NWgen D "5.0" {5.0}
+NWgen DiscreteDopant "0" {0 1}
+NWgen Seed "1" {10}
+TensorMesh snmesh "" {}
+NEGF qtx "" {}
+NEGF Nprocesses "8" {16 32}
+NEGF cDir "110" {110}
+NEGF Sxx "0" {0}
+NEGF Syy "0" {0}
+NEGF Szz "0" {0}
+NEGF Rc "1.0e3" {1.0e3}
+NEGF WF "4.600" {4.339 4.913 4.377 4.879}
+NEGF VGATE "0.70" {0.70 -0.70}
+NEGF VDRAIN "0.05" {0.05 0.70 -0.05 -0.70}
+NEGF Nmodes "6" {10 25}
+NEGF Scattering "Ballistic" {Ballistic CO+PH+SR}
+NEGF SelfHeating "0" {1}
+NEGF CT "300" {300}
+Plot_IdVg svisual "" {}
+Plot_Tunneling svisual "" {}
+Plot_CC svisual "" {}
+Plot_SpectralCurrent svisual "" {}
+Plot_CC_E svisual "" {}
+Carrier_Slice svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Shape ""
+scenario default Type ""
+scenario default tox ""
+scenario default Nch ""
+scenario default Nsd ""
+scenario default Lsd ""
+scenario default L ""
+scenario default Wtop ""
+scenario default Wbottom ""
+scenario default H ""
+scenario default D ""
+scenario default DiscreteDopant ""
+scenario default Seed ""
+scenario default Nprocesses ""
+scenario default cDir ""
+scenario default Sxx ""
+scenario default Syy ""
+scenario default Szz ""
+scenario default Rc ""
+scenario default WF ""
+scenario default VGATE ""
+scenario default VDRAIN ""
+scenario default Nmodes ""
+scenario default Scattering ""
+scenario default SelfHeating ""
+scenario default CT ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {Circle} {default} 0
+2 4 2 {nMOS} {default} 0
+3 8 4 {0.8} {default} 0
+4 12 8 {0.0} {default} 0
+5 16 12 {1.0e20} {default} 0
+6 20 16 {10.0} {default} 0
+7 24 20 {11.0} {default} 0
+8 28 24 {5.0} {default} 0
+9 32 28 {5.0} {default} 0
+10 36 32 {5.0} {default} 0
+11 40 36 {5.0} {default} 0
+12 44 40 {0} {default} 0
+13 52 44 {10} {default} 0
+14 60 52 {} {default} 0
+15 68 60 {} {default} 0
+16 76 68 {16} {default} 0
+17 84 76 {110} {default} 0
+18 92 84 {0} {default} 0
+19 100 92 {0} {default} 0
+20 108 100 {0} {default} 0
+21 116 108 {1.0e3} {default} 0
+22 124 116 {4.339} {default} 0
+23 132 124 {0.70} {default} 0
+24 140 132 {0.05} {default} 0
+25 156 140 {10} {default} 0
+26 172 156 {Ballistic} {default} 0
+27 196 172 {1} {default} 0
+28 220 196 {300} {default} 0
+29 244 220 {} {default} 0
+30 268 244 {} {default} 0
+31 292 268 {} {default} 0
+32 316 292 {} {default} 0
+33 340 316 {} {default} 0
+34 364 340 {} {default} 0
+26 173 156 {CO+PH+SR} {default} 0
+27 197 173 {1} {default} 0
+28 221 197 {300} {default} 0
+29 245 221 {} {default} 0
+30 269 245 {} {default} 0
+31 293 269 {} {default} 0
+32 317 293 {} {default} 0
+33 341 317 {} {default} 0
+34 365 341 {} {default} 0
+24 141 132 {0.70} {default} 0
+25 157 141 {10} {default} 0
+26 174 157 {Ballistic} {default} 0
+27 198 174 {1} {default} 0
+28 222 198 {300} {default} 0
+29 246 222 {} {default} 0
+30 270 246 {} {default} 0
+31 294 270 {} {default} 0
+32 318 294 {} {default} 0
+33 342 318 {} {default} 0
+34 366 342 {} {default} 0
+26 175 157 {CO+PH+SR} {default} 0
+27 199 175 {1} {default} 0
+28 223 199 {300} {default} 0
+29 247 223 {} {default} 0
+30 271 247 {} {default} 0
+31 295 271 {} {default} 0
+32 319 295 {} {default} 0
+33 343 319 {} {default} 0
+34 367 343 {} {default} 0
+12 45 40 {1} {default} 0
+13 53 45 {10} {default} 0
+14 61 53 {} {default} 0
+15 69 61 {} {default} 0
+16 77 69 {16} {default} 0
+17 85 77 {110} {default} 0
+18 93 85 {0} {default} 0
+19 101 93 {0} {default} 0
+20 109 101 {0} {default} 0
+21 117 109 {1.0e3} {default} 0
+22 125 117 {4.339} {default} 0
+23 133 125 {0.70} {default} 0
+24 142 133 {0.05} {default} 0
+25 158 142 {10} {default} 0
+26 176 158 {Ballistic} {default} 0
+27 200 176 {1} {default} 0
+28 224 200 {300} {default} 0
+29 248 224 {} {default} 0
+30 272 248 {} {default} 0
+31 296 272 {} {default} 0
+32 320 296 {} {default} 0
+33 344 320 {} {default} 0
+34 368 344 {} {default} 0
+26 177 158 {CO+PH+SR} {default} 0
+27 201 177 {1} {default} 0
+28 225 201 {300} {default} 0
+29 249 225 {} {default} 0
+30 273 249 {} {default} 0
+31 297 273 {} {default} 0
+32 321 297 {} {default} 0
+33 345 321 {} {default} 0
+34 369 345 {} {default} 0
+24 143 133 {0.70} {default} 0
+25 159 143 {10} {default} 0
+26 178 159 {Ballistic} {default} 0
+27 202 178 {1} {default} 0
+28 226 202 {300} {default} 0
+29 250 226 {} {default} 0
+30 274 250 {} {default} 0
+31 298 274 {} {default} 0
+32 322 298 {} {default} 0
+33 346 322 {} {default} 0
+34 370 346 {} {default} 0
+26 179 159 {CO+PH+SR} {default} 0
+27 203 179 {1} {default} 0
+28 227 203 {300} {default} 0
+29 251 227 {} {default} 0
+30 275 251 {} {default} 0
+31 299 275 {} {default} 0
+32 323 299 {} {default} 0
+33 347 323 {} {default} 0
+34 371 347 {} {default} 0
+2 5 2 {pMOS} {default} 0
+3 9 5 {0.8} {default} 0
+4 13 9 {0.0} {default} 0
+5 17 13 {1.0e20} {default} 0
+6 21 17 {10.0} {default} 0
+7 25 21 {11.0} {default} 0
+8 29 25 {5.0} {default} 0
+9 33 29 {5.0} {default} 0
+10 37 33 {5.0} {default} 0
+11 41 37 {5.0} {default} 0
+12 46 41 {0} {default} 0
+13 54 46 {10} {default} 0
+14 62 54 {} {default} 0
+15 70 62 {} {default} 0
+16 78 70 {32} {default} 0
+17 86 78 {110} {default} 0
+18 94 86 {0} {default} 0
+19 102 94 {0} {default} 0
+20 110 102 {0} {default} 0
+21 118 110 {1.0e3} {default} 0
+22 126 118 {4.913} {default} 0
+23 134 126 {-0.70} {default} 0
+24 144 134 {-0.05} {default} 0
+25 160 144 {25} {default} 0
+26 180 160 {Ballistic} {default} 0
+27 204 180 {1} {default} 0
+28 228 204 {300} {default} 0
+29 252 228 {} {default} 0
+30 276 252 {} {default} 0
+31 300 276 {} {default} 0
+32 324 300 {} {default} 0
+33 348 324 {} {default} 0
+34 372 348 {} {default} 0
+24 145 134 {-0.70} {default} 0
+25 161 145 {25} {default} 0
+26 181 161 {Ballistic} {default} 0
+27 205 181 {1} {default} 0
+28 229 205 {300} {default} 0
+29 253 229 {} {default} 0
+30 277 253 {} {default} 0
+31 301 277 {} {default} 0
+32 325 301 {} {default} 0
+33 349 325 {} {default} 0
+34 373 349 {} {default} 0
+12 47 41 {1} {default} 0
+13 55 47 {10} {default} 0
+14 63 55 {} {default} 0
+15 71 63 {} {default} 0
+16 79 71 {32} {default} 0
+17 87 79 {110} {default} 0
+18 95 87 {0} {default} 0
+19 103 95 {0} {default} 0
+20 111 103 {0} {default} 0
+21 119 111 {1.0e3} {default} 0
+22 127 119 {4.913} {default} 0
+23 135 127 {-0.70} {default} 0
+24 146 135 {-0.05} {default} 0
+25 162 146 {25} {default} 0
+26 182 162 {Ballistic} {default} 0
+27 206 182 {1} {default} 0
+28 230 206 {300} {default} 0
+29 254 230 {} {default} 0
+30 278 254 {} {default} 0
+31 302 278 {} {default} 0
+32 326 302 {} {default} 0
+33 350 326 {} {default} 0
+34 374 350 {} {default} 0
+24 147 135 {-0.70} {default} 0
+25 163 147 {25} {default} 0
+26 183 163 {Ballistic} {default} 0
+27 207 183 {1} {default} 0
+28 231 207 {300} {default} 0
+29 255 231 {} {default} 0
+30 279 255 {} {default} 0
+31 303 279 {} {default} 0
+32 327 303 {} {default} 0
+33 351 327 {} {default} 0
+34 375 351 {} {default} 0
+1 3 1 {Trapezoid} {default} 0
+2 6 3 {nMOS} {default} 0
+3 10 6 {0.8} {default} 0
+4 14 10 {0.0} {default} 0
+5 18 14 {1.0e20} {default} 0
+6 22 18 {10.0} {default} 0
+7 26 22 {11.0} {default} 0
+8 30 26 {4.5} {default} 0
+9 34 30 {5.5} {default} 0
+10 38 34 {5.0} {default} 0
+11 42 38 {5.0} {default} 0
+12 48 42 {0} {default} 0
+13 56 48 {10} {default} 0
+14 64 56 {} {default} 0
+15 72 64 {} {default} 0
+16 80 72 {16} {default} 0
+17 88 80 {110} {default} 0
+18 96 88 {0} {default} 0
+19 104 96 {0} {default} 0
+20 112 104 {0} {default} 0
+21 120 112 {1.0e3} {default} 0
+22 128 120 {4.377} {default} 0
+23 136 128 {0.70} {default} 0
+24 148 136 {0.05} {default} 0
+25 164 148 {10} {default} 0
+26 184 164 {Ballistic} {default} 0
+27 208 184 {1} {default} 0
+28 232 208 {300} {default} 0
+29 256 232 {} {default} 0
+30 280 256 {} {default} 0
+31 304 280 {} {default} 0
+32 328 304 {} {default} 0
+33 352 328 {} {default} 0
+34 376 352 {} {default} 0
+26 185 164 {CO+PH+SR} {default} 0
+27 209 185 {1} {default} 0
+28 233 209 {300} {default} 0
+29 257 233 {} {default} 0
+30 281 257 {} {default} 0
+31 305 281 {} {default} 0
+32 329 305 {} {default} 0
+33 353 329 {} {default} 0
+34 377 353 {} {default} 0
+24 149 136 {0.70} {default} 0
+25 165 149 {10} {default} 0
+26 186 165 {Ballistic} {default} 0
+27 210 186 {1} {default} 0
+28 234 210 {300} {default} 0
+29 258 234 {} {default} 0
+30 282 258 {} {default} 0
+31 306 282 {} {default} 0
+32 330 306 {} {default} 0
+33 354 330 {} {default} 0
+34 378 354 {} {default} 0
+26 187 165 {CO+PH+SR} {default} 0
+27 211 187 {1} {default} 0
+28 235 211 {300} {default} 0
+29 259 235 {} {default} 0
+30 283 259 {} {default} 0
+31 307 283 {} {default} 0
+32 331 307 {} {default} 0
+33 355 331 {} {default} 0
+34 379 355 {} {default} 0
+12 49 42 {1} {default} 0
+13 57 49 {10} {default} 0
+14 65 57 {} {default} 0
+15 73 65 {} {default} 0
+16 81 73 {16} {default} 0
+17 89 81 {110} {default} 0
+18 97 89 {0} {default} 0
+19 105 97 {0} {default} 0
+20 113 105 {0} {default} 0
+21 121 113 {1.0e3} {default} 0
+22 129 121 {4.377} {default} 0
+23 137 129 {0.70} {default} 0
+24 150 137 {0.05} {default} 0
+25 166 150 {10} {default} 0
+26 188 166 {Ballistic} {default} 0
+27 212 188 {1} {default} 0
+28 236 212 {300} {default} 0
+29 260 236 {} {default} 0
+30 284 260 {} {default} 0
+31 308 284 {} {default} 0
+32 332 308 {} {default} 0
+33 356 332 {} {default} 0
+34 380 356 {} {default} 0
+26 189 166 {CO+PH+SR} {default} 0
+27 213 189 {1} {default} 0
+28 237 213 {300} {default} 0
+29 261 237 {} {default} 0
+30 285 261 {} {default} 0
+31 309 285 {} {default} 0
+32 333 309 {} {default} 0
+33 357 333 {} {default} 0
+34 381 357 {} {default} 0
+24 151 137 {0.70} {default} 0
+25 167 151 {10} {default} 0
+26 190 167 {Ballistic} {default} 0
+27 214 190 {1} {default} 0
+28 238 214 {300} {default} 0
+29 262 238 {} {default} 0
+30 286 262 {} {default} 0
+31 310 286 {} {default} 0
+32 334 310 {} {default} 0
+33 358 334 {} {default} 0
+34 382 358 {} {default} 0
+26 191 167 {CO+PH+SR} {default} 0
+27 215 191 {1} {default} 0
+28 239 215 {300} {default} 0
+29 263 239 {} {default} 0
+30 287 263 {} {default} 0
+31 311 287 {} {default} 0
+32 335 311 {} {default} 0
+33 359 335 {} {default} 0
+34 383 359 {} {default} 0
+2 7 3 {pMOS} {default} 0
+3 11 7 {0.8} {default} 0
+4 15 11 {0.0} {default} 0
+5 19 15 {1.0e20} {default} 0
+6 23 19 {10.0} {default} 0
+7 27 23 {11.0} {default} 0
+8 31 27 {4.5} {default} 0
+9 35 31 {5.5} {default} 0
+10 39 35 {5.0} {default} 0
+11 43 39 {5.0} {default} 0
+12 50 43 {0} {default} 0
+13 58 50 {10} {default} 0
+14 66 58 {} {default} 0
+15 74 66 {} {default} 0
+16 82 74 {32} {default} 0
+17 90 82 {110} {default} 0
+18 98 90 {0} {default} 0
+19 106 98 {0} {default} 0
+20 114 106 {0} {default} 0
+21 122 114 {1.0e3} {default} 0
+22 130 122 {4.879} {default} 0
+23 138 130 {-0.70} {default} 0
+24 152 138 {-0.05} {default} 0
+25 168 152 {25} {default} 0
+26 192 168 {Ballistic} {default} 0
+27 216 192 {1} {default} 0
+28 240 216 {300} {default} 0
+29 264 240 {} {default} 0
+30 288 264 {} {default} 0
+31 312 288 {} {default} 0
+32 336 312 {} {default} 0
+33 360 336 {} {default} 0
+34 384 360 {} {default} 0
+24 153 138 {-0.70} {default} 0
+25 169 153 {25} {default} 0
+26 193 169 {Ballistic} {default} 0
+27 217 193 {1} {default} 0
+28 241 217 {300} {default} 0
+29 265 241 {} {default} 0
+30 289 265 {} {default} 0
+31 313 289 {} {default} 0
+32 337 313 {} {default} 0
+33 361 337 {} {default} 0
+34 385 361 {} {default} 0
+12 51 43 {1} {default} 0
+13 59 51 {10} {default} 0
+14 67 59 {} {default} 0
+15 75 67 {} {default} 0
+16 83 75 {32} {default} 0
+17 91 83 {110} {default} 0
+18 99 91 {0} {default} 0
+19 107 99 {0} {default} 0
+20 115 107 {0} {default} 0
+21 123 115 {1.0e3} {default} 0
+22 131 123 {4.879} {default} 0
+23 139 131 {-0.70} {default} 0
+24 154 139 {-0.05} {default} 0
+25 170 154 {25} {default} 0
+26 194 170 {Ballistic} {default} 0
+27 218 194 {1} {default} 0
+28 242 218 {300} {default} 0
+29 266 242 {} {default} 0
+30 290 266 {} {default} 0
+31 314 290 {} {default} 0
+32 338 314 {} {default} 0
+33 362 338 {} {default} 0
+34 386 362 {} {default} 0
+24 155 139 {-0.70} {default} 0
+25 171 155 {25} {default} 0
+26 195 171 {Ballistic} {default} 0
+27 219 195 {1} {default} 0
+28 243 219 {300} {default} 0
+29 267 243 {} {default} 0
+30 291 267 {} {default} 0
+31 315 291 {} {default} 0
+32 339 315 {} {default} 0
+33 363 339 {} {default} 0
+34 387 363 {} {default} 0

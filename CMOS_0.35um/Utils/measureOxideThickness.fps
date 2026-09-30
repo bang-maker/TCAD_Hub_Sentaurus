@@ -1,0 +1,10 @@
+proc measureOxideThickness {ycut} {
+ global    ExecuteOn
+ if {!$ExecuteOn} {return}
+ set lay   [layers y=$ycut]
+ set N     [llength $lay]
+ set sitop [lindex [lindex $lay end] 0]
+ set oxtop [lindex [lindex $lay [expr $N-2]] 0]
+ set gox   [expr $sitop - $oxtop]
+ return    [format "%.5f" $gox]
+}

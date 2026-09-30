@@ -1,0 +1,73 @@
+
+BALMob
+{
+  k_e = 12.6
+  k_h = 10.2
+}
+
+HighFieldDependence:
+       {
+                beta0                   =       1.0,      1.0
+                vsat0                   =       2.19e+7,  1.66e+7
+       }
+
+SBmob:
+{
+  autoorientation = 2
+  coordinatesystem = 4
+}
+
+LatticeParameters
+        {
+#if "@sOri@" == "100" && "@cDir@" == "100"
+        X       = (1, 0, 0) #[1]
+        Y       = (0, 1, 0) #[1]
+#elif "@sOri@" == "100" && "@cDir@" == "110"
+        X       = (0, 0, 1) #[1]
+        Y       = (1, -1, 0) #[1]
+#elif "@sOri@" == "110" && "@cDir@" == "100"
+        X       = (1, 1, 0) #[1]
+        Y       = (1, -1, 0) #[1]
+#elif "@sOri@" == "110" && "@cDir@" == "110"
+        X       = (1, 1, 0) #[1]
+        Y       = (0, 0, 1) #[1]
+#else
+puts "Orientation is beyond the scope.. Check it out..."
+exit
+#endif
+        }
+
+QuantumPotentialParameters "100"
+        {
+                                alpha[1]        =       0.1     0.1
+                                alpha[2]        =       1.0     1.0
+                                alpha[3]        =       1.0     1.0
+        }
+
+QuantumPotentialParameters "110"
+        {
+                                alpha[1]        =       0.1     0.1
+                                alpha[2]        =       1.0     1.0
+                                alpha[3]        =       1.0     1.0
+        }
+
+QuantumPotentialParameters "111"
+        {
+                                alpha[1]        =       0.1     0.1
+                                alpha[2]        =       1.0     1.0
+                                alpha[3]        =       1.0     1.0
+        }
+
+IALMob "100":
+        {
+        a_ph2d  = 0.0 ,   0.0
+        }
+IALMob "110":
+        {
+        a_ph2d  = 0.0 ,   0.0
+        }
+IALMob "111":
+        {
+        a_ph2d  = 0.0 ,   0.0
+        }
+

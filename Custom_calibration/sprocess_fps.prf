@@ -1,0 +1,2 @@
+set WB_tool(floops,exec_mode) interactive
+set WB_tool(floops,parallel,activate) 1

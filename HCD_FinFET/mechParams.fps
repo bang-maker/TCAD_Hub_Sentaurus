@@ -1,0 +1,32 @@
+
+
+#--- New Material -------------------------------
+mater add name=SiFin       new.like=Silicon   alt.matername=Silicon
+mater add name=SiStop      new.like=Silicon   alt.matername=Silicon
+mater add name=GATEox      new.like=InterfacialOxide     alt.matername=InterfacialOxide
+mater add name=TopGATEox   new.like=InterfacialOxide     alt.matername=InterfacialOxide
+mater add name=SDEox       new.like=InterfacialOxide     alt.matername=InterfacialOxide
+mater add name=SiSD        new.like=Silicon   alt.matername=Silicon
+mater add name=SiSRB       new.like=Silicon   alt.matername=Silicon
+mater add name=SiSRB1      new.like=Silicon   alt.matername=Silicon
+mater add name=SiGeSD      new.like=Silicon   alt.matername=Silicon
+mater add name=SiGeSDE     new.like=Silicon   alt.matername=Silicon
+mater add name=SiGeSDm     new.like=Silicon   alt.matername=Silicon
+mater add name=LowK        new.like=Oxide 
+
+
+#--- LowK --------------------------------------
+pdbSetDouble  LowK              Mechanics  BulkModulus     [Enu2K 9.50e+10 0.300]
+pdbSetDouble  LowK              Mechanics  ShearModulus    [Enu2G 9.50e+10 0.300]
+
+pdbSetDouble  LowK              Mechanics  ThExpCoeff      20.0e-06
+pdbSetDouble  LowK              Mechanics  ThExpCoeffRate  0.0
+
+pdbSetDouble  LowK              Mechanics  Viscosity0      5.25e4
+pdbSetDouble  LowK              Mechanics  ViscosityW      -2.42
+
+pdbSetDouble  LowK              Mechanics  Vcrit0          1.0e-30
+pdbSetDouble  LowK              Mechanics  VcritW          0.0
+
+#--------------------------------------------------------------------------------------
+

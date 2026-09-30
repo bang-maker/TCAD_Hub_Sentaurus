@@ -1,0 +1,4 @@
+set WB_tool(SdeviceQTX,parallel,activate) 1
+set WB_tool(SdeviceQTX,parallel,max_mode) "tool"
+set WB_tool(SdeviceQTX,parallel,mode) "tool"
+set WB_tool(SdeviceQTX,parallel,memory) "48000"

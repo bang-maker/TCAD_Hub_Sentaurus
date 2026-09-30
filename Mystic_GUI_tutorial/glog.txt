@@ -1,0 +1,106 @@
+
+                           Sentaurus Workbench gsub 
+
+                  Version W-2024.09 for linux64 - Aug 16, 2024
+           Changelist number: 9150440, Compile host: sce-tcad-build04
+
+                    Copyright (c) 1994 - 2024 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+gsub is running on host 'localhost' by user 'workstation'
+Binary '/usr/synopsys/sentaurus/W-2024.09/bin/../tcad/current/linux64/bin/../lib/gsub0'
+Command line options '-verbose -swb_pid 6145 -q local:default -e 2 /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial'
+Current directory '/home/workstation'
+Project organization 'Traditional'
+Some relevant environment variables:
+	STROOT=/usr/synopsys/sentaurus/W-2024.09/bin/..
+	STRELEASE=current
+	STROOT_LIB=/usr/synopsys/sentaurus/W-2024.09/bin/../tcad/current/lib
+	STDB=/home/workstation/STDB
+	DATEX=/usr/synopsys/sentaurus/W-2024.09/bin/../tcad/current/lib/datexcodes.txt
+	DISPLAY=:0
+
+Starting swblm daemon...OK
+Project '/usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial'
+Application mode : traditional
+20:25:07 Jan 18 2025 <Mystic_GUI_tutorial> submitted to the batch system
+Loading global queue configuration file '/usr/synopsys/sentaurus/W-2024.09/queues/gqueues.dat'...ok
+Loading project tree '/usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/gtree.dat'
+>>>>> Preprocessing the project to run in normal mode
+Loading jobs and dependence graph '"/usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/gexec.cmd"'
+INITIALIZING PREPROCESSOR:
+Loading project tree '/usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/gtree.dat'
+Loading project variables '/usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/gvars.dat'
+--Get files to preprocess...
+--Create file handlers...
+--Read the toolflow...
+--Analyze tool-file dependencies...
+--Read all nodes to preprocess...
+--Group nodes into experiments...
+--Get all variables...
+--Get all parameters...
+PREPROCESSOR SUCCESSFULLY INITIALIZED.
+PREPROCESSING STEP 1:
+Reading file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/UploadData_eng.py
+Reading file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/Mystic_extraction_eng.py
+Reading file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/Mystic_extraction_s1_mys.py
+Reading file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/Mystic_extraction_s2_mys.py
+Reading file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/Mystic_extraction_s3_mys.py
+Reading file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/enigma_mystic.mod
+PREPROCESSING STEP 2:
+---------------------------------------
+Preprocessing file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/Mystic_extraction_eng.py for node 2
+---------------------------------------
+Preprocessing file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/Mystic_extraction_s1_mys.py for node 2
+---------------------------------------
+Preprocessing file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/Mystic_extraction_s2_mys.py for node 2
+---------------------------------------
+Preprocessing file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/Mystic_extraction_s3_mys.py for node 2
+---------------------------------------
+Preprocessing file /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/enigma_mystic.mod for node 2
++++Node successfully preprocessed+++
+The node '2' has dependencies to the node(s) '1'
+Writing 'gexec.cmd'
+Loading jobs and dependence graph '"/usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/gexec.cmd"'
+>>>>>>>>>> job '2' status changed from 'none' to 'queued'
+-----------------------------------------------------------------
+queue "local:default" - 2
+-----------------------------------------------------------------
+>>>>>>>>>> Initializing back-end schedulers...
+>>>>>>>> Loaded Schedulers are ... local
+local% initialize 'local' scheduler data
+>>>>> List of Active Schedulers : local
+<<<<<<<<<<
++++ Starting project database...
+
+>>>>>>>>>> job '2' status changed from 'queued' to 'ready'
+>>>>>>>>>> os_rm /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/n2_mys.job
+local% submit job 2 for local execution
+>>>>>>>>>> job '2' status changed from 'ready' to 'pending'
+local% exec /usr/synopsys/sentaurus/W-2024.09/bin/gjob -verbose -nice 19 --threads 1 --max_threads 1  -job 2 -swb_pid 6145 -gsub_pid 6968 -gsub_host localhost -gsub_port 42229  --queueinfo /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/n2_mys.queue "/usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial"
+>>>>>>>>>> job '2' status changed from 'pending' to 'running'
+20:25:09 Jan 18 2025     job 2 <enigma_mystic> started on host 'localhost.localdomain': "gpythonsh --threads 1 --max_threads 1  --tcadtospice --nodb --project /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial --node 2 n2_eng.py  --queueinfo /usr/synopsys/sentaurus/W-2024.09/tcad/W-2024.09/Applications_Library/GettingStarted/tcadtospice/mystic/Mystic_GUI_tutorial/n2_mys.queue"
+>>>>>>>>>> job '2' status changed from 'running' to 'failed'
+20:25:14 Jan 18 2025 --- job 2 <enigma_mystic> exited abnormally: exit()
++++ Stopping project database...
+
+
+SCHEDULING REPORT
+--- failed   : 2
+
+20:25:17 Jan 18 2025 <Mystic_GUI_tutorial> failed
+>>>>>> Writing to status file 10
+Starting MongoDB server

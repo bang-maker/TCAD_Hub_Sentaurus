@@ -1,0 +1,45 @@
+
+#--------------------------MODEL SWITCHES-----------------------------------#
+
+pdbSet InfoDefault  0
+pdbSet Diffuse delT 50.0
+pdbSet Diffuse minT 550.0
+
+pdbSetBoolean Oxide Oxidant SDO    1
+pdbSetBoolean Oxide Oxidant OriDep 1
+
+pdbSetBoolean Oxide_Silicon     O2  DopantDependentReaction 1 
+pdbSetBoolean Oxide_Silicon     H2O DopantDependentReaction 1 
+
+pdbSet Oxide Grid perp.add.dist 0.0005e-4
+
+pdbSet PolySilicon Dopant ActiveModel None
+pdbSet PolySilicon Granular 0
+
+pdbSet ImplantData ResistSkip          1
+pdbSet ImplantData UseCoImplant        0
+
+pdbSet Oxide_PolySilicon Boron      BoundaryCondition HomNeumann
+pdbSet Oxide_PolySilicon Arsenic    BoundaryCondition HomNeumann
+pdbSet Oxide_PolySilicon Phosphorus BoundaryCondition HomNeumann
+
+
+
+;## ----------------------- OXIDATION CALIBRATION  --------------------------
+
+set totalPressure 1.0
+
+pdbSet Oxide_Silicon H2O 100 L0.l  [expr [pdbGet Oxide_Silicon O2 100 L0.l] * 1]
+pdbSet Oxide_Silicon H2O 100 L0.h  [expr [pdbGet Oxide_Silicon O2 100 L0.h] * 1]
+
+pdbSet Oxide_Silicon H2O 100 LW.l  [expr [pdbGet Oxide_Silicon O2 100 LW.l] * 1]
+pdbSet Oxide_Silicon H2O 100 LW.h  [expr [pdbGet Oxide_Silicon O2 100 LW.h] * 1]
+
+pdbSet Oxide_Silicon H2O 100 C0.l  [expr [pdbGet Oxide_Silicon O2 100 C0.l] * 4]
+pdbSet Oxide_Silicon H2O 100 C0.h  [expr [pdbGet Oxide_Silicon O2 100 C0.h] * 4]
+
+pdbSet Oxide_Silicon H2O 100 CW.l  [expr [pdbGet Oxide_Silicon O2 100 CW.l] * 1]
+pdbSet Oxide_Silicon H2O 100 CW.h  [expr [pdbGet Oxide_Silicon O2 100 CW.h] * 1]
+
+
+

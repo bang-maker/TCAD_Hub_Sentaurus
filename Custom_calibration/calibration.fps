@@ -1,0 +1,77 @@
+# Actual value of ProcessStepID should be set
+# before corresponding process step(s).
+
+set LastProcessStepID "none"
+proc ChangeParameter { CMD } {
+  global  ProcessStepID
+  global  LastProcessStepID
+
+  if { $LastProcessStepID != $ProcessStepID } {
+    LogFile "ProcessStepID is \"$ProcessStepID\""
+  }
+  LogFile "Redefining: $CMD"
+  eval $CMD
+  set LastProcessStepID $ProcessStepID
+}
+
+#--- Redefine SProcess callback procedures ---------------------------
+#  UserImpPreProcess      ...: called before analytical implantation
+#  UserImpPostProcess     ...: called after  analytical implantation
+
+# These callback procedures are called from the SProcess source code.
+# The SProcess defaults of these procedures are located in the files 
+# Implant.tcl and DiffProcess.tcl of the directory TclLib.
+
+#---------------------------------------------------------------------
+# Initial conditions after implantation
+
+ proc UserImpPostProcess { Species Name Energy Dose Model IFac VFac CDose } {
+  global  ProcessStepID
+  if { [ string match $ProcessStepID "PWell Implantation" ] } {
+    ChangeParameter "pdbSetDouble Silicon Boron AcInit 5e16"
+  }
+
+  if { [ string match $ProcessStepID "PMOS Halo/LDD" ] } {
+
+    switch $Species {
+      "Arsenic" {
+        ChangeParameter "pdbSet Silicon Arsenic  AcInit  1e17"
+        ChangeParameter "pdbSet Silicon Arsenic  AmInit  2e19"
+      }
+      "Boron" {
+        ChangeParameter "pdbSet Silicon Boron    AcInit  1e17"
+        ChangeParameter "pdbSet Silicon Boron    AmInit  1e19"
+      }
+    }
+  }
+}
+
+#---------------------------------------------------------------------
+# Dechanneling after Ge implantation.
+#
+proc UserImpPreProcess { Species Energy Dose Tilt Rotation Slice Mode } {
+  global  ProcessStepID
+  if { [ string match $ProcessStepID "PWell Implantation" ] } {
+    ChangeParameter "pdbSet Silicon Boron IFactor 2.5"
+  }
+
+  if { [ string match $ProcessStepID "PMOS Halo/LDD" ] } {
+
+    switch $Species {
+      "Germanium" {
+        ChangeParameter "pdbSet Silicon Germanium IFactor 0.2"
+      }
+      "Boron" {
+        ChangeParameter "pdbSet Silicon Boron IFactor 0.1"
+        ChangeParameter "implant spec=Boron Silicon ratio=0.9999"
+      }
+      "Arsenic" {
+        ChangeParameter "pdbSet Silicon Arsenic IFactor 0.2"
+        ChangeParameter "pdbSet Silicon Arsenic VFactor 0.05"
+        ChangeParameter "implant spec=Arsenic  Silicon ratio=0.9999"
+      }  
+    }
+  }
+}
+
+

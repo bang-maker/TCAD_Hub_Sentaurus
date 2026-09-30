@@ -1,0 +1,3 @@
+set WB_tool(sprocess,exec_mode) batch
+set WB_tool(sprocess,parallel,activate) 1
+set WB_tool(sprocess,parallel,memory) "8192"

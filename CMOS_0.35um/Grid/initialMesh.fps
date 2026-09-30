@@ -1,0 +1,27 @@
+proc initialMesh { } {
+
+ global ExecuteOn
+ if { ! $ExecuteOn } { return }
+
+ global sim_left
+ global sim_right
+ global sim_bottom
+ global sim_top
+
+ set yspa   [expr ($sim_right - $sim_left)/1.0]
+
+ line y loc=$sim_left   spa=$yspa   tag=left
+ line y loc=$sim_right  spa=$yspa   tag=right
+
+ line x loc=$sim_top    spa=0.40    tag=top
+ line x loc=0.000       spa=0.01    tag=sigas   
+ line x loc=2.0         spa=0.1                   
+ line x loc=4.0         spa=0.2    
+ line x loc=20.0        spa=5.0  
+ line x loc=$sim_bottom spa=10.0    tag=bottom      
+
+ region silicon xlo=sigas xhi=bottom ylo=left yhi=right
+
+}
+
+

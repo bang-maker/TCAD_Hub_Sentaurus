@@ -1,0 +1,108 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vV-2023.09-L1
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess Wb "0.008" {0.008} V
+sprocess Wt "0.008" {0.008} R
+sprocess DEVICEMESH "1" {1} R+
+Stress sdevice "" {}
+Stress Temp "346" {423 368} V
+Stress Vg_Stress "-1.0" {-1.4 -1.6 -1.8} V
+Stress TfinalStress "1000" {1000} R
+StressLoadIV sdevice "--tcl " {}
+Stresssvisual svisual "" {}
+Recovery sdevice "" {}
+Recovery Vg_Rec "0" {0} V
+Recovery TfinalRec "1000" {1000} R
+RecoveryLoadIV sdevice "--tcl " {}
+Recoverysvisual svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Wb ""
+scenario default Wt ""
+scenario default DEVICEMESH ""
+scenario default Temp ""
+scenario default Vg_Stress ""
+scenario default TfinalStress ""
+scenario default Vg_Rec ""
+scenario default TfinalRec ""
+scenario nMOS Wb ""
+scenario nMOS Wt ""
+scenario nMOS DEVICEMESH ""
+scenario nMOS Temp ""
+scenario nMOS Vg_Stress ""
+scenario nMOS TfinalStress ""
+scenario nMOS Vg_Rec ""
+scenario nMOS TfinalRec ""
+scenario pMOS Wb ""
+scenario pMOS Wt ""
+scenario pMOS DEVICEMESH ""
+scenario pMOS Temp ""
+scenario pMOS Vg_Stress ""
+scenario pMOS TfinalStress ""
+scenario pMOS Vg_Rec ""
+scenario pMOS TfinalRec ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {0.008} {default} 0
+2 3 2 {0.008} {default} 0
+3 4 3 {1} {default} 0
+4 5 4 {} {default} 0
+5 6 5 {423} {default} 0
+6 8 6 {-1.4} {default} 0
+7 14 8 {1000} {default} 0
+8 20 14 {} {default} 0
+9 26 20 {} {default} 0
+10 32 26 {} {default} 0
+11 38 32 {0} {default} 0
+12 44 38 {1000} {default} 0
+13 50 44 {} {default} 0
+14 56 50 {} {default} 0
+6 9 6 {-1.6} {default} 0
+7 15 9 {1000} {default} 0
+8 21 15 {} {default} 0
+9 27 21 {} {default} 0
+10 33 27 {} {default} 0
+11 39 33 {0} {default} 0
+12 45 39 {1000} {default} 0
+13 51 45 {} {default} 0
+14 57 51 {} {default} 0
+6 10 6 {-1.8} {default} 0
+7 16 10 {1000} {default} 0
+8 22 16 {} {default} 0
+9 28 22 {} {default} 0
+10 34 28 {} {default} 0
+11 40 34 {0} {default} 0
+12 46 40 {1000} {default} 0
+13 52 46 {} {default} 0
+14 58 52 {} {default} 0
+5 7 5 {368} {default} 0
+6 11 7 {-1.4} {default} 0
+7 17 11 {1000} {default} 0
+8 23 17 {} {default} 0
+9 29 23 {} {default} 0
+10 35 29 {} {default} 0
+11 41 35 {0} {default} 0
+12 47 41 {1000} {default} 0
+13 53 47 {} {default} 0
+14 59 53 {} {default} 0
+6 12 7 {-1.6} {default} 0
+7 18 12 {1000} {default} 0
+8 24 18 {} {default} 0
+9 30 24 {} {default} 0
+10 36 30 {} {default} 0
+11 42 36 {0} {default} 0
+12 48 42 {1000} {default} 0
+13 54 48 {} {default} 0
+14 60 54 {} {default} 0
+6 13 7 {-1.8} {default} 0
+7 19 13 {1000} {default} 0
+8 25 19 {} {default} 0
+9 31 25 {} {default} 0
+10 37 31 {} {default} 0
+11 43 37 {0} {default} 0
+12 49 43 {1000} {default} 0
+13 55 49 {} {default} 0
+14 61 55 {} {default} 0
+

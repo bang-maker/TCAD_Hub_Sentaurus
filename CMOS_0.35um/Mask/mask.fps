@@ -1,0 +1,62 @@
+
+
+
+set x0 0.0
+set Lsd 0.40
+
+set x1 [expr $lgate/2.0]
+set xp [expr $x1 ]
+set x2 [expr $x1 + $Lsd]
+
+
+set sim_left     $x0
+set sim_right    $x2
+
+set xL  [expr $sim_left  - 1.0]
+set xR  [expr $sim_right + 1.0]
+
+set sim_top      -1.0
+set sim_bottom    100.0
+#-----------------
+
+pdbSet ImplantData LeftBoundary Reflect
+
+;#   Assuming positive resists: 
+;#   * Lightfield --> Resist on top
+;#   * Darkfield  --> No resist on top
+
+set darkfield "!negative"
+set lightfield "negative"
+
+if {$type=="nMOS"} {
+
+mask name=GATE      segments = "$xL $xp"    ${lightfield}
+
+mask name=NWELL     segments = "$xL $xR"    ${lightfield}
+mask name=PWELL     segments = "$xL $xR"    ${darkfield}
+
+mask name=NLDD      segments = "$xL $xR"   ${darkfield}
+mask name=PLDD      segments = "$xL $xR"   ${lightfield}
+ 
+mask name=NPLUS     segments = "$xL $xR"   ${darkfield} 
+mask name=PPLUS     segments = "$xL $xR"   ${lightfield} 
+
+} elseif {$type=="pMOS"} {
+
+mask name=GATE      segments = "$xL $xp"    ${lightfield}
+
+mask name=NWELL     segments = "$xL $xR"    ${darkfield}
+mask name=PWELL     segments = "$xL $xR"    ${lightfield}
+
+mask name=NLDD      segments = "$xL $xR"   ${lightfield}
+mask name=PLDD      segments = "$xL $xR"   ${darkfield}
+ 
+mask name=NPLUS     segments = "$xL $xR"   ${lightfield} 
+mask name=PPLUS     segments = "$xL $xR"   ${darkfield} 
+
+
+} else {
+
+LogFile "**** Mask definition for device $type not found: Please define a mask definition ****"
+exit 1
+}

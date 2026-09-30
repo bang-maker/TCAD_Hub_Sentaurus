@@ -1,0 +1,47 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vcurrent
+
+# --- simulation flow
+sde sde "" {}
+sde area "1" {1 1e4}
+single_device sdevice "" {}
+single_device areafactor "1" {1 1e4}
+Resistor_SV svisual "" {}
+circuit sdevice "" {}
+circuit MMCR "0" {0 1e-3}
+Circuit_SV svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default area ""
+scenario default areafactor ""
+scenario default MMCR ""
+scenario Srel area ""
+scenario Srel areafactor ""
+scenario Srel MMCR ""
+# --- simulation tree
+0 1 0 {} {Srel default} 0
+1 2 1 {1} {Srel default} 0
+2 4 2 {} {Srel default} 0
+3 6 4 {1} {Srel default} 0
+4 9 6 {} {Srel default} 0
+5 12 9 {} {Srel default} 0
+6 15 12 {0} {Srel default} 0
+7 21 15 {} {Srel default} 0
+6 16 12 {1e-3} {default} 0
+7 22 16 {} {default} 0
+3 7 4 {1e4} {Srel default} 0
+4 10 7 {} {Srel default} 0
+5 13 10 {} {Srel default} 0
+6 17 13 {0} {Srel default} 0
+7 23 17 {} {Srel default} 0
+6 18 13 {1e-3} {default} 0
+7 24 18 {} {default} 0
+1 3 1 {1e4} {Srel default} 0
+2 5 3 {} {Srel default} 0
+3 8 5 {1} {Srel default} 0
+4 11 8 {} {Srel default} 0
+5 14 11 {} {Srel default} 0
+6 19 14 {0} {Srel default} 0
+7 25 19 {} {Srel default} 0
+6 20 14 {1e-3} {default} 0
+7 26 20 {} {default} 0

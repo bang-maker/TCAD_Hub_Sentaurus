@@ -1,0 +1,260 @@
+*----------------------------------------------------------------------
+* Generation & Recombination:
+*----------------------------------------------------------------------
+* Recombination( SRH( DopingDep Tunneling ) ) 
+         
+Scharfetter * relation and trap level for SRH recombination:
+{ * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+	taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	taumax	= 1.0000e-05 ,	3.0000e-06	# [s]
+*	Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	Nref	= 5.0000e+16 ,	5.0000e+16	# [cm^(-3)]
+	gamma	= 1 ,	1	# [1]
+	Talpha	= -1.5000e+00 ,	-1.5000e+00	# [1]
+	Tcoeff	= 2.55 ,	2.55	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+
+TrapAssistedTunneling * lifetimes:
+{ * See Dessis manual `Trap-Assisted Tunneling/SRH' 
+	S	= 3.5	# [1]
+	hbarOmega	= 0.068	# [eV]
+	MinField	= 1.0000e+03	# [V/cm]
+	m_theta	= 0.258 ,	0.24	# [1]
+	Z	= 0.0000e+00	# [1]
+}
+
+*----------------------------------------------------------------------
+* Recombination( Band2Band )
+
+Band2BandTunneling  
+{ * See Sentaurus Device manual `Band-To-Band Tunneling' 
+	A	= 8.9770e+20	# [cm / (s V^2)]
+	B	= 2.1466e+07	# [eV^(-3/2) V/cm]
+	hbarOmega	= 0.0186	# [eV]
+
+  * Traditional models for the following keywords in input file:
+  * Band2Band(E1)  : A1*E*exp(-B1/E)
+  * Band2Band(E1_5): A1_5*E^1.5*exp(-B1_5/E)
+  * Band2Band(E2)  : A2*E^2*exp(-B2/E)
+	A1	= 1.1000e+27	# [1/cm/sec/V]
+	B1	= 2.1300e+07	# [V/cm]
+	A1_5	= 1.9000e+24	# [1/cm/sec/V^1.5]
+	B1_5	= 2.1900e+07	# [V/cm]
+	A2	= 3.5000e+21	# [1/cm/sec/V^2]
+	B2	= 2.2500e+07	# [V/cm]
+
+  * min length to interfaces (for traditional & Hurkx models):
+	dDist	= 0.0000e+00	# [cm]
+  * min potential difference on length dPot/E (for traditional & Hurkx models):
+	dPot	= 0.0000e+00	# [V]
+}
+
+*----------------------------------------------------------------------
+* Mobility Models
+*----------------------------------------------------------------------
+* Lucent Mobility Model
+* Parameters according to 
+* M.N. Darwish et al., IEEE Trans. Elect. Dev. 44, No 9., p 1529-1537, 1997 
+
+EnormalDependence
+{ * mu_Enorm^(-1) = mu_ac^(-1) + mu_sr^(-1)  with:
+  * mu_ac = B / Enorm + C (T/T0)^(-k) (N/N0)^lambda / Enorm^(1/3)
+  * mu_sr^-1 = Enorm^(A+alpha*n/(N+N1)^nu) / delta + Enorm^3 / eta
+  * EnormalDependence is added with factor exp(-l/l_crit), where l is
+  * the distance to the nearest point of semiconductor/insulator interface.
+  * Factor is equal to 1 if l_crit > 100.
+	B	= 4.7500e+07 ,	9.9250e+06	# [cm/s]
+	C	= 5.8000e+02 ,	2.9470e+03	# [cm^(5/3)/(V^(2/3)s)]
+	N0	= 1 ,	1	# [cm^(-3)]
+	lambda	= 0.125 ,	0.0317	# [1]
+	k	= 1 ,	1	# [1]
+	delta	= 5.8200e+14 ,	2.0546e+14	# [V/s]
+	A	= 2.0 ,	2.0	# [1]
+	alpha	= 0.0000e+00 ,	0.0000e+00	# [1]
+	aother	= 0.0000e+00 ,	0.0000e+00	# [1]
+	N1	= 1 ,	1	# [cm^(-3)]
+	nu	= 1 ,	1	# [1]
+	eta	= 5.8200e+30 ,	2.0546e+30	# [V^2/cm*s]
+	l_crit	= 1.0000e-06 ,	1.0000e-06	# [cm]
+}
+
+EnormalDependence "100" 
+{ * mu_Enorm^(-1) = mu_ac^(-1) + mu_sr^(-1)  with:
+  * mu_ac = B / Enorm + C (T/T0)^(-k) (N/N0)^lambda / Enorm^(1/3)
+  * mu_sr^-1 = Enorm^(A+alpha*n/(N+N1)^nu) / delta + Enorm^3 / eta
+  * EnormalDependence is added with factor exp(-l/l_crit), where l is
+  * the distance to the nearest point of semiconductor/insulator interface.
+  * Factor is equal to 1 if l_crit > 100.
+        B       = 2.71e+07   ,  1.13e+07        # [cm/s]
+        C       = 1.36e+03   ,  3.05e+03        # [cm^(5/3)/(V^(2/3)s)]
+	N0	= 1 	     ,	1	        # [cm^(-3)]
+        lambda  = 0.0233     ,  0.0119          # [1]
+	k	= 1 	     ,	1		# [1]
+        delta   = 3.5800e+18 ,  4.1000e+15      # [V/s]
+        A       = 2.58       ,  2.18	        # [1]
+        alpha   = 2.74e-20   ,  3.13e-20        # [1]
+	aother	= 0.0000e+00 ,	0.0000e+00	# [1]
+	N1	= 1 	     ,	1		# [cm^(-3)]
+        nu      = 0.0767     ,  0.123	        # [1]
+        eta     = 1.0e+300   ,  1.0e+300        # [V^2/cm*s]
+        l_crit  = 1.0000e-06 ,  1.0000e-06      # [cm]
+}
+
+EnormalDependence "110" 
+{ * channel direction <110>
+  * mu_Enorm^(-1) = mu_ac^(-1) + mu_sr^(-1)  with:
+  * mu_ac = B / Enorm + C (T/T0)^(-k) (N/N0)^lambda / Enorm^(1/3)
+  * mu_sr^-1 = Enorm^(A+alpha*n/(N+N1)^nu) / delta + Enorm^3 / eta
+  * EnormalDependence is added with factor exp(-l/l_crit), where l is
+  * the distance to the nearest point of semiconductor/insulator interface.
+  * Factor is equal to 1 if l_crit > 100.
+        B 	= 1.805e+07  ,  3.02e+07        # [cm/s]
+        C 	= 5.1e+03    ,  1.672e+04       # [cm^(5/3)/(V^(2/3)s)]
+	N0	= 1 	     ,	1		# [cm^(-3)]
+        lambda  = 0.0233     ,  0.0119  	# [1]
+	k	= 1 	     ,	1		# [1]
+        delta   = 3.58e+18   ,  4.1e+15         # [V/s]
+        A 	= 2.66	     ,  2.18            # [1]
+        alpha   = 2.74e-20   ,  3.13e-20        # [1]
+	aother	= 0.0000e+00 ,	0.0000e+00	# [1]
+	N1	= 1 	     ,	1		# [cm^(-3)]
+        nu      = 0.0767     ,  0.123           # [1]
+        eta     = 1.0e+30    ,  1.0e+30         # [V^2/cm*s]
+	l_crit	= 1.0000e-06 ,	1.0000e-06	# [cm]
+}
+
+EnormalDependence "110/100" 
+{ * channel direction <100>
+  * mu_Enorm^(-1) = mu_ac^(-1) + mu_sr^(-1)  with:
+  * mu_ac = B / Enorm + C (T/T0)^(-k) (N/N0)^lambda / Enorm^(1/3)
+  * mu_sr^-1 = Enorm^(A+alpha*n/(N+N1)^nu) / delta + Enorm^3 / eta
+  * EnormalDependence is added with factor exp(-l/l_crit), where l is
+  * the distance to the nearest point of semiconductor/insulator interface.
+  * Factor is equal to 1 if l_crit > 100.
+        B 	= 1.805e+07  ,  3.02e+07        # [cm/s]
+        C 	= 5.1e+03    ,  8.36e+03        # [cm^(5/3)/(V^(2/3)s)]
+	N0	= 1 	     ,	1		# [cm^(-3)]
+        lambda  = 0.0233     ,  0.0119  	# [1]
+	k	= 1 	     ,	1		# [1]
+        delta   = 3.58e+18   ,  4.100e+15       # [V/s]
+        A 	= 2.66	     ,  2.19	        # [1]
+        alpha   = 2.74e-20   ,  3.13e-20        # [1]
+	aother	= 0.0000e+00 ,	0.0000e+00	# [1]
+	N1	= 1 	     ,	1		# [cm^(-3)]
+        nu      = 0.0767     ,  0.123           # [1]
+        eta     = 1.0e+30   ,  1.0e+30        # [V^2/cm*s]
+	l_crit	= 1.0000e-06 ,	1.0000e-06	# [cm]
+}
+
+EnormalDependence "111" 
+{ * mu_Enorm^(-1) = mu_ac^(-1) + mu_sr^(-1)  with:
+  * mu_ac = B / Enorm + C (T/T0)^(-k) (N/N0)^lambda / Enorm^(1/3)
+  * mu_sr^-1 = Enorm^(A+alpha*n/(N+N1)^nu) / delta + Enorm^3 / eta
+  * EnormalDependence is added with factor exp(-l/l_crit), where l is
+  * the distance to the nearest point of semiconductor/insulator interface.
+  * Factor is equal to 1 if l_crit > 100.
+        B       = 3.6100e+07 ,  1.13e+07        # [cm/s]
+        C       = 5.1e+03    ,  3.05e+03        # [cm^(5/3)/(V^(2/3)s)]
+	N0	= 1          ,	1		# [cm^(-3)]
+        lambda  = 0.0233     ,  0.0119		# [1]
+	k	= 1 	     ,	1		# [1]
+        delta   = 5.90e+14   ,  1.000e+14       # [V/s]
+        A 	= 2.3 	     ,  2.4  		# [1]
+        alpha   = 2.74e-20   ,  3.13e-20        # [1]
+	aother	= 0.0000e+00 ,	0.0000e+00	# [1]
+	N1	= 1 	     ,	1		# [cm^(-3)]
+        nu 	= 0.0767     ,  0.123           # [1]
+        eta 	= 1.0e+30    ,  1.0e+30        # [V2/cm*s]
+	l_crit	= 1.0000e-06 ,	1.0000e-06	# [cm]
+}
+
+*----------------------------------------------------------------------
+* Highfield Saturation
+
+*----------------------------------------------------------------------
+* Transport Models
+*----------------------------------------------------------------------
+* Hydrodynamics
+EnergyRelaxationTime
+{ *  Energy relaxation times in picoseconds
+	(tau_w)_ele	= 0.3   # [ps]
+	(tau_w)_hol	= 0.3	# [ps]
+}
+
+HighFieldDependence:
+{ * Caughey-Thomas model
+  * and HydroHighField mobility is used.
+	K_dT	= 1e-4 ,	1e-4 # [1]
+}
+
+*----------------------------------------------------------------------
+* Density Gradient Quantum Transport
+
+QuantumPotentialParameters
+{ * gamma:  weighting factor for quantum potential
+  * theta:  weight for quadratic term
+  * xi:     weight for quasi Fermi potential
+  * eta:    weight for electrostatic potential
+	gamma	= 3.6 ,	5.6	# [1]
+	theta	= 0.5 ,	0.5	# [1]
+	xi	= 1 ,	1	# [1]
+	eta	= 1 ,	1	# [1]
+}
+
+BarrierTunneling
+{ * Non Local Barrier Tunneling
+        mt      = 0.55 ,  0.21
+}
+
+LatticeParameters
+{ * Crystal system, elasticity, and deformation potential are defined.
+  * X and Y vectors define the simulation coordinate system relative to the
+  * crystal orientation system. Also there is an option to represent the crystal
+  * system relative to the simulation one. In this case a keyword CrystalAxis 
+  * has to be in this section and X and Y vectors will represent [100] and [010]
+  * axis of the crystal system in the simulation one.
+  * Additional notes: 1 Pa = 10 dyn/cm^2; tensile stress/strain is positive. 
+  *  
+  * S[i][j] - elasticity modulus; i,j = 1,2,...6 and j>=i.
+  * CrystalSystem is symmetry, used ONLY to define the elasticity matrics.
+  *   Cubic (CrystalSystem=0): S[1][1],S[1][2],S[4][4]
+  *   Hexagonal (CrystalSystem=1): S[1][1],S[1][2],S[1][3],S[3][3],S[4][4]
+  * NC is a number of conduction band levels taken into account
+  * NV is a number of valence band levels taken into account
+  * DC2(l) defines deformation potentials for conduction subband = l
+  * DV2(l) defines deformation potentials for valence subband = l
+  * The subband energy shift due to strain (E) is equal to the following sum:
+  * D2[1]*E11 + D2[2]*E22 + D2[3]*E33 +
+  * D2[4]*(0.5*D2[5]^2*((E11-E22)^2+(E22-E33)^2+(E33-E11)^2)+D2[6]^2*(E23^2+E13^2+E12^2))
+  * 
+	X	= (1, 0, 0) #[1]
+	Y	= (0, 1, 0) #[1]
+	S[1][1]	= 0.77	# [1e-12 cm^2/din]
+	S[1][2]	= -2.1000e-01	# [1e-12 cm^2/din]
+	S[4][4]	= 1.25	# [1e-12 cm^2/din]
+	CrystalSystem	= 0	# [1]
+	NC	= 3	# [1]
+	NV	= 2	# [1]
+	DC2(1)	= 0.9, -8.6000e+00, -8.6000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00	#[eV]
+	DC2(2)	= -8.6000e+00, 0.9, -8.6000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00	#[eV]
+	DC2(3)	= -8.6000e+00, -8.6000e+00, 0.9, 0.0000e+00, 0.0000e+00, 0.0000e+00	#[eV]
+	DV2(1)	= -2.1000e+00, -2.1000e+00, -2.1000e+00, -1.0000e+00, 0.5, 4	#[eV]
+	DV2(2)	= -2.1000e+00, -2.1000e+00, -2.1000e+00, 1, 0.5, 4	#[eV]
+
+  * Deformation potentials of k.p model for electron bands
+	xis	= 7	# [eV]
+	dbs	= 0.53	# [eV]
+	xiu	= 9.16	# [eV]
+	xid	= 0.77	# [eV]
+
+  * Deformation potentials of k.p model for hole bands
+	adp	= 2.1	# [eV]
+	bdp	= -2.3300e+00	# [eV]
+	ddp	= -4.7500e+00	# [eV]
+	dso	= 0.044	# [eV]
+}
+
+

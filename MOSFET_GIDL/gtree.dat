@@ -1,0 +1,163 @@
+# Copyright (C) 1994-2023 Synopsys Inc.
+# swbtree vV-2023.09-L1
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess CUT "SIM2N" {SIM2N} R
+sprocess Type "nMOS" {nMOS} R
+sprocess Layout "gds" {gds} R
+sprocess lg "0.09" {0.032} R
+sprocess Poly "0" {1} R
+sprocess Halo "0" {1} R
+sprocess HDoseFactor "0.8" {1.0} R
+sprocess HErgFactor "1.0" {1.0} R
+sprocess HTilt "30" {30} R
+sprocess Ext "0" {1} R
+sprocess SD "1" {1} R
+sprocess LspFactor "1.0" {1.0} R
+sprocess Backend "0" {1} R
+sprocess Mesh "0" {1} R
+IdVg_lin sdevice "" {}
+IdVg_lin WF "4.2" {4.3} R
+IdVg_lin Vdd "1.2" {1.0} R
+IdVg_lin rcon "40" {0.0} R
+IdVg_lin Vdlin "0.05" {0.05} R
+IdVg_lin Vsub0 "0" {0} R
+IdVg_lin Vsub1 "0.5" {0.5} R
+IdVg_lin Vsub2 "1.0" {1.0} R
+IdVg_lin IdVg_lin "1" {1} R
+IdVg_lin GIDL "0" {0 1} R
+IdVg_lin model "Schenk" {Schenk - Hurkx ModifiedHurkx NonlocalPath} R
+PlotIdVg_lin svisual "" {}
+IdVg_sat sdevice "" {}
+IdVg_sat IdVg_sat "1" {1} R
+PlotIdVg_sat svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default CUT ""
+scenario default Type ""
+scenario default Layout ""
+scenario default lg ""
+scenario default Poly ""
+scenario default Halo ""
+scenario default HDoseFactor ""
+scenario default HErgFactor ""
+scenario default HTilt ""
+scenario default Ext ""
+scenario default SD ""
+scenario default LspFactor ""
+scenario default Backend ""
+scenario default Mesh ""
+scenario default WF ""
+scenario default Vdd ""
+scenario default rcon ""
+scenario default Vdlin ""
+scenario default Vsub0 ""
+scenario default Vsub1 ""
+scenario default Vsub2 ""
+scenario default IdVg_lin ""
+scenario default GIDL ""
+scenario default model ""
+scenario default IdVg_sat ""
+scenario nMOS CUT ""
+scenario nMOS Type ""
+scenario nMOS Layout ""
+scenario nMOS lg ""
+scenario nMOS Poly ""
+scenario nMOS Halo ""
+scenario nMOS HDoseFactor ""
+scenario nMOS HErgFactor ""
+scenario nMOS HTilt ""
+scenario nMOS Ext ""
+scenario nMOS SD ""
+scenario nMOS LspFactor ""
+scenario nMOS Backend ""
+scenario nMOS Mesh ""
+scenario nMOS WF ""
+scenario nMOS Vdd ""
+scenario nMOS rcon ""
+scenario nMOS Vdlin ""
+scenario nMOS Vsub0 ""
+scenario nMOS Vsub1 ""
+scenario nMOS Vsub2 ""
+scenario nMOS IdVg_lin ""
+scenario nMOS GIDL ""
+scenario nMOS model ""
+scenario nMOS IdVg_sat ""
+scenario pMOS CUT ""
+scenario pMOS Type ""
+scenario pMOS Layout ""
+scenario pMOS lg ""
+scenario pMOS Poly ""
+scenario pMOS Halo ""
+scenario pMOS HDoseFactor ""
+scenario pMOS HErgFactor ""
+scenario pMOS HTilt ""
+scenario pMOS Ext ""
+scenario pMOS SD ""
+scenario pMOS LspFactor ""
+scenario pMOS Backend ""
+scenario pMOS Mesh ""
+scenario pMOS WF ""
+scenario pMOS Vdd ""
+scenario pMOS rcon ""
+scenario pMOS Vdlin ""
+scenario pMOS Vsub0 ""
+scenario pMOS Vsub1 ""
+scenario pMOS Vsub2 ""
+scenario pMOS IdVg_lin ""
+scenario pMOS GIDL ""
+scenario pMOS model ""
+scenario pMOS IdVg_sat ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {SIM2N} {default} 0
+2 3 2 {nMOS} {default} 0
+3 4 3 {gds} {default} 0
+4 5 4 {0.032} {default} 0
+5 6 5 {1} {default} 0
+6 7 6 {1} {default} 0
+7 8 7 {1.0} {default} 0
+8 9 8 {1.0} {default} 0
+9 10 9 {30} {default} 0
+10 11 10 {1} {default} 0
+11 12 11 {1} {default} 0
+12 13 12 {1.0} {default} 0
+13 14 13 {1} {default} 0
+14 15 14 {1} {default} 0
+15 16 15 {} {default} 0
+16 17 16 {4.3} {default} 0
+17 18 17 {1.0} {default} 0
+18 19 18 {0.0} {default} 0
+19 20 19 {0.05} {default} 0
+20 21 20 {0} {default} 0
+21 22 21 {0.5} {default} 0
+22 23 22 {1.0} {default} 0
+23 24 23 {1} {default} 0
+24 25 24 {0} {default} 0
+25 27 25 {-} {default} 0
+26 32 27 {} {default} 0
+27 37 32 {} {default} 0
+28 42 37 {1} {default} 0
+29 47 42 {} {default} 0
+24 26 24 {1} {default} 0
+25 28 26 {Schenk} {default} 0
+26 33 28 {} {default} 0
+27 38 33 {} {default} 0
+28 43 38 {1} {default} 0
+29 48 43 {} {default} 0
+25 29 26 {Hurkx} {default} 0
+26 34 29 {} {default} 0
+27 39 34 {} {default} 0
+28 44 39 {1} {default} 0
+29 49 44 {} {default} 0
+25 30 26 {ModifiedHurkx} {default} 0
+26 35 30 {} {default} 0
+27 40 35 {} {default} 0
+28 45 40 {1} {default} 0
+29 50 45 {} {default} 0
+25 31 26 {NonlocalPath} {default} 0
+26 36 31 {} {default} 0
+27 41 36 {} {default} 0
+28 46 41 {1} {default} 0
+29 51 46 {} {default} 0

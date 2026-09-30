@@ -1,0 +1,39 @@
+# Copyright (C) 1994-2017 Synopsys Inc.
+# swbtree vN-2017.09-L1, Wed May 24 09:26:04 2017
+
+# --- simulation flow
+sde sde "" {}
+sde type "p" {n}
+sde dop_conc "1e15" {1e17}
+sim1 sdevice "" {}
+sim1 trap_type "eneutral" {eneutral}
+sim1 shift "-0.2" {0}
+sim1 Xsec "1e-10" {1e-10}
+sim1 Esig "0.001" {0.1}
+sim1 conc "1e15" {1e17}
+sim1 DOS "level" {level uniform exponential gaussian table}
+# --- variables
+# --- scenarios and parameter specs
+scenario default type ""
+scenario default dop_conc ""
+scenario default trap_type ""
+scenario default shift ""
+scenario default Xsec ""
+scenario default Esig ""
+scenario default conc ""
+scenario default DOS ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {n} {default} 0
+2 3 2 {1e17} {default} 0
+3 4 3 {} {default} 0
+4 5 4 {eneutral} {default} 0
+5 6 5 {0} {default} 0
+6 7 6 {1e-10} {default} 0
+7 8 7 {0.1} {default} 0
+8 9 8 {1e17} {default} 0
+9 10 9 {level} {default} 0
+9 11 9 {uniform} {default} 0
+9 12 9 {exponential} {default} 0
+9 13 9 {gaussian} {default} 0
+9 14 9 {table} {default} 0

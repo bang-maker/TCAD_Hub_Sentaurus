@@ -1,0 +1,21 @@
+
+LatticeParameters
+        {
+#if "@sOri@" == "100" && "@cDir@" == "100"
+        X       = (1, 0, 0) #[1]
+        Y       = (0, 1, 0) #[1]
+#elif "@sOri@" == "100" && "@cDir@" == "110"
+        X       = (0, 0, 1) #[1]
+        Y       = (1, -1, 0) #[1]
+#elif "@sOri@" == "110" && "@cDir@" == "100"
+        X       = (1, 1, 0) #[1]
+        Y       = (1, -1, 0) #[1]
+#elif "@sOri@" == "110" && "@cDir@" == "110"
+        X       = (1, 1, 0) #[1]
+        Y       = (0, 0, 1) #[1]
+#else
+puts "Orientation is beyond the scope.. Check it out..."
+exit
+#endif
+        }
+

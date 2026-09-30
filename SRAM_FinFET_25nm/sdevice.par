@@ -1,0 +1,16 @@
+Material = "Silicon" {
+#include "Si.par"
+}
+
+Material = "SiliconGermanium" {
+#include "SiGe.par"
+}
+
+Material = "Oxide" {
+#include "Ox.par"
+}
+
+Material = "HfO2" {
+#include "HfO2.par"
+}
+

@@ -1,0 +1,49 @@
+# Copyright (C) 1994-2011 Synopsys Inc.
+# swbtree vK-2015.06, Mon Dec 14 00:54:55 2015
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess Domain "TN" {SRAM10T}
+sprocess Poly "1" {1}
+sprocess Ext "1" {1}
+sprocess SD "1" {1}
+sprocess Silicide "1" {1}
+sprocess DeviceMesh "1" {1}
+IdVg sdevice "" {}
+IdVg VdLin "0.05" {0.05}
+IdVg Vgg "1.0" {1.0}
+PlotIdVg svisual "" {}
+sdeviceHOLD sdevice "" {}
+svisualHOLD svisual "" {}
+sdeviceREAD sdevice "" {}
+svisualREAD svisual "" {}
+sdeviceWRITE sdevice "" {}
+svisualWRITE svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Domain ""
+scenario default Poly ""
+scenario default Ext ""
+scenario default SD ""
+scenario default Silicide ""
+scenario default DeviceMesh ""
+scenario default VdLin ""
+scenario default Vgg ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {SRAM10T} {default} 0
+2 3 2 {1} {default} 0
+3 4 3 {1} {default} 0
+4 5 4 {1} {default} 0
+5 6 5 {1} {default} 0
+6 7 6 {1} {default} 0
+7 8 7 {} {default} 0
+8 9 8 {0.05} {default} 0
+9 10 9 {1.0} {default} 0
+10 11 10 {} {default} 0
+11 12 11 {} {default} 0
+12 13 12 {} {default} 0
+13 14 13 {} {default} 0
+14 15 14 {} {default} 0
+15 16 15 {} {default} 0
+16 17 16 {} {default} 0

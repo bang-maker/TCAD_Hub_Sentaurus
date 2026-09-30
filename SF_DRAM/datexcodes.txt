@@ -1,0 +1,222 @@
+DATEX2.1
+Datacode
+"$DateTime: 2019/01/03 17:22:26 $"
+"Data codes for semiconductor process and device simulation"
+
+Materials {
+	Oxide {
+		label = "Oxide"
+		group = Insulator
+		color = #7d0505
+	}
+	Oxide1 {
+		label = "Oxide1"
+		group = Insulator
+		color = #b3a16b
+	}
+	Oxide2 {
+		label = "Oxide2"
+		group = Insulator
+		color = #acff59
+	}
+	Oxide3 {
+		label = "Oxide3"
+		group = Insulator
+		color = #77d915
+	}
+	Oxide4 {
+		label = "Oxide4"
+		group = Insulator
+		color = #92d94c
+	}
+	Oxide5 {
+		label = "Oxide5"
+		group = Insulator
+		color = #aed982
+	}
+	OxideBOX {
+		label = "OxideBOX"
+		group = Insulator
+		color = #78b33e
+	}
+	OxidePMD {
+		label = "OxidePMD"
+		group = Insulator
+		color = #ffce39
+	}
+	OxidePMD2 {
+		label = "OxidePMD2"
+		group = Insulator
+		color = #ffde79
+	}
+	SiON {
+		label = "SiON"
+		group = Insulator
+		color = #ecb717
+	}
+	Nitride {
+		label = "Nitride"
+		group = Insulator
+		color = #d0a005
+	}
+	Nitride2 {
+		label = "Nitride2"
+		group = Insulator
+		color = #ecbe35
+	}
+	NitrideARC {
+		label = "NitrideARC"
+		group = Insulator
+		color = #ecc652
+	}
+	HfO2 {
+		label = "HfO2"
+		group = Insulator
+		color = #a68262
+	}
+	LowK {
+		label = "LowK"
+		group = Insulator
+		color = #eccd70
+	}
+	LowK0 {
+		label = "LowK0"
+		group = Insulator
+		color = #ecd58e
+	}
+	SOC {
+		label = "SOC"
+		group = Insulator
+		color = #d9af30
+	}
+	SiCN {
+		label = "SiCN"
+		group = Insulator
+		color = #d9bd67
+	}
+	Silicon {
+		label = "Silicon"
+		group = Semiconductor
+		color = #ffb6c1
+	}
+	SiliconP {
+		label = "SiliconP"
+		group = Semiconductor
+		color = #d535ec
+	}
+	SiliconN {
+		label = "SiliconN"
+		group = Semiconductor
+		color = #d952ec
+	}
+	SiGeB {
+		label = "SiGeB"
+		group = Semiconductor
+		color = #dd70ec
+	}
+	SiliconSOI {
+		label = "SiliconSOI"
+		group = Semiconductor
+		color = #e08eec
+	}
+	SiGeP {
+		label = "SiGeP"
+		group = Semiconductor
+		color = #c115d9
+	}
+	PolySilicon {
+		label = "PolySilicon"
+		group = Semiconductor
+		color = #c430d9
+	}
+	TaN {
+		label = "TaN"
+		group = Conductor
+		color = #6b7db3
+	}
+	TiNitride {
+		label = "TiNitride"
+		group = Conductor
+		color = #cdba96
+	}
+	TiN {
+		label = "TiN"
+		group = Conductor
+		color = #19ffa9
+	}
+	TiAlN {
+		label = "TiAlN"
+		group = Conductor
+		color = #39ffb5
+	}
+	TiSi {
+		label = "TiSi"
+		group = Conductor
+		color = #59ffc1
+	}
+	Tungsten {
+		label = "Tungsten"
+		group = Conductor
+		color = #d0d0f0
+	}
+	Cobalt {
+		label = "Cobalt"
+		group = Conductor
+		color = #cdc9c9
+	}
+	Copper {
+		label = "Copper"
+		group = Conductor
+		color = #ff7f50
+	}
+	T1 {
+		label = "T1"
+		group = Conductor
+		color = #79ffcd
+	}
+	T2 {
+		label = "T2"
+		group = Conductor
+		color = #99ffd9
+	}
+	T3 {
+		label = "T3"
+		group = Conductor
+		color = #17ec9c
+	}
+	T4 {
+		label = "T4"
+		group = Conductor
+		color = #35eca7
+	}
+	T5 {
+		label = "T5"
+		group = Conductor
+		color = #52ecb3
+	}
+	NitridePECVD {
+		label = "NitridePECVD"
+		group = Insulator
+		color = #c69913
+	}
+	OxideCVD {
+		label = "OxideCVD"
+		group = Insulator
+		color = #c69f2c
+	}
+	OxideTEOS {
+		label = "OxideTEOS"
+		group = Insulator
+		color = #c6a645
+	}
+	Aluminum {
+		label = "Aluminum"
+		group = Conductor
+		color = #4d7f94
+	}
+	SOH {
+		label = "SOH"
+		group = Insulator
+		color = #c6ac5e
+	}
+}

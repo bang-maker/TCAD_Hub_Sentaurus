@@ -1,0 +1,67 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vP-2019.03, Sun Sep  8 22:56:40 2019
+
+# --- simulation flow
+sprocess sprocess "" {}
+sprocess Init "1" {1}
+sprocess STI "1" {1}
+sprocess SFin "1" {1}
+sprocess SD "1" {1}
+sprocess WL "1" {1}
+sprocess BL "1" {1}
+sprocess SNC "1" {1}
+sprocess DeviceMesh "1" {1}
+sdevice_IdVgLin sdevice "" {}
+Plot_IdVgLin svisual "" {}
+sdevice_IdVgSat sdevice "" {}
+Plot_IdVgSat svisual "" {}
+sdevice_mixedmode sdevice "" {}
+Plot_Write svisual "" {}
+retention sdevice "" {}
+Plot_RT svisual "" {}
+RH sdevice "" {}
+RH conc "1e8" {1e2 1e18}
+RH Ton "2e-9" {5e-9 12.5e-9}
+Plot_RH svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Init ""
+scenario default STI ""
+scenario default SFin ""
+scenario default SD ""
+scenario default WL ""
+scenario default BL ""
+scenario default SNC ""
+scenario default DeviceMesh ""
+scenario default conc ""
+scenario default Ton ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {1} {default} 0
+2 3 2 {1} {default} 0
+3 4 3 {1} {default} 0
+4 5 4 {1} {default} 0
+5 6 5 {1} {default} 0
+6 7 6 {1} {default} 0
+7 8 7 {1} {default} 0
+8 9 8 {1} {default} 0
+9 10 9 {} {default} 0
+10 11 10 {} {default} 0
+11 12 11 {} {default} 0
+12 13 12 {} {default} 0
+13 14 13 {} {default} 0
+14 15 14 {} {default} 0
+15 16 15 {} {default} 0
+16 17 16 {} {default} 0
+17 18 17 {} {default} 0
+18 19 18 {1e2} {default} 0
+19 21 19 {5e-9} {default} 0
+20 25 21 {} {default} 0
+19 22 19 {12.5e-9} {default} 0
+20 26 22 {} {default} 0
+18 20 18 {1e18} {default} 0
+19 23 20 {5e-9} {default} 0
+20 27 23 {} {default} 0
+19 24 20 {12.5e-9} {default} 0
+20 28 24 {} {default} 0
+

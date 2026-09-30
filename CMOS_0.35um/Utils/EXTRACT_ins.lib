@@ -1,0 +1,233 @@
+#- Extracting Vt current level
+#----------------------------------------------------------------------#
+proc ExtractVtj { PrintName CURVE Io } {
+
+    set Iolog [expr log10($Io)]
+
+    cv_log10Scale $CURVE LOG_$CURVE y
+
+    cv_set_interpol LOG_$CURVE Y LIN
+
+    cv_set_interpol LOG_$CURVE X LIN
+
+    set Idmin [cv_compute "vecmin(<LOG_$CURVE>)" A A A A ]
+
+    if { $Idmin < $Iolog } {
+
+        set Vtj [cv_compute "vecvalx(<LOG_$CURVE>, $Iolog)" A A A A ]
+
+        if { $PrintName != "noprint" } {
+
+            ft_scalar $PrintName [format %.3f $Vtj]
+
+            puts "Vtj (Vg at Io=[format %.3e $Io]): [format %.3f $Vtj] V"
+
+        }
+
+    } else {
+
+        set Vtj x
+
+        if { $PrintName != "noprint" } {
+
+            ft_scalar $PrintName x
+
+            puts "Vtj (Vg at Ids=[format %.3e $Io]): leakage current higher than Ids!"
+
+        }
+
+    }
+
+    puts ""
+
+    cv_delete LOG_$CURVE
+
+    return $Vtj
+
+}
+
+#- Extracting Vtgm 
+#----------------------------------------------------------------------#
+proc ExtractVtgm { PrintName CURVE Type } {
+ if { $Type == "nMOS" } {
+   set gm_index [cv_compute \
+     "veczero(diff(<$CURVE>)-vecmax(diff(<$CURVE>)))"\
+      A A A A ]
+  } else {
+    set gm_index [cv_compute \
+      "veczero(diff(<$CURVE>)-vecmin(diff(<$CURVE>)))"\
+      A A A A ]
+  }
+  cv_createWithFormula Tangent_$CURVE \
+    "tangent(<$CURVE>, $gm_index )" A A A A
+  set Vtgm [expr [cv_compute "vecvalx(<Tangent_$CURVE>, 0)" A A A A ]]
+  cv_delete Tangent_$CURVE 
+
+  if { $PrintName != "noprint" } {
+    ft_scalar $PrintName [format %.3f $Vtgm]
+    puts "Vt (Max gm method): [format %.3f $Vtgm] V"
+    puts ""
+  }
+  return $Vtgm
+}
+
+#- Extracting Vti as Vg at Id=Io 
+#----------------------------------------------------------------------#
+proc ExtractVti { PrintName CURVE Io } {
+  set Iolog [expr log10($Io)]
+  cv_log10Scale $CURVE LOG y
+  set Idmin [cv_compute "vecmin(<LOG>)" A A A A ]
+  if { $Idmin < $Iolog } {
+    set Vti [cv_compute "vecvalx(<LOG>, $Iolog)" A A A A ]
+    if { $PrintName != "noprint" } {
+      ft_scalar $PrintName [format %.3f $Vti]
+      puts "Vti (Vg at Io=[format %.3e $Io]): [format %.3f $Vti] V"
+    }
+  } else {
+    if { $PrintName != "noprint" } {
+      ft_scalar $PrintName x
+      puts "Vti (Vg at Io=[format %.3e $Io]): leakage current higher than Io!"
+      set Vti "leakage current higher than Io"
+   }
+  }
+  puts ""
+  cv_delete LOG
+  return $Vti
+}
+
+#- Extracting SS
+#----------------------------------------------------------------------#
+proc ExtractSS { PrintName CURVE Vsub } {
+  cv_log10Scale $CURVE LOG y
+  set SubSlope [cv_compute "vecvaly(diff(<LOG>), $Vsub)" A A A A]
+  set SS [expr 1e3/$SubSlope]
+  if { $PrintName != "noprint" } {
+    ft_scalar $PrintName  [format %.3f $SS]
+    puts "SS (subthreshold voltage swing): [format %.3f $SS] mV/dec"
+    puts ""
+  }
+  return $SS
+}
+
+#- Extracting Max
+#----------------------------------------------------------------------#
+proc ExtractMax { PrintName CURVE } {
+  set Max [cv_compute "vecmax(<$CURVE>)" A A A A ]
+  if { $PrintName != "noprint" } {
+    ft_scalar $PrintName [format %.3e $Max] 
+    puts "Max: [format %.3e $Max]"  
+    puts ""
+  }
+  return $Max
+}
+
+#- Extracting Ioff
+#----------------------------------------------------------------------#
+proc ExtractIoff { PrintName CURVE Voff } {
+  set Ioff [cv_compute "vecvaly(<$CURVE>, $Voff)" A A A A ]
+  if { $PrintName != "noprint" } {
+    ft_scalar Ioff [format %.3e $Ioff]
+    puts "Ioff: [format %.3e $Ioff] A/um"
+    puts ""
+  }
+  return $Ioff
+}
+
+#- Extracting max. Transcond.
+#----------------------------------------------------------------------#
+proc ExtractGm { PrintName CURVE Type } {
+  cv_createWithFormula TransCond "diff(<$CURVE>)" A A A A
+  if { $Type == "nMOS" } {
+    set gm [cv_compute "vecmax(<TransCond>)" A A A A ]
+  } else {
+    set gm [cv_compute "vecmin(<TransCond>)" A A A A ]
+  }
+  set Vggm  [cv_compute "vecvalx(<TransCond>,0.999*$gm)" A A A A ] 
+
+  if { $PrintName != "noprint" } {
+    ft_scalar $PrintName  [format %.3e $gm]
+    puts "gm: [format %.3e $gm] S/um"
+    puts "Max gm is at Vg= [format %.3f $Vggm] V"
+    puts ""
+  }
+  cv_delete TransCond
+  return $gm
+}
+
+#- OnState Resistance from IdVd
+#----------------------------------------------------------------------#
+proc ExtractRon { PrintName CURVE Von } {
+  set sigon [cv_compute "vecvaly(diff(<$CURVE>), $Von)"  A A A A ]
+  set Ron   [expr abs(1.0/$sigon)]
+  if { $PrintName != "noprint" } {
+    ft_scalar Ron [format %.3f $Ron]
+    puts "Ron: [format %.3f $Ron] Ohm um"
+    puts ""
+  }
+  return $Ron
+}
+
+#- Extracting Value at given X
+#----------------------------------------------------------------------#
+proc ExtractValue { PrintName CURVE X } {
+  set VALUE [cv_compute "vecvaly(<$CURVE>,$X)" A A A A ]
+  if { $PrintName != "noprint" } {
+   ft_scalar $PrintName [format %.3e $VALUE] 
+   puts "$PrintName: [format %.3e $VALUE]"  
+   puts ""
+  }
+  return $VALUE
+}
+
+#- Extraction of the breakdown voltage BVi as the first voltage
+#- at which the current is bigger than Ilevel
+#----------------------------------------------------------------------#
+proc ExtractBVi { PrintName CURVE Ilevel } {
+  set VList [cv_getValsX $CURVE]
+  set IList [cv_getValsY $CURVE]
+  set vi   0.0
+  foreach v $VList i $IList {
+    if { [expr abs($i)] >= $Ilevel && $vi == 0.0} { set vi $v}
+  }
+  if { $PrintName != "noprint" } {
+    ft_scalar ${PrintName} [format %.2e $vi]
+    puts "BVi: [format %.2e $vi] V"
+  }
+ return $vi 
+}
+
+#- Extraction of the breakdown voltage BVv the max. voltage
+#----------------------------------------------------------------------#
+proc ExtractBVv { PrintName CURVE FAC } {
+  set VList [cv_getValsX $CURVE]
+  set IList [cv_getValsY $CURVE]
+  set vmax 0.0
+  foreach v $VList i $IList {
+    set vf [expr $FAC*$v]
+    if { $vf > $vmax } { set vmax $vf }
+  }
+  set vmax [expr $FAC*$vmax]
+  if { $PrintName != "noprint" } {
+    ft_scalar ${PrintName} [format %.2e $vmax]
+    puts "BVv: [format %.2e $vmax] V"
+  }
+  return $vmax
+}
+
+#- Extraction of the Early Voltage
+#----------------------------------------------------------------------#
+proc ExtractEarlyV { PrintName CURVE Vtarget } {
+  cv_createWithFormula DIFF_$CURVE "diff(<$CURVE>)" A A A A 
+  set slope  [cv_compute "vecvaly(<DIFF_$CURVE>,$Vtarget)" A A A A ]
+  set Rcol   [expr 1.0/$slope ]
+  set Io     [cv_compute "vecvaly(<$CURVE>,$Vtarget)" A A A A]
+  set Va     [expr $Vtarget - $Io/$slope ]
+
+  if { $PrintName != "noprint" } {
+    ft_scalar Ro [format %.3e [expr abs($Rcol)]]
+    ft_scalar Va [format %.3e $Va]
+    puts "Output resistance: [format %.3e [expr abs($Rcol)]] Ohm um"
+    puts "Early Voltage: [format %.3e $Va] V"
+  }
+  return $Va
+}

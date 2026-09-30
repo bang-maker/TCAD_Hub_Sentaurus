@@ -1,0 +1,14 @@
+DATEX2.1
+Datacode
+"$Id: //tcad/gemini/main/src/datexcodes/datexcodes.txt#141 $ $Author: iavci $ $DateTime: 2012/02/14 14:31:34 $"
+"Data codes for semiconductor process and device simulation"
+
+Materials {
+
+    LowK {
+        label   = "LowK"
+        group   = Insulator
+        color   = #7d0505, #b38a11
+    }
+
+}

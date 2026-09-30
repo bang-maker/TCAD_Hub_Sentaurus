@@ -1,0 +1,249 @@
+# Copyright (C) 1994-2019 Synopsys Inc.
+# swbtree vT-2022.03-L1
+
+# --- simulation flow
+NWgen sprocess "" {}
+NWgen Threads "8" {4}
+NWgen Shape "Circle" {Circle Trapezoid}
+NWgen Type "nMOS" {nMOS pMOS}
+NWgen tox "0.8" {0.8}
+NWgen Nch "0.0" {0.0}
+NWgen Nsd "1.0e20" {1.0e20}
+NWgen Lsd "10.0" {10.0}
+NWgen L "11.0" {11.0}
+NWgen Wtop "5.0" {5.0 4.5}
+NWgen Wbottom "5.0" {5.0 5.5}
+NWgen H "5.0" {5.0}
+NWgen D "5.0" {5.0}
+xslice snmesh "" {}
+Extrude snmesh "" {}
+AddContacts sprocess "" {}
+SBTE qtx "" {}
+SBTE cDir "110" {110}
+SBTE Rcont "1.0e3" {4.0e3}
+SBTE WF "4.600" {4.885 4.914 4.396 4.362}
+SBTE VGATE "0.70" {0.70 -0.70}
+SBTE VDRAIN "0.05" {0.05 -0.05 0.70 -0.70}
+SBTE Nsubbands "6" {6 18}
+SBTE Scattering "Ballistic" {PH+SR}
+Plot_IdVg svisual "" {}
+Plot_IdVg_Summary svisual "" {}
+Plot_Iteration svisual "" {}
+Doping_3D svisual "" {}
+Doping_2Dcut svisual "" {}
+Mesh_2Dcut svisual "" {}
+Plot_CC svisual "" {}
+Plot_CC_E svisual "" {}
+DistFunction_CC_K svisual "" {}
+Carrier_Slice svisual "" {}
+Ek svisual "" {}
+# --- variables
+# --- scenarios and parameter specs
+scenario default Threads ""
+scenario default Shape ""
+scenario default Type ""
+scenario default tox ""
+scenario default Nch ""
+scenario default Nsd ""
+scenario default Lsd ""
+scenario default L ""
+scenario default Wtop ""
+scenario default Wbottom ""
+scenario default H ""
+scenario default D ""
+scenario default cDir ""
+scenario default Rcont ""
+scenario default WF ""
+scenario default VGATE ""
+scenario default VDRAIN ""
+scenario default Nsubbands ""
+scenario default Scattering ""
+# --- simulation tree
+0 1 0 {} {default} 0
+1 2 1 {4} {default} 0
+2 3 2 {Circle} {default} 0
+3 5 3 {nMOS} {default} 0
+4 9 5 {0.8} {default} 0
+5 13 9 {0.0} {default} 0
+6 17 13 {1.0e20} {default} 0
+7 21 17 {10.0} {default} 0
+8 25 21 {11.0} {default} 0
+9 29 25 {5.0} {default} 0
+10 33 29 {5.0} {default} 0
+11 37 33 {5.0} {default} 0
+12 41 37 {5.0} {default} 0
+13 45 41 {} {default} 0
+14 49 45 {} {default} 0
+15 53 49 {} {default} 0
+16 57 53 {} {default} 0
+17 61 57 {110} {default} 0
+18 65 61 {4.0e3} {default} 0
+19 69 65 {4.362} {default} 0
+20 73 69 {0.70} {default} 0
+21 77 73 {0.05} {default} 0
+22 85 77 {6} {default} 0
+23 93 85 {PH+SR} {default} 0
+24 101 93 {} {default} 0
+25 109 101 {} {default} 0
+26 117 109 {} {default} 0
+27 125 117 {} {default} 0
+28 133 125 {} {default} 0
+29 141 133 {} {default} 0
+30 149 141 {} {default} 0
+31 157 149 {} {default} 0
+32 165 157 {} {default} 0
+33 173 165 {} {default} 0
+34 181 173 {} {default} 0
+21 78 73 {0.70} {default} 0
+22 86 78 {6} {default} 0
+23 94 86 {PH+SR} {default} 0
+24 102 94 {} {default} 0
+25 110 102 {} {*default} 0
+26 118 110 {} {*default} 0
+27 126 118 {} {*default} 0
+28 134 126 {} {*default} 0
+29 142 134 {} {*default} 0
+30 150 142 {} {default} 0
+31 158 150 {} {default} 0
+32 166 158 {} {default} 0
+33 174 166 {} {default} 0
+34 182 174 {} {*default} 0
+3 6 3 {pMOS} {default} 0
+4 10 6 {0.8} {default} 0
+5 14 10 {0.0} {default} 0
+6 18 14 {1.0e20} {default} 0
+7 22 18 {10.0} {default} 0
+8 26 22 {11.0} {default} 0
+9 30 26 {5.0} {default} 0
+10 34 30 {5.0} {default} 0
+11 38 34 {5.0} {default} 0
+12 42 38 {5.0} {default} 0
+13 46 42 {} {default} 0
+14 50 46 {} {default} 0
+15 54 50 {} {default} 0
+16 58 54 {} {default} 0
+17 62 58 {110} {default} 0
+18 66 62 {4.0e3} {default} 0
+19 70 66 {4.914} {default} 0
+20 74 70 {-0.70} {default} 0
+21 79 74 {-0.05} {default} 0
+22 87 79 {18} {default} 0
+23 95 87 {PH+SR} {default} 0
+24 103 95 {} {default} 0
+25 111 103 {} {*default} 0
+26 119 111 {} {*default} 0
+27 127 119 {} {*default} 0
+28 135 127 {} {default} 0
+29 143 135 {} {default} 0
+30 151 143 {} {default} 0
+31 159 151 {} {default} 0
+32 167 159 {} {default} 0
+33 175 167 {} {default} 0
+34 183 175 {} {default} 0
+21 80 74 {-0.70} {default} 0
+22 88 80 {18} {default} 0
+23 96 88 {PH+SR} {default} 0
+24 104 96 {} {default} 0
+25 112 104 {} {*default} 0
+26 120 112 {} {*default} 0
+27 128 120 {} {*default} 0
+28 136 128 {} {*default} 0
+29 144 136 {} {*default} 0
+30 152 144 {} {default} 0
+31 160 152 {} {default} 0
+32 168 160 {} {default} 0
+33 176 168 {} {default} 0
+34 184 176 {} {*default} 0
+2 4 2 {Trapezoid} {default} 0
+3 7 4 {nMOS} {default} 0
+4 11 7 {0.8} {default} 0
+5 15 11 {0.0} {default} 0
+6 19 15 {1.0e20} {default} 0
+7 23 19 {10.0} {default} 0
+8 27 23 {11.0} {default} 0
+9 31 27 {4.5} {default} 0
+10 35 31 {5.5} {default} 0
+11 39 35 {5.0} {default} 0
+12 43 39 {5.0} {default} 0
+13 47 43 {} {default} 0
+14 51 47 {} {default} 0
+15 55 51 {} {default} 0
+16 59 55 {} {default} 0
+17 63 59 {110} {default} 0
+18 67 63 {4.0e3} {default} 0
+19 71 67 {4.396} {default} 0
+20 75 71 {0.70} {default} 0
+21 81 75 {0.05} {default} 0
+22 89 81 {6} {default} 0
+23 97 89 {PH+SR} {default} 0
+24 105 97 {} {default} 0
+25 113 105 {} {default} 0
+26 121 113 {} {default} 0
+27 129 121 {} {*default} 0
+28 137 129 {} {default} 0
+29 145 137 {} {default} 0
+30 153 145 {} {default} 0
+31 161 153 {} {default} 0
+32 169 161 {} {default} 0
+33 177 169 {} {default} 0
+34 185 177 {} {default} 0
+21 82 75 {0.70} {default} 0
+22 90 82 {6} {default} 0
+23 98 90 {PH+SR} {default} 0
+24 106 98 {} {default} 0
+25 114 106 {} {*default} 0
+26 122 114 {} {*default} 0
+27 130 122 {} {*default} 0
+28 138 130 {} {*default} 0
+29 146 138 {} {*default} 0
+30 154 146 {} {default} 0
+31 162 154 {} {default} 0
+32 170 162 {} {default} 0
+33 178 170 {} {default} 0
+34 186 178 {} {*default} 0
+3 8 4 {pMOS} {default} 0
+4 12 8 {0.8} {default} 0
+5 16 12 {0.0} {default} 0
+6 20 16 {1.0e20} {default} 0
+7 24 20 {10.0} {default} 0
+8 28 24 {11.0} {default} 0
+9 32 28 {4.5} {default} 0
+10 36 32 {5.5} {default} 0
+11 40 36 {5.0} {default} 0
+12 44 40 {5.0} {default} 0
+13 48 44 {} {default} 0
+14 52 48 {} {default} 0
+15 56 52 {} {default} 0
+16 60 56 {} {default} 0
+17 64 60 {110} {default} 0
+18 68 64 {4.0e3} {default} 0
+19 72 68 {4.885} {default} 0
+20 76 72 {-0.70} {default} 0
+21 83 76 {-0.05} {default} 0
+22 91 83 {18} {default} 0
+23 99 91 {PH+SR} {default} 0
+24 107 99 {} {default} 0
+25 115 107 {} {*default} 0
+26 123 115 {} {*default} 0
+27 131 123 {} {*default} 0
+28 139 131 {} {default} 0
+29 147 139 {} {default} 0
+30 155 147 {} {default} 0
+31 163 155 {} {default} 0
+32 171 163 {} {default} 0
+33 179 171 {} {default} 0
+34 187 179 {} {default} 0
+21 84 76 {-0.70} {default} 0
+22 92 84 {18} {default} 0
+23 100 92 {PH+SR} {default} 0
+24 108 100 {} {default} 0
+25 116 108 {} {*default} 0
+26 124 116 {} {*default} 0
+27 132 124 {} {*default} 0
+28 140 132 {} {*default} 0
+29 148 140 {} {*default} 0
+30 156 148 {} {default} 0
+31 164 156 {} {default} 0
+32 172 164 {} {default} 0
+33 180 172 {} {default} 0
+34 188 180 {} {*default} 0

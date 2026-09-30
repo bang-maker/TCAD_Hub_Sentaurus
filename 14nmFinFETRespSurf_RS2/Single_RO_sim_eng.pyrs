@@ -1,0 +1,52 @@
+#setdep @node|BuildLibrary:all@
+
+################################################################################
+################################################################################
+# Parameter setup: RandomSpice application settings                            #
+################################################################################
+################################################################################
+
+# Set up the basics for the RandomSpice application
+randomspice.wait = True
+randomspice.clear_data = True
+
+# For netlist manipulation
+base_inputfile_name = "@pwd@/@nodedir@/pp@node@_eng.rs2"
+randomspice.inputfile = base_inputfile_name
+
+################################################################################
+################################################################################
+# Database interactions:                                                       #
+#   - pull out remapped names from the "BuildLibrary" stage                    #
+################################################################################
+################################################################################
+# Set up metadata for simulations
+build_library = dbi.get_project(swb__tool_label="BuildLibrary")
+midpoints = build_library.metadata["midpoint_metadata"]
+remap_names = build_library.metadata["remap_names"]
+
+n_device = remap_names['nMOS'] + ":nmos"
+p_device = remap_names['pMOS'] + ":pmos"
+################################################################################
+################################################################################
+# actual SPICE simulation launching step                                       #
+################################################################################
+################################################################################
+
+randomspice.rs2file.SetOption('database', 'dataset', f"@node@-ro")
+randomspice.rs2file.SetOption('models', f'instance_params_{n_device}',
+                              dict(midpoints['nMOS']["doe"]))
+randomspice.rs2file.SetOption('models', f'instance_params_{p_device}',
+                              dict(midpoints['pMOS']["doe"]))
+randomspice.rs2file.SetOption('models', 'mapping',
+                              str({"nmos": n_device, "pmos": p_device}))
+
+randomspice.simulate()
+
+# Gather data
+data = dbi.get_data(project=node_prj.name, strip=False)
+pdata = pd.DataFrame()
+for d in data:
+    pdata = pd.concat([pdata, pd.DataFrame(d.data, index=[0])])
+
+pdata.to_csv("@pwd@/n@node@_RO_data.csv")

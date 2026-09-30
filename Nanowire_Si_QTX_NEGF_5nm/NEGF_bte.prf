@@ -1,0 +1,5 @@
+set WB_tool(qtx,parallel,activate) 1
+set WB_tool(qtx,parallel,processes) "@Nprocesses@"
+set WB_tool(qtx,parallel,distribution) "exact"
+set WB_tool(qtx,parallel,distribution,exact) "4"
+set WB_tool(qtx,parallel,memory) "16000"
